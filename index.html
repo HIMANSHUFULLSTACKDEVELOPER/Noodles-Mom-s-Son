@@ -61,7 +61,7 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 60p
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   transition: opacity 0.9s ease, visibility 0.9s;
 }
-#loader.hide { opacity: 0; visibility: hidden; }
+#loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
 .loader-emoji { font-size: 5rem; animation: loaderBounce 0.7s infinite alternate ease-in-out; }
 .loader-brand {
   font-family: 'Playfair Display', serif;
@@ -145,7 +145,7 @@ nav.scrolled {
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&q=90');
+  background-image: url('https://t3.ftcdn.net/jpg/07/73/50/84/360_F_773508417_5gWfEusvqppc5LJKNHCY8AQlZQHHWFRM.jpg');
   background-size: cover; background-position: center;
   z-index: 0;
   transform: scale(1.08);
@@ -164,7 +164,6 @@ nav.scrolled {
   pointer-events: none;
 }
 
-/* Floating spice emojis */
 .spice-float {
   position: absolute; z-index: 3; font-size: 2.2rem;
   pointer-events: none; user-select: none; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
@@ -259,7 +258,6 @@ nav.scrolled {
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.2); border-color: var(--turmeric); color: var(--turmeric); transform: translateY(-4px); }
 
-/* Hero scroll indicator */
 .scroll-indicator {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -278,7 +276,6 @@ nav.scrolled {
   100% { height: 0; opacity: 0; transform: translateY(20px); }
 }
 
-/* Hero stats ribbon */
 .hero-stats {
   position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
   display: flex; justify-content: center; gap: 0;
@@ -341,7 +338,7 @@ section { padding: 6rem 2rem; }
 .offer-card {
   border-radius: var(--radius); overflow: hidden; position: relative;
   box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-  cursor: pointer; group: true;
+  cursor: pointer;
   transition: transform 0.5s cubic-bezier(.34,1.56,.64,1), box-shadow 0.4s;
 }
 .offer-card:hover { transform: translateY(-14px) scale(1.02); box-shadow: 0 30px 70px rgba(211,47,47,0.25); }
@@ -385,6 +382,8 @@ section { padding: 6rem 2rem; }
   display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
   gap: 1.8rem; max-width: 1260px; margin: 0 auto;
 }
+
+/* ── ENHANCED PRODUCT CARD ── */
 .product-card {
   background: #fff; border-radius: var(--radius); overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
@@ -392,10 +391,16 @@ section { padding: 6rem 2rem; }
   cursor: pointer; border: 1px solid rgba(255,107,0,0.08);
 }
 .product-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 24px 60px rgba(255,107,0,0.2);
-  border-color: rgba(255,107,0,0.2);
+  transform: translateY(-16px) scale(1.02) rotate(0.5deg);
+  box-shadow: 0 30px 70px rgba(255,107,0,0.22);
+  border-color: rgba(255,107,0,0.25);
 }
+.product-card.out-of-stock { opacity: 0.88; }
+.product-card.out-of-stock:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
 .product-img-wrap {
   position: relative; overflow: hidden; height: 210px;
   background: linear-gradient(135deg, #FFF3E0, var(--smoke));
@@ -405,14 +410,42 @@ section { padding: 6rem 2rem; }
   transition: transform 0.6s ease; display: block;
 }
 .product-card:hover .product-img-wrap img { transform: scale(1.14); }
+.product-card.out-of-stock .product-img-wrap img { filter: grayscale(60%) brightness(0.8); }
+
+/* ── OUT OF STOCK OVERLAY ── */
+.oos-overlay {
+  position: absolute; inset: 0; z-index: 5;
+  background: rgba(28,10,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.4rem;
+}
+.oos-badge {
+  background: linear-gradient(135deg, #555, #333);
+  color: #fff; font-size: 0.78rem; font-weight: 900;
+  padding: 0.45rem 1.2rem; border-radius: 99px;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  animation: oosGlow 2s ease-in-out infinite;
+}
+@keyframes oosGlow {
+  0%,100% { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  50% { box-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255,255,255,0.1); }
+}
+.oos-sub { color: rgba(255,255,255,0.75); font-size: 0.7rem; letter-spacing: 1px; }
+
 .product-badge {
-  position: absolute; top: 12px; left: 12px;
+  position: absolute; top: 12px; left: 12px; z-index: 3;
   background: linear-gradient(135deg, var(--chilli), var(--saffron));
   color: #fff; font-size: 0.68rem; font-weight: 800;
   padding: 0.2rem 0.7rem; border-radius: 99px; letter-spacing: 1px; text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(211,47,47,0.4);
+  animation: badgePop 0.5s cubic-bezier(.34,1.56,.64,1) both;
 }
+@keyframes badgePop { from{transform:scale(0) rotate(-10deg)} to{transform:scale(1) rotate(0)} }
+
 .product-zoom-btn {
-  position: absolute; top: 12px; right: 12px;
+  position: absolute; top: 12px; right: 12px; z-index: 3;
   background: rgba(28,10,0,0.75); color: #fff; border: none;
   border-radius: 50%; width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
@@ -421,6 +454,8 @@ section { padding: 6rem 2rem; }
   transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
 }
 .product-card:hover .product-zoom-btn { opacity: 1; transform: scale(1) rotate(0); }
+
+/* ── PRODUCT INFO ── */
 .product-info { padding: 1.1rem 1.2rem 1.3rem; }
 .product-name {
   font-family: 'Syne', sans-serif; font-weight: 700;
@@ -434,21 +469,150 @@ section { padding: 6rem 2rem; }
   font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.5rem;
   border-radius: 99px; letter-spacing: 0.5px;
 }
+.product-card.out-of-stock .product-price { color: #999; }
+
+/* ── PRODUCT BUTTONS ── */
 .product-btns { display: flex; gap: 0.6rem; }
 .btn-buy {
   flex: 1; background: linear-gradient(135deg, var(--chilli), var(--saffron));
-  color: #fff; border: none; padding: 0.6rem 0.5rem; border-radius: 99px;
+  color: #fff; border: none; padding: 0.65rem 0.5rem; border-radius: 99px;
   font-weight: 700; font-size: 0.8rem; cursor: pointer;
   transition: all 0.3s; white-space: nowrap; letter-spacing: 0.3px;
+  position: relative; overflow: hidden;
 }
+.btn-buy::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-buy:hover::after { opacity: 1; }
 .btn-buy:hover { transform: scale(1.06); box-shadow: 0 6px 18px rgba(211,47,47,0.45); }
+.btn-buy span { position: relative; z-index: 1; }
+.btn-buy:disabled, .btn-add:disabled {
+  opacity: 0.45; cursor: not-allowed;
+  background: #ccc; transform: none !important; box-shadow: none !important;
+}
 .btn-add {
   flex: 1; background: transparent; color: var(--saffron);
-  border: 1.5px solid var(--saffron); padding: 0.6rem 0.5rem;
+  border: 1.5px solid var(--saffron); padding: 0.65rem 0.5rem;
   border-radius: 99px; font-weight: 700; font-size: 0.8rem;
   cursor: pointer; transition: all 0.3s; white-space: nowrap;
 }
 .btn-add:hover { background: var(--saffron); color: #fff; transform: scale(1.06); }
+
+/* ── PRODUCT MODAL ── */
+.product-modal {
+  display: none; position: fixed; inset: 0; z-index: 1150;
+  background: rgba(10,3,0,0.88); backdrop-filter: blur(10px);
+  align-items: center; justify-content: center; padding: 1.5rem;
+}
+.product-modal.open { display: flex; animation: fadeIn 0.3s; }
+.modal-inner {
+  background: var(--cream); border-radius: 28px; overflow: hidden;
+  max-width: 900px; width: 100%; max-height: 90vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  animation: modalSlideUp 0.45s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+@media(max-width:680px) { .modal-inner { grid-template-columns: 1fr; max-height: 92vh; overflow-y: auto; } }
+@keyframes modalSlideUp { from{opacity:0;transform:translateY(60px) scale(0.92)} to{opacity:1;transform:translateY(0) scale(1)} }
+
+.modal-img-side { position: relative; overflow: hidden; min-height: 320px; }
+.modal-img-side img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
+.modal-img-side:hover img { transform: scale(1.07); }
+.modal-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(28,10,0,0.55) 0%, transparent 60%);
+}
+.modal-img-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: linear-gradient(135deg, var(--chilli), var(--saffron));
+  color: #fff; font-size: 0.72rem; font-weight: 800;
+  padding: 0.3rem 0.9rem; border-radius: 99px; letter-spacing: 1.5px;
+}
+.modal-oos-overlay {
+  position: absolute; inset: 0; z-index: 5;
+  background: rgba(20,10,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-oos-badge {
+  background: linear-gradient(135deg, #555, #222);
+  color: #fff; font-size: 1rem; font-weight: 900;
+  padding: 0.6rem 1.8rem; border-radius: 99px;
+  letter-spacing: 3px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.modal-info-side { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+.modal-cat-tag {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,107,0,0.1); color: var(--saffron);
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.9rem;
+  border-radius: 99px; letter-spacing: 1.5px; text-transform: uppercase; width: fit-content;
+}
+.modal-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem; font-weight: 900; color: var(--dark-spice); line-height: 1.2;
+}
+.modal-price-row { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+.modal-price { font-size: 2rem; font-weight: 900; color: var(--saffron); }
+.modal-old { font-size: 1.1rem; color: #bbb; text-decoration: line-through; }
+.modal-save {
+  background: linear-gradient(135deg, var(--leaf), #4CAF50);
+  color: #fff; font-size: 0.75rem; font-weight: 800;
+  padding: 0.3rem 0.8rem; border-radius: 99px; letter-spacing: 1px;
+}
+.modal-desc { color: #7A5C3E; font-size: 0.93rem; line-height: 1.7; }
+.modal-highlights {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+.modal-highlight-chip {
+  background: var(--smoke); color: var(--dark-spice);
+  font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.8rem;
+  border-radius: 99px; border: 1px solid rgba(255,107,0,0.15);
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.modal-divider { height: 1px; background: rgba(255,107,0,0.12); margin: 0.3rem 0; }
+.modal-btns { display: flex; flex-direction: column; gap: 0.7rem; }
+.modal-btn-order {
+  width: 100%; background: linear-gradient(135deg, var(--chilli), var(--saffron));
+  color: #fff; border: none; padding: 1rem 1.5rem; border-radius: 99px;
+  font-weight: 800; font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  transition: all 0.4s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 6px 24px rgba(211,47,47,0.4);
+  letter-spacing: 0.3px; position: relative; overflow: hidden;
+}
+.modal-btn-order::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+  opacity: 0; transition: opacity 0.3s;
+}
+.modal-btn-order:hover::before { opacity: 1; }
+.modal-btn-order:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(211,47,47,0.55); }
+.modal-btn-order span { position: relative; z-index: 1; display: flex; align-items: center; gap: 0.6rem; }
+.modal-btn-order:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+.modal-btn-wa {
+  width: 100%; background: #25D366;
+  color: #fff; border: none; padding: 0.85rem 1.5rem; border-radius: 99px;
+  font-weight: 700; font-size: 0.92rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  transition: all 0.3s; box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+}
+.modal-btn-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+.modal-btn-wa:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem; z-index: 10;
+  background: rgba(28,10,0,0.7); color: #fff; border: none;
+  border-radius: 50%; width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; backdrop-filter: blur(8px);
+  transition: all 0.3s; border: 1px solid rgba(255,107,0,0.2);
+}
+.modal-close:hover { background: var(--chilli); transform: rotate(90deg) scale(1.1); }
 
 /* ── ABOUT ── */
 .about-section {
@@ -517,16 +681,12 @@ section { padding: 6rem 2rem; }
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(28,10,0,0.9) 0%, transparent 60%);
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
   opacity: 0; transition: opacity 0.4s ease;
 }
 .gallery-item:hover .gallery-cap { opacity: 1; }
 .gallery-cap-icon { color: var(--turmeric); font-size: 1.6rem; margin-bottom: 0.4rem; }
 .gallery-cap-text { color: #fff; font-size: 0.85rem; font-weight: 600; }
-@media(max-width:768px) {
-  .gallery-masonry { grid-template-columns: repeat(2,1fr); }
-  .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: span 2; }
-}
 
 /* ── CONTACT ── */
 .contact-section { background: var(--dark-spice); }
@@ -635,6 +795,8 @@ footer {
   .hero-stats { flex-direction: row; flex-wrap: wrap; }
   .hero-stat-item { padding: 1rem 1.5rem; flex: 1 0 40%; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); }
+  .gallery-masonry { grid-template-columns: repeat(2,1fr); }
+  .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: span 2; }
 }
 
 /* ── SCROLL REVEAL ── */
@@ -644,11 +806,31 @@ footer {
 .reveal-left.visible { opacity: 1; transform: translateX(0); }
 .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── CARD SHIMMER ON HOVER ── */
+.product-card::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,193,7,0.07) 60%, transparent 80%);
+  transform: translateX(-100%); transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.product-card:hover::before { transform: translateX(100%); }
+
+/* ── RIPPLE ── */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.5; }
+  to { transform: scale(4); opacity: 0; }
+}
+.ripple-circle {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: rgba(255,193,7,0.35); width: 40px; height: 40px;
+  margin-left: -20px; margin-top: -20px;
+  animation: ripple 0.6s linear;
+}
 </style>
 </head>
 <body>
 
-<!-- CUSTOM CURSOR -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -656,7 +838,7 @@ footer {
 <div id="loader">
   <div class="loader-emoji">🍜</div>
   <div class="loader-brand">Noodles Mom's Son</div>
-  <div class="loader-tagline">Masala & Munch — Fresh Daily</div>
+  <div class="loader-tagline">Fresh Products</div>
   <div class="loader-track"><div class="loader-fill"></div></div>
   <div class="loader-dots"><span></span><span></span><span></span></div>
 </div>
@@ -665,14 +847,13 @@ footer {
 <nav id="navbar">
   <a class="nav-logo" href="#home">🍜 Mom's Son <span class="dot">·</span> Store</a>
   <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
+    <li><a href="#home">Home</a></li>
     <li><a href="#offers">Offers</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  
   <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
 </nav>
 
@@ -690,13 +871,49 @@ footer {
   <button class="zoom-close" onclick="closeZoom()"><i class="fas fa-times"></i></button>
 </div>
 
+<!-- PRODUCT DETAIL MODAL -->
+<div class="product-modal" id="productModal" onclick="closeProductModal(event)">
+  <div class="modal-inner" id="modalInner">
+    <button class="modal-close" onclick="closeProductModalDirect()"><i class="fas fa-times"></i></button>
+    <div class="modal-img-side">
+      <img id="modalImg" src="" alt="">
+      <div class="modal-img-overlay"></div>
+      <div class="modal-img-badge" id="modalImgBadge" style="display:none"></div>
+      <div class="modal-oos-overlay" id="modalOosOverlay" style="display:none">
+        <div class="modal-oos-badge">🚫 Out of Stock</div>
+      </div>
+    </div>
+    <div class="modal-info-side">
+      <div class="modal-cat-tag" id="modalCatTag">🌶️ Category</div>
+      <div class="modal-name" id="modalName">Product Name</div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="modalPrice">₹00</span>
+        <span class="modal-old" id="modalOld">₹00</span>
+        <span class="modal-save" id="modalSave">Save 00%</span>
+      </div>
+      <div class="modal-desc" id="modalDesc">Product description here.</div>
+      <div class="modal-highlights" id="modalHighlights"></div>
+      <div class="modal-divider"></div>
+      <div class="modal-btns">
+        <button class="modal-btn-order" id="modalBtnOrder" onclick="modalBuyNow()">
+          <span><i class="fas fa-shopping-bag"></i> Order Now</span>
+        </button>
+        <button class="modal-btn-wa" id="modalBtnWa" onclick="modalOrderWa()">
+          <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </button>
+      </div>
+      <p style="font-size:0.73rem;color:#bbb;text-align:center;margin-top:0.3rem">
+        <i class="fas fa-lock" style="color:var(--saffron)"></i> Secure ordering via WhatsApp · Fast delivery 🚚
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-gradient"></div>
   <div class="hero-grain"></div>
-
-  <!-- Floating spices -->
   <div class="spice-float">🌶️</div>
   <div class="spice-float">🍜</div>
   <div class="spice-float">🥗</div>
@@ -705,7 +922,6 @@ footer {
   <div class="spice-float">🌿</div>
   <div class="spice-float">🍛</div>
   <div class="spice-float">🫚</div>
-
   <div class="hero-content">
     <div class="hero-kicker">
       <span class="hero-kicker-dot"></span>
@@ -714,7 +930,7 @@ footer {
     </div>
     <h1 class="hero-title">
       Noodles<br>Mom's Son
-      <em>Masala & Munch</em>
+      <em>Fresh Products</em>
     </h1>
     <p class="hero-sub">Fresh · Authentic · Delivered to Your Door 🚚</p>
     <div class="hero-btns">
@@ -726,12 +942,10 @@ footer {
       </a>
     </div>
   </div>
-
   <div class="scroll-indicator">
     <div class="scroll-line"></div>
     <span>Scroll</span>
   </div>
-
   <div class="hero-stats">
     <div class="hero-stat-item">
       <div class="hero-stat-num">500+</div>
@@ -820,7 +1034,7 @@ footer {
 <section class="products-section" id="products">
   <h2 class="section-title reveal">Our <em>Products</em></h2>
   <div class="title-ornament reveal"><span class="title-ornament-icon">✦</span></div>
-  <p class="section-sub reveal">Tap a category · Hover to explore · Click to zoom!</p>
+  <p class="section-sub reveal">Click any product to explore · Order instantly!</p>
   <div class="category-tabs" id="catTabs">
     <button class="cat-tab active" data-cat="all">All</button>
     <button class="cat-tab" data-cat="instant">Instant Foods</button>
@@ -841,7 +1055,7 @@ footer {
 <!-- ═══════════ ABOUT ═══════════ -->
 <section class="about-section" id="about">
   <h2 class="section-title reveal">About <em style="color:var(--saffron)">Us</em></h2>
-  <div class="title-ornament reveal" style="--saffron:#FF6B00"><span class="title-ornament-icon" style="color:var(--saffron)">✦</span></div>
+  <div class="title-ornament reveal"><span class="title-ornament-icon" style="color:var(--saffron)">✦</span></div>
   <p class="section-sub reveal">Real flavours from real families</p>
   <div class="about-grid">
     <div class="about-mosaic reveal-left">
@@ -926,7 +1140,6 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">🍜 Noodles Mom's Son</span>
   <div class="footer-links">
@@ -946,146 +1159,280 @@ footer {
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+});
 (function animRing(){
   rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
   ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(animRing);
 })();
 
+// ── CATEGORY LABELS ──
+const catLabels = {
+  instant: 'Instant Foods', spices: 'Spices & Masala', pickles: 'Pickles',
+  papad: 'Papad & Fryums', bakery: 'Bakery & Snacks', sweets: 'Sweets',
+  dryfruits: 'Dry Fruits', staples: 'Staples', rte: 'Ready-to-Eat',
+  beverages: 'Beverages', health: 'Health & Organic'
+};
+const catEmojis = {
+  instant:'🍜', spices:'🌶️', pickles:'🫙', papad:'🥐', bakery:'🍞',
+  sweets:'🍬', dryfruits:'🥜', staples:'🌾', rte:'🥘', beverages:'☕', health:'🌿'
+};
+
+// ── PRODUCT DESCRIPTIONS ──
+const descs = {
+  "Instant Noodles (Masala)": "Our bestselling instant noodles packed with bold masala flavor. Ready in just 2 minutes — a quick, satisfying meal for the whole family.",
+  "Soup Powder (Tomato)": "Creamy, tangy tomato soup powder made from sun-ripened tomatoes. Currently unavailable — restocking soon!",
+  "Turmeric Powder": "Pure, vibrant turmeric sourced directly from farmers. Rich in curcumin for both cooking and health.",
+  "Red Chilli Powder": "Stone-ground red chilli with perfect heat balance. Adds vibrant color and spice to any dish.",
+  "Mango Pickle": "Traditional homestyle mango pickle made with raw mangoes, mustard seeds, and aromatic spices.",
+  "Urad Papad": "Crispy, thin urad dal papads. Roast or fry for a perfect crunchy accompaniment to any meal.",
+  "Masala Papad": "Flavourful spiced papads with a blend of special masalas. Currently unavailable — back soon!",
+  "Rusk (Toast)": "Golden, crispy double-baked rusk toast. Currently restocking — check back soon!",
+  "Jaggery (Gud)": "Natural, unrefined jaggery with rich caramel notes. No chemicals, no additives — pure goodness.",
+  "Peanut Chikki": "Crunchy peanut brittle made with jaggery in traditional style. A beloved Indian snack!",
+  "Pistachios": "Premium quality pistachios — naturally roasted, lightly salted. Rich in healthy fats and protein.",
+  "Chia Seeds": "Organic chia seeds — superfood packed with omega-3, fiber, and antioxidants.",
+  "Premium Basmati Rice": "Long-grain, aged basmati with aromatic fragrance. Perfect for biryanis and everyday cooking.",
+  "Rajma Curry Pack": "Ready-to-cook rajma masala blend. Authentic Punjabi flavors in minutes!",
+  "Chole Pack": "Authentic chickpea curry mix — bold, aromatic, restaurant-style at home. Ready in 5 minutes!",
+  "Masala Tea Powder": "Rich, warming masala chai blend with ginger, cardamom, and aromatic spices.",
+  "Coffee Powder": "Freshly ground south Indian coffee blend — robust, aromatic, deeply satisfying.",
+  "Rose Sharbat Conc.": "Sweet, floral rose sharbat concentrate. Mix with chilled water for a refreshing summer drink.",
+  "Organic Turmeric": "Certified organic turmeric with higher curcumin content. Ideal for golden milk and health use.",
+  "Gluten-Free Atta": "Stone-milled gluten-free flour blend from millets and rice. Perfect for rotis and baking."
+};
+
+// ── HIGHLIGHTS ──
+const highlights = {
+  instant: ['⚡ Ready in 2 min','🌶️ Bold Masala','📦 Bulk Packs Available'],
+  spices:  ['🌱 Farm Fresh','🧪 Lab Tested','♻️ Eco Packaging'],
+  pickles: ['🏠 Homestyle','🚫 No Preservatives','❤️ Family Recipe'],
+  papad:   ['🔥 Hand Rolled','🌾 100% Dal','🎉 Perfect Snack'],
+  bakery:  ['🍞 Freshly Baked','🥛 Rich & Creamy','👨‍👩‍👧 Family Favourite'],
+  sweets:  ['🌾 Natural Sugars','🚫 No Chemicals','🎁 Gift Ready'],
+  dryfruits:['💪 Protein Rich','✅ Premium Grade','🥗 Snack Anytime'],
+  staples: ['🌾 Long Grain','🍚 Aged Rice','👨‍🍳 Chef Quality'],
+  rte:     ['⏱️ Ready in 5 min','🌶️ Authentic Taste','📦 No Preservatives'],
+  beverages:['☕ Fresh Aroma','🍃 Natural Blend','🥤 Daily Essential'],
+  health:  ['🌿 Certified Organic','💊 Curcumin Rich','🚫 No Additives']
+};
+
+// ── OUT OF STOCK PRODUCTS ──
+const outOfStock = ['Rusk (Toast)', 'Masala Papad', 'Soup Powder (Tomato)'];
+
 // ── PRODUCTS DATA ──
 const products = [
   {name:"Instant Noodles (Masala)",price:35,old:50,cat:"instant",img:"https://images.unsplash.com/photo-1585631140952-3e2bbec2b330?w=500&q=80",badge:"Best Seller"},
-  {name:"Pasta & Macaroni",price:49,old:70,cat:"instant",img:"https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=500&q=80"},
-  {name:"Vermicelli (Sevaiyan)",price:45,old:65,cat:"instant",img:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80"},
-  {name:"Poha Mix",price:55,old:75,cat:"instant",img:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=80",badge:"Popular"},
-  {name:"Upma Mix",price:48,old:65,cat:"instant",img:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80"},
-  {name:"Instant Khichdi Mix",price:60,old:85,cat:"instant",img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"},
   {name:"Soup Powder (Tomato)",price:40,old:55,cat:"instant",img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"},
   {name:"Turmeric Powder",price:38,old:55,cat:"spices",img:"https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=500&q=80",badge:"Pure"},
   {name:"Red Chilli Powder",price:42,old:60,cat:"spices",img:"https://images.unsplash.com/photo-1598449426314-8b02525e8733?w=500&q=80"},
-  {name:"Garam Masala",price:55,old:75,cat:"spices",img:"https://images.unsplash.com/photo-1607532941433-304659e8198a?w=500&q=80",badge:"Premium"},
-  {name:"Biryani Masala",price:65,old:90,cat:"spices",img:"https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80"},
-  {name:"Chaat Masala",price:35,old:50,cat:"spices",img:"https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80"},
-  {name:"Tea Masala",price:50,old:70,cat:"spices",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80"},
   {name:"Mango Pickle",price:80,old:110,cat:"pickles",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80",badge:"Homemade"},
-  {name:"Lemon Pickle",price:75,old:100,cat:"pickles",img:"https://images.unsplash.com/photo-1622821763114-d7e5e1d1d75e?w=500&q=80"},
-  {name:"Mixed Veg Pickle",price:90,old:120,cat:"pickles",img:"https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&q=80"},
-  {name:"Garlic Pickle",price:85,old:115,cat:"pickles",img:"https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=500&q=80"},
   {name:"Urad Papad",price:55,old:75,cat:"papad",img:"https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80"},
   {name:"Masala Papad",price:60,old:80,cat:"papad",img:"https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80",badge:"Spicy"},
-  {name:"Colored Fryums",price:40,old:55,cat:"papad",img:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=80"},
   {name:"Rusk (Toast)",price:45,old:60,cat:"bakery",img:"https://images.unsplash.com/photo-1605926637512-c8b131444a4b?w=500&q=80"},
-  {name:"Jeera Cookies",price:55,old:75,cat:"bakery",img:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&q=80"},
-  {name:"Namkeen Mixture",price:50,old:68,cat:"bakery",img:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80",badge:"Crunchy"},
-  {name:"Bhujia Sev",price:42,old:58,cat:"bakery",img:"https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=500&q=80"},
   {name:"Jaggery (Gud)",price:70,old:95,cat:"sweets",img:"https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=500&q=80",badge:"Natural"},
   {name:"Peanut Chikki",price:60,old:82,cat:"sweets",img:"https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&q=80"},
-  {name:"Til Ladoo",price:75,old:100,cat:"sweets",img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"},
-  {name:"Premium Almonds",price:180,old:240,cat:"dryfruits",img:"https://images.unsplash.com/photo-1574226516831-e1dff420e562?w=500&q=80",badge:"Best Quality"},
-  {name:"Cashews",price:220,old:290,cat:"dryfruits",img:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&q=80"},
-  {name:"Raisins",price:90,old:125,cat:"dryfruits",img:"https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80"},
   {name:"Pistachios",price:280,old:360,cat:"dryfruits",img:"https://images.unsplash.com/photo-1560009320-b3ff0cf10ca8?w=500&q=80"},
   {name:"Chia Seeds",price:130,old:175,cat:"dryfruits",img:"https://images.unsplash.com/photo-1612257416648-c4e77a4f6e73?w=500&q=80"},
   {name:"Premium Basmati Rice",price:120,old:160,cat:"staples",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80"},
-  {name:"Whole Wheat Atta",price:85,old:115,cat:"staples",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80",badge:"Fresh"},
-  {name:"Besan (Gram Flour)",price:72,old:98,cat:"staples",img:"https://images.unsplash.com/photo-1574226516831-e1dff420e562?w=500&q=80"},
   {name:"Rajma Curry Pack",price:95,old:130,cat:"rte",img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"},
   {name:"Chole Pack",price:90,old:125,cat:"rte",img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80",badge:"Ready in 5min"},
   {name:"Masala Tea Powder",price:65,old:90,cat:"beverages",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80"},
   {name:"Coffee Powder",price:110,old:150,cat:"beverages",img:"https://images.unsplash.com/photo-1509785307050-d4066910ec1e?w=500&q=80"},
   {name:"Rose Sharbat Conc.",price:85,old:115,cat:"beverages",img:"https://images.unsplash.com/photo-1622821763114-d7e5e1d1d75e?w=500&q=80"},
   {name:"Organic Turmeric",price:95,old:130,cat:"health",img:"https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=500&q=80",badge:"Organic"},
-  {name:"Moringa Powder",price:120,old:165,cat:"health",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"},
-  {name:"Millet Mix",price:99,old:138,cat:"health",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80"},
   {name:"Gluten-Free Atta",price:145,old:195,cat:"health",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80"},
 ];
 
-let cartCount = 0;
+let currentProduct = null;
 
-function discount(p,o){ return Math.round((o-p)/o*100); }
+function discount(p, o) { return Math.round((o - p) / o * 100); }
 
-function renderProducts(cat){
+function isOOS(name) { return outOfStock.includes(name); }
+
+// ── RENDER PRODUCTS ──
+function renderProducts(cat) {
   const grid = document.getElementById('productsGrid');
-  const filtered = cat === 'all' ? products : products.filter(p=>p.cat===cat);
-  grid.innerHTML = filtered.map((p,i)=>`
-    <div class="product-card" style="opacity:0;transform:translateY(30px);animation:cardIn 0.5s ${i*0.06}s forwards">
+  const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+  grid.innerHTML = filtered.map((p, i) => {
+    const oos = isOOS(p.name);
+    return `
+    <div class="product-card ${oos ? 'out-of-stock' : ''}"
+         style="animation:cardIn 0.5s ${i * 0.06}s both"
+         onclick="openProductModal(${products.indexOf(p)}, event)">
       <div class="product-img-wrap">
-        ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
         <img src="${p.img}" alt="${p.name}" loading="lazy">
-        <button class="product-zoom-btn" onclick="openZoom('${p.img.replace('500','1000')}');event.stopPropagation()">
-          <i class="fas fa-search-plus"></i>
-        </button>
+        ${oos ? `
+          <div class="oos-overlay">
+            <div class="oos-badge">🚫 Out of Stock</div>
+            <div class="oos-sub">Restocking soon</div>
+          </div>
+        ` : `
+          <button class="product-zoom-btn" onclick="openZoom('${p.img.replace('500','1000')}');event.stopPropagation()">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        `}
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-price-row">
           <span class="product-price">₹${p.price}</span>
           <span class="product-old">₹${p.old}</span>
-          <span class="product-discount">${discount(p.price,p.old)}% off</span>
+          <span class="product-discount">${discount(p.price, p.old)}% off</span>
         </div>
         <div class="product-btns">
-          <button class="btn-buy" onclick="buyNow('${p.name}')">Buy Now</button>
-          <button class="btn-add" onclick="addCart('${p.name}')">+ Cart</button>
+          <button class="btn-buy" ${oos ? 'disabled' : ''} onclick="buyNow('${p.name}');event.stopPropagation()">
+            <span>${oos ? '🚫 Unavailable' : '🛒 Order Now'}</span>
+          </button>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
+// ── CARD ANIMATION ──
 const styleEl = document.createElement('style');
-styleEl.textContent = `@keyframes cardIn { to { opacity:1; transform:translateY(0); } }`;
+styleEl.textContent = `@keyframes cardIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }`;
 document.head.appendChild(styleEl);
 
+// ── CATEGORY TABS ──
 document.querySelectorAll('.cat-tab').forEach(tab => {
-  tab.addEventListener('click', function(){
-    document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  tab.addEventListener('click', function () {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
     this.classList.add('active');
     renderProducts(this.dataset.cat);
   });
 });
 
-function buyNow(name){
+// ── PRODUCT MODAL ──
+function openProductModal(idx, e) {
+  if (e) e.stopPropagation();
+  const p = products[idx];
+  currentProduct = p;
+  const oos = isOOS(p.name);
+
+  document.getElementById('modalImg').src = p.img.replace('500', '900');
+  document.getElementById('modalImg').alt = p.name;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalPrice').textContent = `₹${p.price}`;
+  document.getElementById('modalOld').textContent = `₹${p.old}`;
+  document.getElementById('modalSave').textContent = `Save ${discount(p.price, p.old)}%`;
+  document.getElementById('modalDesc').textContent = descs[p.name] || 'Premium quality product from Noodles Mom\'s Son. Freshly sourced and carefully packaged for your family.';
+  
+  const catTag = document.getElementById('modalCatTag');
+  catTag.textContent = `${catEmojis[p.cat] || '🛒'} ${catLabels[p.cat] || p.cat}`;
+
+  const badgeEl = document.getElementById('modalImgBadge');
+  if (p.badge) { badgeEl.textContent = p.badge; badgeEl.style.display = 'block'; }
+  else badgeEl.style.display = 'none';
+
+  document.getElementById('modalOosOverlay').style.display = oos ? 'flex' : 'none';
+
+  const hlContainer = document.getElementById('modalHighlights');
+  const hlList = highlights[p.cat] || ['✅ Quality Assured','📦 Freshly Packed','🚚 Fast Delivery'];
+  hlContainer.innerHTML = hlList.map(h => `<div class="modal-highlight-chip">${h}</div>`).join('');
+
+  const btnOrder = document.getElementById('modalBtnOrder');
+  const btnWa = document.getElementById('modalBtnWa');
+  if (oos) {
+    btnOrder.disabled = true;
+    btnOrder.querySelector('span').innerHTML = '<i class="fas fa-ban"></i> Currently Unavailable';
+    btnWa.disabled = true;
+  } else {
+    btnOrder.disabled = false;
+    btnOrder.querySelector('span').innerHTML = '<i class="fas fa-shopping-bag"></i> Order Now';
+    btnWa.disabled = false;
+  }
+
+  document.getElementById('productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal(e) {
+  if (e.target === document.getElementById('productModal')) closeProductModalDirect();
+}
+function closeProductModalDirect() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function modalBuyNow() {
+  if (!currentProduct || isOOS(currentProduct.name)) return;
+  const msg = encodeURIComponent(`Hello! I want to order: ${currentProduct.name} (₹${currentProduct.price})`);
+  window.open(`https://wa.me/919881047800?text=${msg}`, '_blank');
+}
+function modalOrderWa() {
+  if (!currentProduct || isOOS(currentProduct.name)) return;
+  const msg = encodeURIComponent(`Hi! I'm interested in: ${currentProduct.name}\nPrice: ₹${currentProduct.price}\nPlease confirm availability.`);
+  window.open(`https://wa.me/919881047800?text=${msg}`, '_blank');
+}
+
+// ── CARD BUY NOW ──
+function buyNow(name) {
   const msg = encodeURIComponent(`Hello! I want to buy: ${name}`);
-  window.open(`https://wa.me/919881047800?text=${msg}`,'_blank');
+  window.open(`https://wa.me/919881047800?text=${msg}`, '_blank');
 }
-function addCart(name){
-  cartCount++;
-  document.getElementById('cartCount').textContent = cartCount;
-  showToast(`🛒 ${name} added!`);
-}
-function showToast(msg){
-  const t = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2800);
-}
-function openZoom(src){
+
+// ── ZOOM MODAL ──
+function openZoom(src) {
   document.getElementById('zoomImg').src = src;
   document.getElementById('zoomModal').classList.add('open');
 }
-function closeZoom(){ document.getElementById('zoomModal').classList.remove('open'); }
-function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+function closeZoom() { document.getElementById('zoomModal').classList.remove('open'); }
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── NAV ──
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
 
 // ── NAVBAR SCROLL ──
-window.addEventListener('scroll', ()=>{
+window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
 
 // ── SCROLL REVEAL ──
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(r=>io.observe(r));
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(r => io.observe(r));
 
 // ── LOADER ──
-window.addEventListener('load', ()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('hide'), 2600);
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hide'), 2600);
 });
 
-// ── STAGGER ABOUT STAT BOXES ──
-document.querySelectorAll('.stat-box').forEach((el,i)=>{
-  el.style.transitionDelay = `${i*0.1}s`;
+// ── STAGGER STAT BOXES ──
+document.querySelectorAll('.stat-box').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.1}s`;
+});
+
+// ── ESC KEY ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeZoom(); closeProductModalDirect(); }
+});
+
+// ── RIPPLE ON BUTTONS ──
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.btn-buy, .modal-btn-order, .modal-btn-wa');
+  if (!btn || btn.disabled) return;
+  const ripple = document.createElement('div');
+  ripple.className = 'ripple-circle';
+  const rect = btn.getBoundingClientRect();
+  ripple.style.left = (e.clientX - rect.left) + 'px';
+  ripple.style.top = (e.clientY - rect.top) + 'px';
+  btn.style.position = 'relative'; btn.style.overflow = 'hidden';
+  btn.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
 });
 
 renderProducts('all');
