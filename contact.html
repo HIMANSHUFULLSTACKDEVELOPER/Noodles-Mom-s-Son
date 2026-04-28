@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – Noodles Mom's Son</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --emerald:        #0A4A3A;
+  --emerald-mid:    #0D6B53;
+  --emerald-light:  #15A077;
+  --saffron:        #F5A623;
+  --saffron-glow:   #FFD080;
+  --saffron-deep:   #E08B00;
+  --crimson:        #C0392B;
+  --crimson-glow:   #E74C3C;
+  --cream:          #FBF6EE;
+  --parchment:      #F5ECD6;
+  --warm-white:     #FFFDF8;
+  --dark:           #060F0C;
+  --dark-2:         #0D1F19;
+  --dark-3:         #163226;
+  --gold:           #D4A843;
+  --gold-light:     #F0C96B;
+  --text-muted:     #7A9B8E;
+  --radius:         20px;
+  --radius-sm:      12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Satoshi', 'Cabinet Grotesk', sans-serif;
+  background: var(--cream); color: var(--dark);
+  overflow-x: hidden; cursor: none;
+}
+
+/* ══ CURSOR ══ */
+.cursor { position:fixed;width:12px;height:12px;background:var(--saffron);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;box-shadow:0 0 16px var(--saffron); }
+.cursor-ring { position:fixed;width:40px;height:40px;border:1.5px solid rgba(245,166,35,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .18s ease,width .25s,height .25s,border-color .25s; }
+body:has(a:hover) .cursor, body:has(button:hover) .cursor { width:20px;height:20px;background:var(--saffron-glow); }
+body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width:56px;height:56px;border-color:var(--saffron); }
+
+/* ══ LOADER ══ */
+#loader { position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .9s ease,visibility .9s; }
+#loader.hide { opacity:0;visibility:hidden;pointer-events:none; }
+.loader-emoji { font-size:5rem;animation:loaderBounce .8s infinite alternate ease-in-out;filter:drop-shadow(0 0 30px rgba(245,166,35,0.6)); }
+.loader-brand { font-family:'Fraunces',serif;color:var(--saffron-glow);font-size:2rem;font-weight:900;margin-top:1.2rem; }
+.loader-tagline { color:var(--text-muted);font-size:.9rem;margin-top:.4rem; }
+.loader-track { width:220px;height:3px;background:rgba(255,255,255,0.08);border-radius:99px;margin-top:2rem;overflow:hidden; }
+.loader-fill { height:100%;background:linear-gradient(90deg,var(--emerald-light),var(--saffron),var(--crimson));border-radius:99px;animation:trackFill 2.4s ease forwards; }
+.loader-dots { display:flex;gap:.5rem;margin-top:1.2rem; }
+.loader-dots span { width:7px;height:7px;border-radius:50%;background:var(--emerald-light);animation:dotPulse 1.2s infinite; }
+.loader-dots span:nth-child(2) { animation-delay:.2s;background:var(--saffron); }
+.loader-dots span:nth-child(3) { animation-delay:.4s;background:var(--crimson); }
+@keyframes loaderBounce { from{transform:translateY(0) scale(1)} to{transform:translateY(-22px) scale(1.15)} }
+@keyframes trackFill { from{width:0} to{width:100%} }
+@keyframes dotPulse { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
+
+/* ══ NAVBAR ══ */
+nav { position:fixed;top:0;width:100%;z-index:900;padding:1.2rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease; }
+nav.scrolled { background:rgba(6,15,12,0.96);backdrop-filter:blur(24px);padding:.75rem 4rem;box-shadow:0 2px 40px rgba(0,0,0,0.4);border-bottom:1px solid rgba(245,166,35,0.15); }
+.nav-logo { font-family:'Fraunces',serif;font-size:1.45rem;font-weight:900;color:var(--gold-light);text-decoration:none;display:flex;align-items:center;gap:.6rem; }
+.nav-logo .dot { color:var(--saffron); }
+.nav-links { display:flex;gap:2.2rem;list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.75);text-decoration:none;font-weight:600;font-size:.84rem;letter-spacing:1.2px;text-transform:uppercase;position:relative;padding:4px 0;transition:color .3s; }
+.nav-links a::after { content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--saffron),var(--emerald-light));transition:width .4s cubic-bezier(.4,0,.2,1); }
+.nav-links a:hover { color:var(--saffron-glow); }
+.nav-links a:hover::after, .nav-links a.active-link::after { width:100%; }
+.nav-links a.active-link { color:var(--saffron-glow); }
+.hamburger { display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer; }
+.hamburger span { width:24px;height:2.5px;background:var(--gold-light);border-radius:3px;display:block;transition:all .3s; }
+
+/* ══ HERO ══ */
+.contact-hero {
+  min-height: 72vh;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: var(--dark);
+}
+.contact-hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('https://t3.ftcdn.net/jpg/07/73/50/84/360_F_773508417_5gWfEusvqppc5LJKNHCY8AQlZQHHWFRM.jpg');
+  background-size: cover; background-position: center 40%;
+  transform: scale(1.1);
+  animation: heroBgZoom 22s ease-in-out infinite alternate;
+}
+@keyframes heroBgZoom { from{transform:scale(1.1)} to{transform:scale(1.2)} }
+.contact-hero-gradient {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(6,15,12,0.88) 0%, rgba(10,74,58,0.5) 40%, rgba(6,15,12,0.97) 100%),
+    radial-gradient(ellipse at 70% 30%, rgba(245,166,35,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 70%, rgba(21,160,119,0.14) 0%, transparent 50%);
+}
+.hero-grain { position:absolute;inset:0;z-index:2;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none; }
+.hero-mesh { position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden; }
+.hero-mesh svg { position:absolute;inset:0;width:100%;height:100%;opacity:.06; }
+
+.spice-float { position:absolute;z-index:3;font-size:2.2rem;pointer-events:none;user-select:none;filter:drop-shadow(0 4px 16px rgba(245,166,35,0.3));animation:floatSpice 6s ease-in-out infinite; }
+.spice-float:nth-child(1) { top:12%;left:4%; animation-delay:0s; font-size:3rem; }
+.spice-float:nth-child(2) { top:18%;right:5%; animation-delay:1.3s; }
+.spice-float:nth-child(3) { bottom:28%;left:6%; animation-delay:2.2s; font-size:2.5rem; }
+.spice-float:nth-child(4) { bottom:22%;right:7%; animation-delay:.8s; font-size:2.2rem; }
+.spice-float:nth-child(5) { top:44%;left:1.5%; animation-delay:1.9s; font-size:1.8rem; }
+.spice-float:nth-child(6) { top:38%;right:2%; animation-delay:3.1s; font-size:2rem; }
+@keyframes floatSpice { 0%,100%{transform:translateY(0) rotate(-6deg) scale(1)} 33%{transform:translateY(-20px) rotate(8deg) scale(1.12)} 66%{transform:translateY(-10px) rotate(-3deg) scale(1.06)} }
+
+.contact-hero-content { position:relative;z-index:4;text-align:center;padding:2rem;max-width:820px;animation:heroReveal 1.2s cubic-bezier(.16,1,.3,1) both; }
+@keyframes heroReveal { from{opacity:0;transform:translateY(60px)} to{opacity:1;transform:translateY(0)} }
+
+.hero-kicker { display:inline-flex;align-items:center;gap:.6rem;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.35);color:var(--saffron-glow);font-size:.76rem;font-weight:700;padding:.35rem 1.1rem;border-radius:99px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1.6rem;backdrop-filter:blur(10px);animation:heroReveal 1s .3s both; }
+.hero-kicker-dot { width:6px;height:6px;border-radius:50%;background:var(--saffron);animation:blink 1.6s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+.contact-hero-title { font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,6.8rem);font-weight:900;line-height:1.04;color:#fff;margin-bottom:.5rem;text-shadow:0 4px 50px rgba(0,0,0,0.5);animation:heroReveal 1s .5s both; }
+.contact-hero-title em { font-style:italic;display:block;background:linear-gradient(135deg,var(--saffron-glow),var(--saffron),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.contact-hero-sub { color:rgba(255,255,255,0.65);font-size:1.1rem;font-weight:400;margin-bottom:2.6rem;animation:heroReveal 1s .7s both; }
+
+.hero-btns { display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:heroReveal 1s .9s both; }
+.btn-primary { background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));color:var(--dark);border:none;padding:1rem 2.6rem;border-radius:99px;font-weight:800;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;box-shadow:0 8px 32px rgba(245,166,35,0.45);transition:all .4s cubic-bezier(.34,1.56,.64,1); }
+.btn-primary:hover { transform:translateY(-6px) scale(1.04);box-shadow:0 18px 50px rgba(245,166,35,0.6); }
+.btn-ghost { background:rgba(21,160,119,0.12);color:#fff;border:1.5px solid rgba(21,160,119,0.5);padding:1rem 2.6rem;border-radius:99px;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;backdrop-filter:blur(12px);transition:all .3s; }
+.btn-ghost:hover { background:rgba(21,160,119,0.25);border-color:var(--emerald-light);color:var(--saffron-glow);transform:translateY(-4px); }
+
+.scroll-indicator { position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.45);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;animation:fadeInUp 1s 1.5s both; }
+@keyframes fadeInUp { from{opacity:0;transform:translateX(-50%) translateY(20px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.scroll-line { width:1px;height:50px;background:linear-gradient(to bottom,var(--saffron),transparent);animation:scrollLine 2s ease-in-out infinite; }
+@keyframes scrollLine { 0%{height:0;opacity:0} 50%{height:50px;opacity:1} 100%{height:0;opacity:0;transform:translateY(20px)} }
+
+/* ══ MARQUEE ══ */
+.marquee-strip { background:linear-gradient(90deg,var(--emerald),var(--emerald-mid),var(--emerald));border-top:1px solid rgba(245,166,35,0.2);border-bottom:1px solid rgba(245,166,35,0.2);color:rgba(255,255,255,0.85);font-weight:700;font-size:.82rem;overflow:hidden;padding:.8rem 0;white-space:nowrap;letter-spacing:1.2px;text-transform:uppercase; }
+.marquee-track { display:inline-flex;animation:marquee 28s linear infinite; }
+.marquee-track span { padding:0 2.5rem;display:flex;align-items:center;gap:.5rem; }
+.marquee-dot { width:4px;height:4px;border-radius:50%;background:var(--saffron); }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══ SECTION BASE ══ */
+.section-title { font-family:'Fraunces',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:900;text-align:center;color:var(--dark);margin-bottom:.5rem;line-height:1.15; }
+.section-title em { font-style:italic;color:var(--emerald-mid); }
+.section-sub { text-align:center;color:var(--text-muted);font-size:.95rem;margin-bottom:3.5rem; }
+.title-ornament { display:flex;align-items:center;gap:1rem;justify-content:center;margin:.8rem 0 .4rem; }
+.title-ornament::before,.title-ornament::after { content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--emerald-light),transparent); }
+.title-ornament-icon { color:var(--saffron);font-size:1rem; }
+
+/* ══ QUICK CONTACT CARDS ══ */
+.quick-contact-section {
+  background:linear-gradient(160deg,var(--dark) 0%,var(--dark-2) 35%,var(--dark-3) 65%,var(--dark-2) 85%,var(--dark) 100%);
+  padding:6rem 2rem 7rem;
+  position:relative;overflow:hidden;
+}
+.quick-contact-section::before {
+  content:'';position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 25%, rgba(21,160,119,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 40% at 85% 65%, rgba(245,166,35,0.14) 0%, transparent 60%);
+  animation:bgPulse 8s ease-in-out infinite alternate;
+}
+@keyframes bgPulse { 0%{opacity:.6;transform:scale(1)} 100%{opacity:1;transform:scale(1.03)} }
+.qc-grain { position:absolute;inset:0;z-index:0;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.quick-contact-section .section-title { color:var(--gold-light);position:relative;z-index:2; }
+.quick-contact-section .section-title em { color:var(--saffron); }
+.quick-contact-section .section-sub { color:rgba(255,255,255,.5);position:relative;z-index:2; }
+.quick-contact-section .title-ornament { position:relative;z-index:2; }
+.quick-contact-section .title-ornament::before,.quick-contact-section .title-ornament::after { background:linear-gradient(90deg,transparent,var(--saffron),transparent); }
+
+.qc-grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;
+  max-width:1100px;margin:0 auto;position:relative;z-index:2;
+}
+.qc-card {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;padding:2.5rem 2rem;text-align:center;
+  text-decoration:none;color:#fff;
+  transition:all .45s cubic-bezier(.34,1.56,.64,1);
+  backdrop-filter:blur(12px);position:relative;overflow:hidden;
+  cursor:pointer;
+}
+.qc-card::before {
+  content:'';position:absolute;inset:0;border-radius:24px;
+  background:linear-gradient(135deg,rgba(21,160,119,0.16),rgba(10,74,58,0.1));
+  opacity:0;transition:opacity .3s;
+}
+.qc-card:hover::before { opacity:1; }
+.qc-card:hover {
+  transform:translateY(-14px) scale(1.02);
+  border-color:rgba(245,166,35,0.4);
+  box-shadow:0 28px 65px rgba(21,160,119,0.22);
+}
+.qc-card::after {
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:24px 24px 0 0;
+  background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron));
+  transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.qc-card:hover::after { transform:scaleX(1); }
+
+.qc-icon-wrap {
+  width:80px;height:80px;border-radius:22px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;margin:0 auto 1.5rem;
+  position:relative;z-index:1;
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+}
+.qc-icon-wa  { background:linear-gradient(135deg,#128c3e,#25D366);box-shadow:0 8px 28px rgba(37,211,102,0.35); }
+.qc-icon-ph  { background:linear-gradient(135deg,var(--emerald),var(--emerald-light));box-shadow:0 8px 28px rgba(21,160,119,0.35); }
+.qc-icon-em  { background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));box-shadow:0 8px 28px rgba(245,166,35,0.35); }
+.qc-icon-loc { background:linear-gradient(135deg,var(--crimson),var(--crimson-glow));box-shadow:0 8px 28px rgba(192,57,43,0.35); }
+.qc-icon-ig  { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 8px 28px rgba(253,29,29,0.35); }
+.qc-icon-fb  { background:linear-gradient(135deg,#1877F2,#0a5ad1);box-shadow:0 8px 28px rgba(24,119,242,0.35); }
+
+.qc-card:hover .qc-icon-wrap { transform:scale(1.14) rotate(-5deg); }
+.qc-label { font-family:'Fraunces',serif;font-size:1.1rem;font-weight:800;color:var(--saffron-glow);margin-bottom:.5rem;position:relative;z-index:1; }
+.qc-detail { color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.6;margin-bottom:.5rem;position:relative;z-index:1; }
+.qc-sub { color:rgba(255,255,255,.4);font-size:.75rem;letter-spacing:.5px;position:relative;z-index:1; }
+.qc-badge {
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.28);
+  color:var(--saffron-glow);font-size:.65rem;font-weight:800;
+  padding:.22rem .7rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:.6rem;position:relative;z-index:1;
+}
+.live-dot { width:6px;height:6px;border-radius:50%;background:#25D366;animation:livePulse 1.5s infinite; }
+@keyframes livePulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)} 70%{box-shadow:0 0 0 8px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
+
+/* ══ CONTACT FORM SECTION ══ */
+.form-section {
+  background:linear-gradient(180deg,var(--warm-white) 0%,var(--parchment) 100%);
+  padding:7rem 2rem 8rem;position:relative;overflow:hidden;
+}
+.form-section::after {
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron),var(--gold),var(--emerald-light),var(--emerald));
+  background-size:200% auto;animation:borderFlow 5s linear infinite;z-index:1;
+}
+@keyframes borderFlow { 0%{background-position:0%} 100%{background-position:200%} }
+.form-section::before {
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 50% 40% at 8% 20%,rgba(10,74,58,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 35% at 92% 75%,rgba(245,166,35,0.05) 0%,transparent 60%);
+}
+
+.form-grid {
+  display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;
+  max-width:1100px;margin:0 auto;position:relative;z-index:2;align-items:start;
+}
+
+.form-info-side { position:relative; }
+.form-info-side h2 { font-family:'Fraunces',serif;font-size:2.3rem;font-weight:900;color:var(--dark);line-height:1.2;margin-bottom:1.2rem; }
+.form-info-side h2 em { font-style:italic;color:var(--emerald-mid); }
+.form-info-side p { color:#6A7A72;line-height:1.85;font-size:.97rem;margin-bottom:2rem; }
+
+.faq-item { background:#fff;border:1px solid rgba(10,74,58,0.1);border-radius:14px;margin-bottom:.85rem;overflow:hidden;box-shadow:0 2px 12px rgba(6,15,12,0.05); }
+.faq-header { display:flex;align-items:center;justify-content:space-between;padding:1rem 1.3rem;cursor:pointer;transition:background .3s; }
+.faq-header:hover { background:rgba(10,74,58,0.04); }
+.faq-q { font-weight:700;font-size:.9rem;color:var(--dark);flex:1; }
+.faq-icon { color:var(--emerald-mid);font-size:.85rem;transition:transform .35s;flex-shrink:0; }
+.faq-item.open .faq-icon { transform:rotate(180deg); }
+.faq-body { max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease; }
+.faq-item.open .faq-body { max-height:200px;padding:0 1.3rem 1rem; }
+.faq-body p { color:#7A9B8E;font-size:.85rem;line-height:1.7; }
+
+.form-card {
+  background:#fff;border-radius:28px;padding:3rem 2.5rem;
+  box-shadow:0 10px 50px rgba(6,15,12,0.09),0 0 0 1px rgba(10,74,58,0.07);
+  position:relative;overflow:hidden;
+}
+.form-card::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron),var(--gold));
+}
+.form-heading { font-family:'Fraunces',serif;font-size:1.7rem;font-weight:900;color:var(--dark);margin-bottom:.4rem; }
+.form-heading-sub { color:var(--text-muted);font-size:.88rem;margin-bottom:2rem;display:flex;align-items:center;gap:.4rem; }
+
+.form-group { margin-bottom:1.4rem; }
+.form-label { display:block;font-size:.8rem;font-weight:700;color:var(--emerald-mid);letter-spacing:.8px;text-transform:uppercase;margin-bottom:.5rem; }
+.form-input {
+  width:100%;padding:.85rem 1.1rem;border-radius:12px;
+  border:1.5px solid rgba(10,74,58,0.15);
+  background:rgba(10,74,58,0.02);
+  font-family:'Satoshi',sans-serif;font-size:.95rem;color:var(--dark);
+  transition:all .3s;outline:none;
+}
+.form-input:focus { border-color:var(--emerald-light);background:#fff;box-shadow:0 0 0 4px rgba(21,160,119,0.1); }
+.form-input::placeholder { color:#bbb; }
+.form-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
+.form-select {
+  width:100%;padding:.85rem 1.1rem;border-radius:12px;
+  border:1.5px solid rgba(10,74,58,0.15);
+  background:rgba(10,74,58,0.02);
+  font-family:'Satoshi',sans-serif;font-size:.95rem;color:var(--dark);
+  transition:all .3s;outline:none;cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230D6B53' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;
+  padding-right:2.5rem;
+}
+.form-select:focus { border-color:var(--emerald-light);box-shadow:0 0 0 4px rgba(21,160,119,0.1); }
+textarea.form-input { resize:vertical;min-height:130px;line-height:1.6; }
+
+.form-submit {
+  width:100%;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+  color:#fff;border:none;padding:1.1rem 2rem;border-radius:14px;
+  font-family:'Satoshi',sans-serif;font-weight:800;font-size:1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;
+  transition:all .45s cubic-bezier(.34,1.56,.64,1);
+  letter-spacing:.3px;position:relative;overflow:hidden;margin-top:.5rem;
+}
+.form-submit::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));
+  opacity:0;transition:opacity .3s;
+}
+.form-submit:hover::before { opacity:1; }
+.form-submit:hover { transform:translateY(-5px);box-shadow:0 18px 45px rgba(10,74,58,0.35); }
+.form-submit span { position:relative;z-index:1;display:flex;align-items:center;gap:.6rem; }
+
+.form-note { text-align:center;font-size:.75rem;color:#bbb;margin-top:.9rem;display:flex;align-items:center;justify-content:center;gap:.4rem; }
+
+/* ══ SUCCESS MESSAGE ══ */
+.form-success {
+  display:none;text-align:center;padding:2rem 1rem;
+}
+.form-success-icon { font-size:3.5rem;margin-bottom:1rem;animation:successPop .5s cubic-bezier(.34,1.56,.64,1); }
+@keyframes successPop { from{transform:scale(0) rotate(-10deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+.form-success h3 { font-family:'Fraunces',serif;font-size:1.6rem;color:var(--emerald-mid);margin-bottom:.5rem; }
+.form-success p { color:var(--text-muted);font-size:.95rem;line-height:1.6; }
+
+/* ══ MAP SECTION ══ */
+.map-section {
+  background:var(--parchment);
+  padding:6rem 2rem 7rem;position:relative;overflow:hidden;
+}
+.map-section::after {
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron),var(--gold),var(--emerald-light),var(--emerald));
+  background-size:200% auto;animation:borderFlow 5s linear infinite;z-index:1;
+}
+.map-inner { max-width:1100px;margin:0 auto;position:relative;z-index:2; }
+.map-frame {
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 16px 50px rgba(6,15,12,0.13),0 0 0 1px rgba(10,74,58,0.09);
+  height:420px;position:relative;
+}
+.map-frame iframe { width:100%;height:100%;border:none;display:block; }
+.map-overlay-card {
+  position:absolute;top:1.5rem;left:1.5rem;z-index:3;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);
+  border-radius:16px;padding:1.4rem 1.6rem;
+  box-shadow:0 8px 30px rgba(6,15,12,0.14);
+  border:1px solid rgba(10,74,58,0.1);
+  max-width:260px;
+}
+.map-overlay-card h3 { font-family:'Fraunces',serif;font-size:1.05rem;font-weight:900;color:var(--dark);margin-bottom:.5rem; }
+.map-overlay-row { display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:#6A7A72;margin-top:.5rem;line-height:1.5; }
+.map-overlay-row i { color:var(--emerald-mid);margin-top:.15rem;flex-shrink:0; }
+.map-dir-btn {
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+  color:#fff;font-weight:700;font-size:.78rem;
+  padding:.55rem 1.2rem;border-radius:99px;text-decoration:none;
+  margin-top:1rem;transition:all .3s;
+  box-shadow:0 4px 16px rgba(10,74,58,0.3);
+  letter-spacing:.4px;
+}
+.map-dir-btn:hover { transform:translateY(-3px);box-shadow:0 10px 28px rgba(10,74,58,0.45); }
+
+/* ══ HOURS SECTION ══ */
+.hours-section {
+  background:linear-gradient(160deg,var(--dark) 0%,var(--dark-2) 50%,var(--dark-3) 100%);
+  padding:6rem 2rem;position:relative;overflow:hidden;
+}
+.hours-section::before { content:'';position:absolute;top:-120px;right:-120px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(21,160,119,0.12) 0%,transparent 70%);pointer-events:none; }
+.hours-section .section-title { color:var(--gold-light); }
+.hours-section .section-title em { color:var(--saffron-glow); }
+.hours-section .section-sub { color:rgba(255,255,255,.5); }
+.hours-section .title-ornament::before,.hours-section .title-ornament::after { background:linear-gradient(90deg,transparent,var(--saffron),transparent); }
+.hours-inner { max-width:860px;margin:0 auto;position:relative;z-index:2; }
+.hours-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem; }
+.hours-card {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:18px;padding:1.6rem 1.4rem;text-align:center;
+  backdrop-filter:blur(12px);
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+}
+.hours-card:hover { border-color:rgba(245,166,35,0.35);background:rgba(21,160,119,0.1);transform:translateY(-8px); }
+.hours-card.today { border-color:rgba(245,166,35,0.4);background:rgba(245,166,35,0.07); }
+.hours-day { font-size:.72rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.6rem; }
+.hours-time { font-family:'Fraunces',serif;font-size:1.25rem;font-weight:900;color:var(--saffron-glow);margin-bottom:.3rem; }
+.hours-status { font-size:.7rem;font-weight:700;padding:.2rem .7rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.35rem; }
+.hours-open { background:rgba(37,211,102,0.12);color:#25D366;border:1px solid rgba(37,211,102,0.25); }
+.hours-closed { background:rgba(192,57,43,0.12);color:#E74C3C;border:1px solid rgba(192,57,43,0.22); }
+.today-badge { display:inline-flex;align-items:center;gap:.3rem;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.3);color:var(--saffron-glow);font-size:.6rem;font-weight:900;padding:.18rem .6rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.4rem; }
+
+.hours-note {
+  margin-top:2rem;text-align:center;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(245,166,35,0.18);
+  border-radius:16px;padding:1.4rem 2rem;
+  color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.7;
+}
+.hours-note strong { color:var(--saffron-glow); }
+
+/* ══ SOCIAL SECTION ══ */
+.social-section {
+  background:var(--parchment);
+  padding:6rem 2rem;position:relative;overflow:hidden;
+}
+.social-grid {
+  display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;
+  max-width:700px;margin:0 auto;position:relative;z-index:2;
+}
+.social-btn {
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:1rem 2rem;border-radius:99px;text-decoration:none;
+  font-weight:700;font-size:.95rem;
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+  border:none;cursor:pointer;
+  box-shadow:0 6px 22px rgba(0,0,0,0.12);
+}
+.social-btn-wa { background:linear-gradient(135deg,#128c3e,#25D366);color:#fff; }
+.social-btn-wa:hover { transform:translateY(-6px) scale(1.05);box-shadow:0 16px 40px rgba(37,211,102,0.45); }
+.social-btn-ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff; }
+.social-btn-ig:hover { transform:translateY(-6px) scale(1.05);box-shadow:0 16px 40px rgba(253,29,29,0.35); }
+.social-btn-fb { background:linear-gradient(135deg,#1877F2,#0a5ad1);color:#fff; }
+.social-btn-fb:hover { transform:translateY(-6px) scale(1.05);box-shadow:0 16px 40px rgba(24,119,242,0.35); }
+.social-btn-yt { background:linear-gradient(135deg,#c4302b,#FF0000);color:#fff; }
+.social-btn-yt:hover { transform:translateY(-6px) scale(1.05);box-shadow:0 16px 40px rgba(255,0,0,0.35); }
+
+/* ══ WA FLOAT ══ */
+.wa-float { position:fixed;bottom:2rem;right:2rem;z-index:850;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 28px rgba(37,211,102,0.5);text-decoration:none;transition:transform .3s;animation:waPulse 2.5s ease-in-out infinite; }
+.wa-float:hover { transform:scale(1.18); }
+@keyframes waPulse { 0%,100%{box-shadow:0 8px 28px rgba(37,211,102,0.5)} 50%{box-shadow:0 8px 50px rgba(37,211,102,0.85)} }
+
+/* ══ TOAST ══ */
+.toast { position:fixed;bottom:6.5rem;right:2rem;z-index:1200;background:var(--emerald-mid);color:#fff;padding:.9rem 1.6rem;border-radius:99px;font-weight:700;font-size:.88rem;box-shadow:0 8px 28px rgba(0,0,0,0.25);display:flex;align-items:center;gap:.5rem;transform:translateX(140%);transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
+.toast.show { transform:translateX(0); }
+
+/* ══ FOOTER ══ */
+footer { background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-align:center;font-size:.84rem;border-top:1px solid rgba(245,166,35,0.15); }
+.footer-logo { font-family:'Fraunces',serif;font-size:1.6rem;color:var(--gold-light);font-weight:900;margin-bottom:.8rem;display:block; }
+.footer-links { display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:1rem 0; }
+.footer-links a { color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s; }
+.footer-links a:hover { color:var(--saffron-glow); }
+.footer-credit a { color:var(--emerald-light);text-decoration:none;font-weight:700; }
+
+/* ══ SCROLL REVEAL ══ */
+.reveal { opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s ease; }
+.reveal.visible { opacity:1;transform:translateY(0); }
+.reveal-left { opacity:0;transform:translateX(-50px);transition:opacity .8s ease,transform .8s ease; }
+.reveal-left.visible { opacity:1;transform:translateX(0); }
+.reveal-right { opacity:0;transform:translateX(50px);transition:opacity .8s ease,transform .8s ease; }
+.reveal-right.visible { opacity:1;transform:translateX(0); }
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px) {
+  nav { padding:.9rem 1.5rem; }
+  nav.scrolled { padding:.7rem 1.5rem; }
+  .nav-links { display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(6,15,12,0.98);flex-direction:column;padding:1.5rem 2rem 2rem;gap:1.2rem;border-bottom:1px solid rgba(245,166,35,0.15); }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
+  .form-grid { grid-template-columns:1fr; gap:3rem; }
+  .form-row { grid-template-columns:1fr; }
+}
+@media(max-width:640px) {
+  .map-overlay-card { max-width:200px; }
+  .map-frame { height:320px; }
+  .social-btn { font-size:.85rem;padding:.8rem 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-emoji">💬</div>
+  <div class="loader-brand">Contact Us</div>
+  <div class="loader-tagline">We'd Love to Hear From You!</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">🍜 Mom's Son <span class="dot">·</span> Store</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#offers">Offers</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="active-link">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/919881047800?text=Hello!%20I%20want%20to%20order" target="_blank" title="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done!</span></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="contact-hero" id="home">
+  <div class="contact-hero-bg"></div>
+  <div class="contact-hero-gradient"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-mesh">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="mg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#15A077"/><stop offset="100%" stop-color="#F5A623"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="200" x2="1440" y2="600" stroke="url(#mg1)" stroke-width="1"/>
+      <line x1="0" y1="400" x2="1440" y2="200" stroke="url(#mg1)" stroke-width="1"/>
+      <line x1="200" y1="0" x2="800" y2="900" stroke="url(#mg1)" stroke-width="1"/>
+      <circle cx="720" cy="450" r="280" fill="none" stroke="url(#mg1)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="spice-float">💬</div>
+  <div class="spice-float">🍜</div>
+  <div class="spice-float">🌶️</div>
+  <div class="spice-float">📞</div>
+  <div class="spice-float">⭐</div>
+  <div class="spice-float">🔥</div>
+  <div class="contact-hero-content">
+    <div class="hero-kicker">
+      <span class="hero-kicker-dot"></span>
+      We Reply Within 24 Hours
+      <span class="hero-kicker-dot"></span>
+    </div>
+    <h1 class="contact-hero-title">
+      Contact
+      <em>Noodles Mom's Son</em>
+    </h1>
+    <p class="contact-hero-sub">Have a question? Want to order? We're always here for you 🌶️</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://wa.me/919881047800?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a class="btn-ghost" href="#contact-form">
+        <i class="fas fa-envelope"></i> Send a Message
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>💬 WhatsApp Orders Welcome <span class="marquee-dot"></span></span>
+    <span>📞 Call Mon–Sat 9AM–7PM <span class="marquee-dot"></span></span>
+    <span>🚚 Free Delivery Above ₹499 <span class="marquee-dot"></span></span>
+    <span>⭐ 500+ Happy Customers <span class="marquee-dot"></span></span>
+    <span>📍 Based in Nagpur, Maharashtra <span class="marquee-dot"></span></span>
+    <span>⚡ Same Day Dispatch <span class="marquee-dot"></span></span>
+    <span>🌿 100% Fresh Products <span class="marquee-dot"></span></span>
+    <span>🎁 Gift Hampers Available <span class="marquee-dot"></span></span>
+    <span>💬 WhatsApp Orders Welcome <span class="marquee-dot"></span></span>
+    <span>📞 Call Mon–Sat 9AM–7PM <span class="marquee-dot"></span></span>
+    <span>🚚 Free Delivery Above ₹499 <span class="marquee-dot"></span></span>
+    <span>⭐ 500+ Happy Customers <span class="marquee-dot"></span></span>
+    <span>📍 Based in Nagpur, Maharashtra <span class="marquee-dot"></span></span>
+    <span>⚡ Same Day Dispatch <span class="marquee-dot"></span></span>
+    <span>🌿 100% Fresh Products <span class="marquee-dot"></span></span>
+    <span>🎁 Gift Hampers Available <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ═══ QUICK CONTACT CARDS ═══ -->
+<section class="quick-contact-section" id="reach-us">
+  <div class="qc-grain"></div>
+  <h2 class="section-title reveal">Reach <em>Us Instantly</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon">✦</span></div>
+  <p class="section-sub reveal">Multiple ways to connect — pick what works best for you!</p>
+  <div class="qc-grid">
+
+    <a class="qc-card reveal" href="https://wa.me/919881047800?text=Hello!%20I%20want%20to%20order." target="_blank">
+      <div class="qc-icon-wrap qc-icon-wa"><i class="fab fa-whatsapp"></i></div>
+      <div class="qc-label">WhatsApp</div>
+      <div class="qc-detail">+91 98810 47800</div>
+      <div class="qc-sub">Fastest way to order & inquire</div>
+      <div class="qc-badge"><span class="live-dot"></span> Usually replies in 5 min</div>
+    </a>
+
+    <a class="qc-card reveal" href="tel:+919881047800" style="transition-delay:.08s">
+      <div class="qc-icon-wrap qc-icon-ph"><i class="fas fa-phone"></i></div>
+      <div class="qc-label">Call Us</div>
+      <div class="qc-detail">+91 98810 47800</div>
+      <div class="qc-sub">Mon – Sat · 9 AM to 7 PM</div>
+      <div class="qc-badge">📞 Direct Call</div>
+    </a>
+
+    <a class="qc-card reveal" href="mailto:info@noodlesmomsson.in" style="transition-delay:.14s">
+      <div class="qc-icon-wrap qc-icon-em"><i class="fas fa-envelope"></i></div>
+      <div class="qc-label">Email Us</div>
+      <div class="qc-detail">info@noodlesmomsson.in</div>
+      <div class="qc-sub">We reply within 24 hours</div>
+      <div class="qc-badge">📧 Official Email</div>
+    </a>
+
+    <div class="qc-card reveal" style="transition-delay:.2s">
+      <div class="qc-icon-wrap qc-icon-loc"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="qc-label">Our Location</div>
+      <div class="qc-detail">Nagpur, Maharashtra</div>
+      <div class="qc-sub">India – 440001</div>
+      <div class="qc-badge">📍 Nagpur HQ</div>
+    </div>
+
+    <a class="qc-card reveal" href="https://instagram.com/noodlesmomsson" target="_blank" style="transition-delay:.26s">
+      <div class="qc-icon-wrap qc-icon-ig"><i class="fab fa-instagram"></i></div>
+      <div class="qc-label">Instagram</div>
+      <div class="qc-detail">@noodlesmomsson</div>
+      <div class="qc-sub">Follow for offers & updates</div>
+      <div class="qc-badge">📸 Follow Us</div>
+    </a>
+
+    <a class="qc-card reveal" href="https://facebook.com/noodlesmomsson" target="_blank" style="transition-delay:.32s">
+      <div class="qc-icon-wrap qc-icon-fb"><i class="fab fa-facebook-f"></i></div>
+      <div class="qc-label">Facebook</div>
+      <div class="qc-detail">Noodles Mom's Son</div>
+      <div class="qc-sub">Like our page for daily updates</div>
+      <div class="qc-badge">👍 Like & Follow</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT FORM + FAQ ═══ -->
+<section class="form-section" id="contact-form">
+  <h2 class="section-title reveal">Send Us a <em>Message</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon">✦</span></div>
+  <p class="section-sub reveal">Fill the form below and we'll get back to you super fast!</p>
+
+  <div class="form-grid">
+    <!-- LEFT — INFO + FAQ -->
+    <div class="form-info-side reveal-left">
+      <h2>Got Questions? <em>We've Got Answers!</em></h2>
+      <p>Whether you want to place a bulk order, ask about a product, or just say hello — we're always happy to hear from you. Use the form, WhatsApp us, or check the FAQs below.</p>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">📦 How do I place an order?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>The easiest way is to message us on WhatsApp at +91 98810 47800. You can also use the contact form or email us at info@noodlesmomsson.in. We'll confirm your order and arrange delivery!</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">🚚 What is the delivery time?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>We dispatch same day for orders placed before 2 PM. Delivery typically takes 1–3 business days depending on your location in India. Free delivery on orders above ₹499!</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">🌶️ Are your products preservative-free?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>Absolutely! All our products are made with zero preservatives, zero artificial colours, and zero shortcuts. We source directly from farms and prepare everything in small, fresh batches.</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">🎁 Do you offer bulk or gift orders?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>Yes! We offer special bulk pricing and curated gift hampers for festivals, weddings, and corporate gifting. Contact us directly on WhatsApp for custom hamper enquiries.</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">💳 What payment methods do you accept?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>We accept UPI (GPay, PhonePe, Paytm), bank transfer, and cash on delivery for local Nagpur orders. All payment details are shared over WhatsApp after order confirmation.</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <span class="faq-q">🔄 What is your return policy?</span>
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body"><p>Customer satisfaction is our priority. If you receive a damaged or incorrect product, reach out within 24 hours via WhatsApp with a photo and we'll resolve it immediately — replacement or refund, your choice.</p></div>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="reveal-right">
+      <div class="form-card">
+        <div class="form-heading">📝 Send a Message</div>
+        <div class="form-heading-sub"><i class="fas fa-lock" style="color:var(--saffron)"></i> Your info stays private · We never spam</div>
+
+        <div id="contactFormWrap">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input class="form-input" id="fname" type="text" placeholder="e.g. Rahul Sharma">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input class="form-input" id="fphone" type="tel" placeholder="+91 98765 43210">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" id="femail" type="email" placeholder="your@email.com (optional)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reason for Contact *</label>
+            <select class="form-select" id="freason">
+              <option value="">Select a reason...</option>
+              <option value="Order Enquiry">🛒 Place / Track an Order</option>
+              <option value="Product Question">🌶️ Product Question</option>
+              <option value="Bulk / Wholesale">📦 Bulk / Wholesale Enquiry</option>
+              <option value="Gift Hamper">🎁 Gift Hamper Request</option>
+              <option value="Delivery Issue">🚚 Delivery Issue</option>
+              <option value="Feedback">⭐ Feedback / Suggestion</option>
+              <option value="Other">💬 Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Message *</label>
+            <textarea class="form-input" id="fmessage" placeholder="Tell us how we can help you... 🌶️"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">
+            <span><i class="fas fa-paper-plane"></i> Send Message</span>
+          </button>
+          <div class="form-note">
+            <i class="fab fa-whatsapp" style="color:#25D366"></i>
+            Or message us directly on WhatsApp for instant reply!
+          </div>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">🎉</div>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out! We've received your message and will get back to you within 24 hours.<br><br>For faster response, WhatsApp us at <strong>+91 98810 47800</strong> 💬</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAP SECTION ═══ -->
+<section class="map-section" id="location">
+  <h2 class="section-title reveal">Find <em>Us</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon">✦</span></div>
+  <p class="section-sub reveal">We're based in the heart of Nagpur, Maharashtra</p>
+  <div class="map-inner reveal">
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119202.73219578!2d78.97783!3d21.14631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x7e13ae2c1c9a7a13!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1718010000000!5m2!1sen!2sin"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Noodles Mom's Son Location – Nagpur"></iframe>
+      <div class="map-overlay-card">
+        <h3>🍜 Noodles Mom's Son</h3>
+        <div class="map-overlay-row"><i class="fas fa-map-marker-alt"></i><span>Nagpur, Maharashtra, India – 440001</span></div>
+        <div class="map-overlay-row"><i class="fas fa-phone"></i><span>+91 98810 47800</span></div>
+        <div class="map-overlay-row"><i class="fas fa-clock"></i><span>Mon–Sat · 9 AM–7 PM</span></div>
+        <a class="map-dir-btn" href="https://maps.google.com/?q=Nagpur,Maharashtra,India" target="_blank">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOURS SECTION ═══ -->
+<section class="hours-section" id="hours">
+  <h2 class="section-title reveal">Business <em>Hours</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon" style="color:var(--saffron)">✦</span></div>
+  <p class="section-sub reveal">When you can reach us — we're almost always around!</p>
+  <div class="hours-inner">
+    <div class="hours-grid reveal">
+      <div class="hours-card" id="hMon">
+        <div class="hours-day">Monday</div>
+        <div class="hours-time">9 AM – 7 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hTue">
+        <div class="hours-day">Tuesday</div>
+        <div class="hours-time">9 AM – 7 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hWed">
+        <div class="hours-day">Wednesday</div>
+        <div class="hours-time">9 AM – 7 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hThu">
+        <div class="hours-day">Thursday</div>
+        <div class="hours-time">9 AM – 7 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hFri">
+        <div class="hours-day">Friday</div>
+        <div class="hours-time">9 AM – 7 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hSat">
+        <div class="hours-day">Saturday</div>
+        <div class="hours-time">10 AM – 5 PM</div>
+        <div class="hours-status hours-open"><span style="width:6px;height:6px;border-radius:50%;background:#25D366;display:inline-block;"></span> Open</div>
+      </div>
+      <div class="hours-card" id="hSun">
+        <div class="hours-day">Sunday</div>
+        <div class="hours-time">Closed</div>
+        <div class="hours-status hours-closed">✕ Closed</div>
+      </div>
+    </div>
+    <div class="hours-note reveal" style="margin-top:1.8rem;">
+      <strong>💬 WhatsApp is always on!</strong> Even outside business hours, you can drop us a WhatsApp message and we'll respond as soon as we're back. For urgent orders, WhatsApp is always your best bet — we monitor it daily!
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOCIAL SECTION ═══ -->
+<section class="social-section" id="social">
+  <h2 class="section-title reveal">Follow Us on <em>Social Media</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon">✦</span></div>
+  <p class="section-sub reveal">Stay updated with new products, offers & behind-the-scenes! 🌶️</p>
+  <div class="social-grid reveal">
+    <a class="social-btn social-btn-wa" href="https://wa.me/919881047800" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a class="social-btn social-btn-ig" href="https://instagram.com/noodlesmomsson" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a class="social-btn social-btn-fb" href="https://facebook.com/noodlesmomsson" target="_blank">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a class="social-btn social-btn-yt" href="https://youtube.com/@noodlesmomsson" target="_blank">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">🍜 Noodles Mom's Son</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#offers">Offers</a>
+    <a href="index.html#products">Products</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 Noodles Mom's Son. All rights reserved.</p>
+  <p class="footer-credit" style="margin-top:.5rem;">Designed & Developed by <a href="https://hp3tech.co.in" target="_blank">hp3tech.co.in</a> 💻</p>
+</footer>
+
+<script>
+// ── CURSOR ──
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'; });
+(function animRing(){ rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing); })();
+
+// ── NAVBAR ──
+window.addEventListener('scroll',()=>{ document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60); });
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+
+// ── LOADER ──
+window.addEventListener('load',()=>{ setTimeout(()=>document.getElementById('loader').classList.add('hide'),2400); });
+
+// ── SCROLL REVEAL ──
+const io=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(r=>io.observe(r));
+
+// ── FAQ TOGGLE ──
+function toggleFaq(item){
+  document.querySelectorAll('.faq-item').forEach(i=>{ if(i!==item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+
+// ── HIGHLIGHT TODAY ──
+(function highlightToday(){
+  const days=['hSun','hMon','hTue','hWed','hThu','hFri','hSat'];
+  const todayId = days[new Date().getDay()];
+  const el = document.getElementById(todayId);
+  if(el){
+    el.classList.add('today');
+    const badge = document.createElement('div');
+    badge.className='today-badge';
+    badge.innerHTML='⭐ Today';
+    el.insertBefore(badge,el.firstChild);
+  }
+})();
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── FORM SUBMIT ──
+function submitForm(){
+  const name    = document.getElementById('fname').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
+  const email   = document.getElementById('femail').value.trim();
+  const reason  = document.getElementById('freason').value;
+  const message = document.getElementById('fmessage').value.trim();
+
+  if(!name){ showToast('Please enter your name 😊'); return; }
+  if(!phone){ showToast('Please enter your phone number 📞'); return; }
+  if(!reason){ showToast('Please select a reason for contact'); return; }
+  if(!message){ showToast('Please write your message 📝'); return; }
+
+  // Build WhatsApp message
+  const waText = `*New Message via Website Contact Form*\n\n` +
+    `👤 *Name:* ${name}\n` +
+    `📞 *Phone:* ${phone}\n` +
+    (email ? `📧 *Email:* ${email}\n` : '') +
+    `📋 *Reason:* ${reason}\n\n` +
+    `💬 *Message:*\n${message}`;
+
+  // Open WhatsApp with the message
+  window.open(`https://wa.me/919881047800?text=${encodeURIComponent(waText)}`, '_blank');
+
+  // Show success state
+  document.getElementById('contactFormWrap').style.display='none';
+  const successEl = document.getElementById('formSuccess');
+  successEl.style.display='block';
+  showToast('Message sent via WhatsApp! ✅');
+}
+
+// ── RIPPLE EFFECT ──
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.btn-primary,.btn-ghost,.form-submit,.social-btn,.map-dir-btn');
+  if(!btn) return;
+  const ripple=document.createElement('div');
+  ripple.style.cssText=`position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.3);width:40px;height:40px;margin-left:-20px;margin-top:-20px;animation:rippleAnim .6s linear;`;
+  const rect=btn.getBoundingClientRect();
+  ripple.style.left=(e.clientX-rect.left)+'px';
+  ripple.style.top=(e.clientY-rect.top)+'px';
+  btn.style.position='relative'; btn.style.overflow='hidden';
+  btn.appendChild(ripple);
+  setTimeout(()=>ripple.remove(),700);
+});
+
+const rippleStyle=document.createElement('style');
+rippleStyle.textContent='@keyframes rippleAnim{from{transform:scale(0);opacity:.5}to{transform:scale(5);opacity:0}}';
+document.head.appendChild(rippleStyle);
+</script>
+</body>
+</html>
