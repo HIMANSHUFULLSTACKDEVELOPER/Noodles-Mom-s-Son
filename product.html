@@ -29,13 +29,11 @@
 html{scroll-behavior:smooth}
 body{font-family:'Satoshi','Cabinet Grotesk',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;cursor:none}
 
-/* CURSOR */
 .cursor{position:fixed;width:12px;height:12px;background:var(--saffron);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s;box-shadow:0 0 16px var(--saffron)}
 .cursor-ring{position:fixed;width:40px;height:40px;border:1.5px solid rgba(245,166,35,.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .18s ease,width .25s,height .25s}
 body:has(a:hover) .cursor,body:has(button:hover) .cursor{width:22px;height:22px}
 body:has(a:hover) .cursor-ring,body:has(button:hover) .cursor-ring{width:58px;height:58px;border-color:var(--saffron)}
 
-/* LOADER */
 #loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .9s,visibility .9s}
 #loader.hide{opacity:0;visibility:hidden;pointer-events:none}
 .loader-emoji{font-size:5rem;animation:bounce .8s infinite alternate ease-in-out;filter:drop-shadow(0 0 30px rgba(245,166,35,.6))}
@@ -51,7 +49,6 @@ body:has(a:hover) .cursor-ring,body:has(button:hover) .cursor-ring{width:58px;he
 @keyframes fill{from{width:0}to{width:100%}}
 @keyframes dot{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
 
-/* NAVBAR */
 nav{position:fixed;top:0;width:100%;z-index:900;padding:1.2rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
 nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75rem 4rem;box-shadow:0 2px 40px rgba(0,0,0,.4);border-bottom:1px solid rgba(245,166,35,.15)}
 .nav-logo{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:900;color:var(--gold-light);text-decoration:none;display:flex;align-items:center;gap:.6rem}
@@ -65,7 +62,6 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
 .hamburger span{width:24px;height:2.5px;background:var(--gold-light);border-radius:3px;display:block;transition:all .3s}
 
-/* HERO — PRODUCTS PAGE */
 .products-hero{min-height:65vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--dark)}
 .products-hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://t3.ftcdn.net/jpg/07/73/50/84/360_F_773508417_5gWfEusvqppc5LJKNHCY8AQlZQHHWFRM.jpg');background-size:cover;background-position:center;transform:scale(1.1);animation:heroBgZoom 22s ease-in-out infinite alternate}
 @keyframes heroBgZoom{from{transform:scale(1.1)}to{transform:scale(1.2)}}
@@ -102,14 +98,12 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--saffron),transparent);animation:scrollLine 2s ease-in-out infinite}
 @keyframes scrollLine{0%{height:0;opacity:0}50%{height:50px;opacity:1}100%{height:0;opacity:0;transform:translateY(20px)}}
 
-/* MARQUEE */
 .marquee-strip{background:linear-gradient(90deg,var(--emerald),var(--emerald-mid),var(--emerald));border-top:1px solid rgba(245,166,35,.2);border-bottom:1px solid rgba(245,166,35,.2);color:rgba(255,255,255,.85);font-weight:700;font-size:.82rem;overflow:hidden;padding:.8rem 0;white-space:nowrap;letter-spacing:1.2px;text-transform:uppercase}
 .marquee-track{display:inline-flex;animation:marquee 28s linear infinite}
 .marquee-track span{padding:0 2.5rem;display:flex;align-items:center;gap:.5rem}
 .marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--saffron)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* PRODUCTS SECTION */
 .products-section{background:linear-gradient(180deg,var(--warm-white) 0%,var(--parchment) 50%,var(--warm-white) 100%);position:relative;overflow:hidden;padding:7rem 2rem 8rem}
 .products-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 55% 40% at 8% 20%,rgba(10,74,58,.06) 0%,transparent 60%),radial-gradient(ellipse 45% 35% at 92% 75%,rgba(245,166,35,.06) 0%,transparent 60%)}
 .products-section::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron),var(--gold),var(--emerald-light),var(--emerald));background-size:200% auto;animation:borderFlow 5s linear infinite;z-index:1}
@@ -122,12 +116,10 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .title-ornament::before,.title-ornament::after{content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--emerald-light),transparent)}
 .title-ornament-icon{color:var(--saffron);font-size:1rem}
 
-/* COUNT BAR */
 .count-bar{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;position:relative;z-index:2}
 .count-chip{display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,74,58,.08);border:1px solid rgba(10,74,58,.2);color:var(--emerald-mid);font-size:.78rem;font-weight:700;padding:.4rem 1.1rem;border-radius:99px}
 .count-chip .chip-dot{width:6px;height:6px;border-radius:50%;background:var(--emerald-light);animation:blink 1.5s infinite}
 
-/* SEARCH BAR */
 .search-wrap{position:relative;z-index:2;max-width:520px;margin:0 auto 2rem}
 .search-input{width:100%;padding:.9rem 1.2rem .9rem 3rem;border-radius:99px;border:1.5px solid rgba(10,74,58,.18);background:rgba(255,255,255,.92);font-family:'Satoshi',sans-serif;font-size:.95rem;color:var(--dark);outline:none;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.07)}
 .search-input:focus{border-color:var(--emerald-light);box-shadow:0 0 0 4px rgba(21,160,119,.1),0 4px 20px rgba(0,0,0,.08)}
@@ -135,8 +127,7 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .search-clear{position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#bbb;cursor:pointer;font-size:.9rem;display:none}
 .search-clear.show{display:block}
 
-/* CATEGORY TABS */
-.category-tabs{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:3.5rem;position:relative;z-index:2;padding:.5rem;background:rgba(255,255,255,.75);border-radius:99px;border:1px solid rgba(10,74,58,.1);backdrop-filter:blur(12px);max-width:960px;margin-left:auto;margin-right:auto;box-shadow:0 4px 28px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.9)}
+.category-tabs{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:3.5rem;position:relative;z-index:2;padding:.5rem;background:rgba(255,255,255,.75);border-radius:20px;border:1px solid rgba(10,74,58,.1);backdrop-filter:blur(12px);max-width:1200px;margin-left:auto;margin-right:auto;box-shadow:0 4px 28px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.9)}
 .cat-tab{background:transparent;border:none;color:#7A9B8E;padding:.55rem 1.3rem;border-radius:99px;font-family:'Satoshi',sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;position:relative;overflow:hidden}
 .cat-tab::before{content:'';position:absolute;inset:0;border-radius:99px;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));opacity:0;transition:opacity .3s;z-index:0}
 .cat-tab span{position:relative;z-index:1}
@@ -144,7 +135,6 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .cat-tab.active::before{opacity:1}
 .cat-tab:hover:not(.active){color:var(--emerald-mid);background:rgba(10,74,58,.07);transform:translateY(-2px)}
 
-/* SORT BAR */
 .sort-bar{display:flex;align-items:center;justify-content:space-between;max-width:1320px;margin:0 auto 2rem;position:relative;z-index:2;flex-wrap:wrap;gap:1rem}
 .sort-left{display:flex;align-items:center;gap:.6rem;color:var(--text-muted);font-size:.85rem;font-weight:600}
 .sort-select{background:rgba(255,255,255,.9);border:1.5px solid rgba(10,74,58,.15);border-radius:10px;padding:.45rem 1rem;font-family:'Satoshi',sans-serif;font-size:.82rem;color:var(--dark);outline:none;cursor:pointer;transition:all .3s}
@@ -153,33 +143,23 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .view-btn{background:rgba(255,255,255,.8);border:1.5px solid rgba(10,74,58,.12);border-radius:8px;padding:.4rem .6rem;cursor:pointer;color:#7A9B8E;transition:all .3s;font-size:.85rem}
 .view-btn.active{background:var(--emerald-mid);color:#fff;border-color:var(--emerald-mid)}
 
-/* PRODUCTS GRID */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2rem;max-width:1320px;margin:0 auto;position:relative;z-index:2}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2rem;max-width:1320px;margin:0 auto;position:relative;z-index:2}
 .products-grid.list-view{grid-template-columns:1fr}
 
-/* PRODUCT CARD */
 .product-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 2px 20px rgba(6,15,12,.07),0 0 0 1px rgba(10,74,58,.06);position:relative;transition:all .55s cubic-bezier(.34,1.56,.64,1);cursor:pointer;display:flex;flex-direction:column;transform-origin:center bottom}
 .product-card:hover{transform:translateY(-22px) scale(1.025);box-shadow:0 40px 80px rgba(10,74,58,.15),0 20px 40px rgba(6,15,12,.1),0 0 0 2px rgba(245,166,35,.3)}
 .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:10;background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
 .product-card:hover::before{transform:scaleX(1)}
-.product-card.out-of-stock{opacity:.85}
-.product-card.out-of-stock:hover{transform:translateY(-8px) scale(1.01)}
 
-/* LIST VIEW card */
 .products-grid.list-view .product-card{flex-direction:row;min-height:160px}
 .products-grid.list-view .product-img-wrap{width:200px;min-width:200px;height:auto;flex-shrink:0}
 .products-grid.list-view .product-info{flex:1}
 .products-grid.list-view .product-btns{flex-direction:row}
 .products-grid.list-view .btn-buy{flex:unset;padding:.75rem 1.5rem}
 
-.product-img-wrap{position:relative;overflow:hidden;height:235px;background:linear-gradient(135deg,#EBF5EE 0%,#F0EDE0 50%,#EBF5EE 100%);flex-shrink:0}
+.product-img-wrap{position:relative;overflow:hidden;height:220px;background:linear-gradient(135deg,#EBF5EE 0%,#F0EDE0 50%,#EBF5EE 100%);flex-shrink:0}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s cubic-bezier(.34,1.56,.64,1),filter .4s}
 .product-card:hover .product-img-wrap img{transform:scale(1.12) translateY(-4px);filter:brightness(1.04) saturate(1.12)}
-.product-card.out-of-stock .product-img-wrap img{filter:grayscale(50%) brightness(.8)}
-
-.oos-overlay{position:absolute;inset:0;z-index:5;background:rgba(6,15,12,.55);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;backdrop-filter:blur(2px)}
-.oos-badge{background:linear-gradient(135deg,#3a3a3a,#1a1a1a);color:#fff;font-size:.76rem;font-weight:900;padding:.5rem 1.3rem;border-radius:99px;letter-spacing:2.5px;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.18)}
-.oos-sub{color:rgba(255,255,255,.7);font-size:.68rem;letter-spacing:1.5px;font-weight:500}
 
 .product-badge{position:absolute;top:12px;left:12px;z-index:6;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;font-size:.63rem;font-weight:800;padding:.22rem .8rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 4px 14px rgba(10,74,58,.45);animation:badgePop .5s .3s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes badgePop{from{transform:scale(0) rotate(-10deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
@@ -197,55 +177,51 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .product-cat-tag{position:absolute;bottom:12px;left:12px;z-index:6;background:rgba(6,15,12,.72);color:rgba(255,255,255,.85);font-size:.6rem;font-weight:700;padding:.2rem .7rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;backdrop-filter:blur(6px);opacity:0;transform:translateY(8px);transition:all .35s ease .1s}
 .product-card:hover .product-cat-tag{opacity:1;transform:translateY(0)}
 
-.product-info{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;flex:1;position:relative;z-index:1;background:#fff}
-.product-stars{display:flex;align-items:center;gap:.25rem;font-size:.68rem;color:var(--saffron)}
-.product-stars .review-count{color:#bbb;font-size:.66rem;margin-left:.3rem;font-weight:500}
-.product-name{font-family:'Fraunces',serif;font-weight:700;font-size:1.12rem;color:var(--dark);line-height:1.3;transition:color .3s;letter-spacing:-.2px}
+.product-sku{position:absolute;top:12px;left:12px;z-index:7;background:rgba(6,15,12,.7);color:rgba(255,255,255,.7);font-size:.55rem;font-weight:800;padding:.15rem .6rem;border-radius:99px;letter-spacing:1px;backdrop-filter:blur(6px)}
+
+.product-info{padding:1.1rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1;position:relative;z-index:1;background:#fff}
+.product-brand{font-size:.68rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+.product-name{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--dark);line-height:1.3;transition:color .3s;letter-spacing:-.2px}
 .product-card:hover .product-name{color:var(--emerald-mid)}
 .product-meta-row{display:flex;align-items:center;gap:.5rem;font-size:.7rem;color:#bbb;font-weight:500}
 .product-meta-dot{width:3px;height:3px;border-radius:50%;background:#ddd}
 .product-price-row{display:flex;align-items:center;gap:.6rem;margin-top:.1rem;flex-wrap:wrap}
-.product-price{color:var(--emerald-mid);font-weight:900;font-size:1.28rem;letter-spacing:-.5px}
-.product-old{color:#d0bdb0;font-size:.84rem;text-decoration:line-through;font-weight:500}
-.product-discount{background:rgba(245,166,35,.12);color:var(--saffron-deep);font-size:.66rem;font-weight:800;padding:.15rem .55rem;border-radius:99px;letter-spacing:.5px;border:1px solid rgba(245,166,35,.25)}
-.product-card.out-of-stock .product-price{color:#bbb}
+.product-price{color:var(--emerald-mid);font-weight:900;font-size:1.2rem;letter-spacing:-.5px}
+.product-old{color:#d0bdb0;font-size:.82rem;text-decoration:line-through;font-weight:500}
+.product-discount{background:rgba(245,166,35,.12);color:var(--saffron-deep);font-size:.65rem;font-weight:800;padding:.15rem .5rem;border-radius:99px;letter-spacing:.5px;border:1px solid rgba(245,166,35,.25)}
 .product-divider{height:1px;background:linear-gradient(90deg,rgba(10,74,58,.1),transparent);margin:.1rem 0}
 
 .product-btns{display:flex;gap:.6rem;margin-top:.2rem}
-.btn-buy{flex:1;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;border:none;padding:.75rem .8rem;border-radius:14px;font-family:'Satoshi',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.btn-buy{flex:1;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;border:none;padding:.7rem .8rem;border-radius:14px;font-family:'Satoshi',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:.4rem}
 .btn-buy::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));opacity:0;transition:opacity .3s;z-index:0}
 .btn-buy:hover::before{opacity:1}
 .btn-buy:hover{transform:scale(1.04);box-shadow:0 8px 24px rgba(10,74,58,.35);color:var(--dark)}
 .btn-buy i,.btn-buy .btn-text{position:relative;z-index:1}
 .btn-buy:disabled{opacity:.4;cursor:not-allowed;background:linear-gradient(135deg,#999,#bbb);transform:none !important;box-shadow:none !important}
-.btn-wa-quick{width:44px;height:44px;background:#25D366;color:#fff;border:none;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0;box-shadow:0 3px 12px rgba(37,211,102,.28)}
+.btn-wa-quick{width:42px;height:42px;background:#25D366;color:#fff;border:none;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0;box-shadow:0 3px 12px rgba(37,211,102,.28)}
 .btn-wa-quick:hover{transform:scale(1.15) rotate(-5deg);box-shadow:0 8px 24px rgba(37,211,102,.5)}
 
 .product-card-glow{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--emerald-light),var(--saffron));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.34,1.56,.64,1);z-index:2}
 .product-card:hover .product-card-glow{transform:scaleX(1)}
 
-/* NO RESULTS */
 .no-results{text-align:center;padding:5rem 2rem;position:relative;z-index:2;display:none}
 .no-results.show{display:block}
 .no-results-emoji{font-size:4rem;margin-bottom:1rem;display:block}
 .no-results h3{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--dark);margin-bottom:.5rem}
 .no-results p{color:var(--text-muted);font-size:.95rem}
 
-/* MODAL */
+/* ── PRODUCT MODAL ── */
 .product-modal{display:none;position:fixed;inset:0;z-index:1150;background:rgba(6,15,12,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
 .product-modal.open{display:flex;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-inner{background:var(--warm-white);border-radius:28px;overflow:hidden;max-width:920px;width:100%;max-height:90vh;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:modalSlideUp .45s cubic-bezier(.34,1.56,.64,1);position:relative;border:1px solid rgba(245,166,35,.15)}
 @keyframes modalSlideUp{from{opacity:0;transform:translateY(60px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:680px){.modal-inner{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}}
-
 .modal-img-side{position:relative;overflow:hidden;min-height:360px}
 .modal-img-side img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease}
 .modal-img-side:hover img{transform:scale(1.07)}
 .modal-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,12,.55) 0%,transparent 60%)}
 .modal-img-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;font-size:.7rem;font-weight:800;padding:.3rem .9rem;border-radius:99px;letter-spacing:1.5px}
-.modal-oos-overlay{position:absolute;inset:0;z-index:5;background:rgba(6,15,12,.65);display:flex;align-items:center;justify-content:center}
-.modal-oos-badge{background:linear-gradient(135deg,#555,#222);color:#fff;font-size:1rem;font-weight:900;padding:.6rem 1.8rem;border-radius:99px;letter-spacing:3px;text-transform:uppercase;border:2px solid rgba(255,255,255,.25)}
 .modal-info-side{padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;overflow-y:auto}
 .modal-cat-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(10,74,58,.08);color:var(--emerald-mid);font-size:.7rem;font-weight:700;padding:.3rem .9rem;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;width:fit-content}
 .modal-name{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;color:var(--dark);line-height:1.2}
@@ -267,14 +243,55 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .modal-btn-order:hover::before{opacity:1}
 .modal-btn-order:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(10,74,58,.5);color:var(--dark)}
 .modal-btn-order span{position:relative;z-index:1;display:flex;align-items:center;gap:.6rem}
-.modal-btn-order:disabled{opacity:.4;cursor:not-allowed;transform:none !important}
 .modal-btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:.85rem 1.5rem;border-radius:99px;font-weight:700;font-size:.92rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:all .3s;box-shadow:0 4px 16px rgba(37,211,102,.3)}
 .modal-btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.5)}
-.modal-btn-wa:disabled{opacity:.4;cursor:not-allowed;transform:none !important}
 .modal-close{position:absolute;top:1rem;right:1rem;z-index:10;background:rgba(6,15,12,.75);color:#fff;border:none;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;backdrop-filter:blur(8px);transition:all .3s;border:1px solid rgba(245,166,35,.18)}
 .modal-close:hover{background:var(--crimson);transform:rotate(90deg) scale(1.1)}
+.modal-sku-row{display:flex;gap:1rem;flex-wrap:wrap;font-size:.75rem;color:#9ab;font-weight:600}
+.modal-sku-badge{background:rgba(10,74,58,.07);padding:.2rem .7rem;border-radius:8px;border:1px solid rgba(10,74,58,.12)}
 
-/* CART SIDEBAR */
+/* ── PAYMENT MODAL ── */
+.pay-modal{display:none;position:fixed;inset:0;z-index:1300;background:rgba(6,15,12,.96);backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:1.5rem}
+.pay-modal.open{display:flex;animation:fadeIn .3s}
+.pay-modal-inner{background:var(--warm-white);border-radius:28px;max-width:520px;width:100%;padding:0;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7);animation:modalSlideUp .45s cubic-bezier(.34,1.56,.64,1);border:1px solid rgba(245,166,35,.2);position:relative}
+.pay-modal-header{background:linear-gradient(135deg,var(--emerald),var(--emerald-mid));padding:2rem 2rem 1.5rem;text-align:center}
+.pay-modal-header h2{font-family:'Fraunces',serif;color:#fff;font-size:1.8rem;font-weight:900;margin-bottom:.4rem}
+.pay-modal-header p{color:rgba(255,255,255,.7);font-size:.88rem}
+.pay-modal-body{padding:2rem}
+.pay-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.pay-option{background:#fff;border:2px solid rgba(10,74,58,.12);border-radius:20px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.pay-option:hover{border-color:var(--emerald-light);transform:translateY(-6px);box-shadow:0 20px 50px rgba(10,74,58,.15)}
+.pay-option.selected{border-color:var(--emerald-mid);background:rgba(10,74,58,.05);box-shadow:0 0 0 3px rgba(21,160,119,.2)}
+.pay-option-icon{font-size:2.5rem;margin-bottom:.8rem;display:block}
+.pay-option-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
+.pay-option-desc{font-size:.75rem;color:var(--text-muted);line-height:1.5}
+.pay-option-check{position:absolute;top:.8rem;right:.8rem;width:22px;height:22px;background:var(--emerald-mid);border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;font-size:.7rem}
+.pay-option.selected .pay-option-check{display:flex}
+
+/* QR code section */
+.qr-section{background:linear-gradient(135deg,rgba(10,74,58,.06),rgba(245,166,35,.06));border:1.5px solid rgba(10,74,58,.15);border-radius:20px;padding:1.5rem;text-align:center;display:none;margin-bottom:1rem}
+.qr-section.show{display:block;animation:fadeIn .4s}
+.qr-section img{width:200px;height:200px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.15);margin:0 auto 1rem;display:block;border:4px solid #fff;object-fit:cover}
+.qr-section h4{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:.3rem}
+.qr-section p{font-size:.8rem;color:var(--text-muted);line-height:1.6}
+.qr-upi{background:rgba(10,74,58,.08);border:1px solid rgba(10,74,58,.15);border-radius:10px;padding:.5rem 1rem;font-size:.82rem;font-weight:700;color:var(--emerald-mid);margin-top:.8rem;display:inline-block;letter-spacing:.5px}
+
+.pay-summary{background:rgba(10,74,58,.05);border:1px solid rgba(10,74,58,.1);border-radius:16px;padding:1rem 1.2rem;margin-bottom:1.2rem}
+.pay-summary-row{display:flex;justify-content:space-between;align-items:center;padding:.3rem 0;font-size:.85rem;color:#666}
+.pay-summary-row.total{border-top:1px solid rgba(10,74,58,.1);margin-top:.5rem;padding-top:.7rem;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;color:var(--dark)}
+.pay-summary-row.total span:last-child{color:var(--emerald-mid)}
+
+.pay-confirm-btn{width:100%;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;border:none;padding:1.1rem 2rem;border-radius:99px;font-family:'Satoshi',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:all .4s cubic-bezier(.34,1.56,.64,1);margin-bottom:.7rem;position:relative;overflow:hidden}
+.pay-confirm-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));opacity:0;transition:opacity .3s}
+.pay-confirm-btn:hover::before{opacity:1}
+.pay-confirm-btn:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(10,74,58,.4);color:var(--dark)}
+.pay-confirm-btn span{position:relative;z-index:1;display:flex;align-items:center;gap:.5rem}
+.pay-cancel-btn{width:100%;background:transparent;border:1.5px solid rgba(10,74,58,.2);color:var(--text-muted);padding:.85rem;border-radius:99px;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .3s}
+.pay-cancel-btn:hover{background:rgba(192,57,43,.06);border-color:var(--crimson);color:var(--crimson)}
+.pay-modal-close{position:absolute;top:1rem;right:1rem;z-index:10;background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:all .3s}
+.pay-modal-close:hover{background:var(--crimson);transform:rotate(90deg)}
+
+/* ── CART SIDEBAR ── */
 .cart-overlay{position:fixed;inset:0;z-index:1080;background:rgba(6,15,12,.7);backdrop-filter:blur(6px);display:none;animation:fadeIn .3s}
 .cart-overlay.open{display:block}
 .cart-sidebar{position:fixed;right:0;top:0;bottom:0;width:420px;max-width:95vw;z-index:1090;background:var(--warm-white);box-shadow:-20px 0 60px rgba(0,0,0,.25);display:flex;flex-direction:column;transform:translateX(120%);transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
@@ -293,9 +310,10 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .cart-item-img img{width:100%;height:100%;object-fit:cover}
 .cart-item-info{flex:1}
 .cart-item-name{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.2rem}
+.cart-item-brand{font-size:.7rem;color:var(--text-muted);font-weight:600;margin-bottom:.2rem}
 .cart-item-price{color:var(--emerald-mid);font-weight:800;font-size:.9rem}
 .cart-item-qty{display:flex;align-items:center;gap:.5rem;margin-top:.5rem}
-.qty-btn{width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(10,74,58,.15);background:#fff;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size.85rem;transition:all .3s;font-weight:700}
+.qty-btn{width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(10,74,58,.15);background:#fff;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;font-weight:700}
 .qty-btn:hover{background:var(--emerald-light);color:#fff;border-color:var(--emerald-light)}
 .qty-num{font-weight:700;font-size:.9rem;min-width:24px;text-align:center}
 .cart-item-remove{background:none;border:none;color:#ccc;cursor:pointer;font-size:.85rem;transition:color .3s;padding:.3rem}
@@ -313,26 +331,21 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .cart-wa{width:100%;background:#25D366;color:#fff;border:none;padding:.85rem 2rem;border-radius:14px;font-weight:700;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:all .3s;box-shadow:0 4px 14px rgba(37,211,102,.28)}
 .cart-wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5)}
 
-/* CART BUTTON FIXED */
 .cart-fab{position:fixed;bottom:2rem;left:2rem;z-index:850;background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;border:none;border-radius:99px;padding:.9rem 1.6rem;font-weight:700;font-size:.9rem;cursor:pointer;display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 28px rgba(10,74,58,.4);transition:all .35s cubic-bezier(.34,1.56,.64,1);letter-spacing:.4px}
 .cart-fab:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 16px 40px rgba(10,74,58,.55)}
 .cart-fab-count{background:var(--saffron);color:var(--dark);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;margin-left:.2rem;animation:cartPop .35s cubic-bezier(.34,1.56,.64,1)}
 @keyframes cartPop{from{transform:scale(0)}to{transform:scale(1)}}
 
-/* WA FLOAT */
 .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:850;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 28px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s;animation:waPulse 2.5s ease-in-out infinite}
 .wa-float:hover{transform:scale(1.18)}
 @keyframes waPulse{0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.5)}50%{box-shadow:0 8px 50px rgba(37,211,102,.85)}}
 
-/* TOAST */
 .toast{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%) translateY(-100px);z-index:1200;background:var(--emerald-mid);color:#fff;padding:.9rem 1.8rem;border-radius:99px;font-weight:700;font-size:.88rem;box-shadow:0 8px 28px rgba(0,0,0,.25);display:flex;align-items:center;gap:.5rem;transition:transform .5s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ZOOM MODAL */
 .zoom-modal{display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:2rem}
 .zoom-modal.open{display:flex;animation:fadeIn .3s}
 .zoom-modal img{max-width:90vw;max-height:82vh;border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.7);animation:zoomIn .4s cubic-bezier(.34,1.56,.64,1)}
@@ -340,7 +353,49 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .zoom-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--crimson);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:2}
 .zoom-close:hover{background:var(--saffron);transform:rotate(90deg) scale(1.1)}
 
-/* FOOTER */
+/* ENTRY SHEET SECTION */
+.entry-section{background:var(--dark-2);padding:6rem 2rem;position:relative;overflow:hidden}
+.entry-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--saffron),var(--emerald-light),var(--saffron));background-size:200% auto;animation:borderFlow 4s linear infinite}
+.entry-section .section-title{color:var(--saffron-glow)}
+.entry-section .section-sub{color:rgba(255,255,255,.5)}
+.entry-section .title-ornament::before,.entry-section .title-ornament::after{background:linear-gradient(90deg,transparent,rgba(245,166,35,.4),transparent)}
+
+.entry-controls{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;max-width:1320px;margin:0 auto 2rem;position:relative;z-index:2}
+.entry-btn{background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;border:none;padding:.75rem 1.8rem;border-radius:12px;font-family:'Satoshi',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 14px rgba(10,74,58,.4)}
+.entry-btn:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(10,74,58,.5)}
+.entry-btn.saffron{background:linear-gradient(135deg,var(--saffron-deep),var(--saffron));color:var(--dark)}
+.entry-btn.wa{background:#25D366;color:#fff}
+.entry-btn.red{background:linear-gradient(135deg,#C0392B,#e74c3c);color:#fff}
+
+.entry-table-wrap{max-width:1320px;margin:0 auto 2rem;overflow-x:auto;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.35);position:relative;z-index:2}
+.entry-table{width:100%;border-collapse:collapse;background:rgba(13,31,25,.95);min-width:900px}
+.entry-table thead tr{background:linear-gradient(135deg,var(--emerald),var(--emerald-mid));position:sticky;top:0;z-index:5}
+.entry-table th{padding:.9rem 1rem;text-align:left;font-size:.73rem;font-weight:800;color:#fff;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;border-bottom:2px solid rgba(245,166,35,.3)}
+.entry-table th:first-child{border-radius:18px 0 0 0}
+.entry-table th:last-child{border-radius:0 18px 0 0}
+.entry-table tbody tr{border-bottom:1px solid rgba(255,255,255,.05);transition:background .2s}
+.entry-table tbody tr:hover{background:rgba(21,160,119,.07)}
+.entry-table td{padding:.75rem 1rem;font-size:.82rem;color:rgba(255,255,255,.75);vertical-align:middle}
+.entry-table td:first-child{color:var(--saffron-glow);font-weight:800;font-size:.8rem}
+.entry-table td input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.35rem .65rem;color:#fff;font-family:'Satoshi',sans-serif;font-size:.82rem;width:100%;outline:none;transition:all .3s;min-width:60px}
+.entry-table td input:focus{border-color:var(--saffron);background:rgba(245,166,35,.06);box-shadow:0 0 0 3px rgba(245,166,35,.1)}
+.entry-table td select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.35rem .55rem;color:#fff;font-family:'Satoshi',sans-serif;font-size:.78rem;outline:none;width:100%;cursor:pointer;transition:all .3s}
+.entry-table td select:focus{border-color:var(--saffron)}
+.entry-table td .item-name-cell{font-weight:700;color:rgba(255,255,255,.9)}
+.entry-table td .brand-cell{color:var(--saffron-glow);font-size:.78rem}
+.entry-table td .cat-badge{background:rgba(21,160,119,.15);color:var(--emerald-light);font-size:.6rem;font-weight:700;padding:.15rem .5rem;border-radius:6px;letter-spacing:.8px;text-transform:uppercase;display:inline-block}
+.entry-table td .amount-cell{color:var(--saffron-glow);font-weight:800;font-size:.88rem}
+.entry-table td .check-cell{display:flex;align-items:center;justify-content:center}
+.entry-table td .check-cell input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--emerald-light)}
+.entry-table tbody tr.checked-row{background:rgba(21,160,119,.04)}
+.entry-table tfoot{background:rgba(10,74,58,.4);border-top:2px solid rgba(245,166,35,.3)}
+.entry-table tfoot td{padding:1rem 1rem;font-weight:800;color:var(--saffron-glow);font-size:.92rem}
+
+.entry-summary-bar{max-width:1320px;margin:0 auto 1rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:2}
+.entry-summary-chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.8rem 1.4rem;text-align:center;min-width:140px}
+.entry-summary-chip .chip-label{font-size:.68rem;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:1.2px;text-transform:uppercase;display:block;margin-bottom:.3rem}
+.entry-summary-chip .chip-val{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:var(--saffron-glow)}
+
 footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-align:center;font-size:.84rem;border-top:1px solid rgba(245,166,35,.15)}
 .footer-logo{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--gold-light);font-weight:900;margin-bottom:.8rem;display:block}
 .footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:1rem 0}
@@ -348,22 +403,21 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
 .footer-links a:hover{color:var(--saffron-glow)}
 .footer-credit a{color:var(--emerald-light);text-decoration:none;font-weight:700}
 
-/* CARD ANIMATION */
 @keyframes cardReveal{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes ripple{from{transform:scale(0);opacity:.5}to{transform:scale(4);opacity:0}}
 .ripple-circle{position:absolute;border-radius:50%;pointer-events:none;background:rgba(245,166,35,.3);width:40px;height:40px;margin-left:-20px;margin-top:-20px;animation:ripple .6s linear}
 
-/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:.9rem 1.5rem}
   nav.scrolled{padding:.7rem 1.5rem}
   .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(6,15,12,.98);flex-direction:column;padding:1.5rem 2rem 2rem;gap:1.2rem;border-bottom:1px solid rgba(245,166,35,.15)}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
+  .pay-options{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  .products-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem}
-  .product-img-wrap{height:180px}
+  .products-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
+  .product-img-wrap{height:170px}
   .category-tabs{border-radius:16px;gap:.35rem}
   .cat-tab{padding:.45rem .9rem;font-size:.73rem}
   .cart-sidebar{width:100%;max-width:100%}
@@ -375,16 +429,14 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="loader-emoji">🛒</div>
   <div class="loader-brand">Noodles Mom's Son</div>
-  <div class="loader-tagline">Fresh Products · Authentic Taste</div>
+  <div class="loader-tagline">Fresh Kirana · Authentic Taste</div>
   <div class="loader-track"><div class="loader-fill"></div></div>
   <div class="loader-dots"><span></span><span></span><span></span></div>
 </div>
 
-<!-- NAVBAR -->
 <nav id="navbar">
   <a class="nav-logo" href="index.html">🍜 Mom's Son <span class="dot">·</span> Store</a>
   <ul class="nav-links" id="navLinks">
@@ -398,18 +450,15 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
   <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- WA FLOAT -->
 <a class="wa-float" href="https://wa.me/919881047800?text=Hello!%20I%20want%20to%20order" target="_blank" title="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- CART FAB -->
 <button class="cart-fab" onclick="openCart()">
   <i class="fas fa-shopping-bag"></i> My Cart
   <span class="cart-fab-count" id="cartFabCount">0</span>
 </button>
 
-<!-- TOAST -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
 
 <!-- ZOOM MODAL -->
@@ -418,7 +467,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
   <button class="zoom-close" onclick="closeZoom()"><i class="fas fa-times"></i></button>
 </div>
 
-<!-- PRODUCT DETAIL MODAL -->
+<!-- PRODUCT MODAL -->
 <div class="product-modal" id="productModal" onclick="closeProductModal(event)">
   <div class="modal-inner" id="modalInner">
     <button class="modal-close" onclick="closeProductModalDirect()"><i class="fas fa-times"></i></button>
@@ -426,9 +475,6 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
       <img id="modalImg" src="" alt="">
       <div class="modal-img-overlay"></div>
       <div class="modal-img-badge" id="modalImgBadge" style="display:none"></div>
-      <div class="modal-oos-overlay" id="modalOosOverlay" style="display:none">
-        <div class="modal-oos-badge">🚫 Out of Stock</div>
-      </div>
     </div>
     <div class="modal-info-side">
       <div class="modal-cat-tag" id="modalCatTag">Category</div>
@@ -436,31 +482,85 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
       <div class="modal-stars" id="modalStars">★★★★★ <span>4.9 (238 reviews)</span></div>
       <div class="modal-price-row">
         <span class="modal-price" id="modalPrice">₹00</span>
-        <span class="modal-old" id="modalOld">₹00</span>
-        <span class="modal-save" id="modalSave">Save 00%</span>
+        <span class="modal-old" id="modalOld"></span>
+        <span class="modal-save" id="modalSave"></span>
       </div>
+      <div class="modal-sku-row" id="modalSkuRow"></div>
       <div class="modal-weight-row">
-        <div class="modal-weight-item"><i class="fas fa-weight-hanging" style="color:var(--emerald-light)"></i><span id="modalWeight">300g</span></div>
-        <div class="modal-weight-item"><i class="fas fa-box" style="color:var(--saffron)"></i><span>Per Pack</span></div>
+        <div class="modal-weight-item"><i class="fas fa-weight-hanging" style="color:var(--emerald-light)"></i><span id="modalWeight">1kg</span></div>
+        <div class="modal-weight-item"><i class="fas fa-tag" style="color:var(--saffron)"></i><span id="modalBrand">Brand</span></div>
         <div class="modal-weight-item"><i class="fas fa-truck" style="color:var(--emerald-mid)"></i><span>Free on ₹499+</span></div>
       </div>
-      <div class="modal-desc" id="modalDesc">Product description.</div>
       <div class="modal-highlights" id="modalHighlights"></div>
       <div class="modal-divider"></div>
       <div class="modal-btns">
-        <button class="modal-btn-order" id="modalBtnCart" onclick="modalAddToCart()">
+        <button class="modal-btn-order" onclick="modalAddToCart()">
           <span><i class="fas fa-shopping-bag"></i> Add to Cart</span>
         </button>
-        <button class="modal-btn-order" id="modalBtnOrder" onclick="modalBuyNow()" style="background:linear-gradient(135deg,var(--saffron-deep),var(--saffron))">
+        <button class="modal-btn-order" onclick="modalBuyNow()" style="background:linear-gradient(135deg,var(--saffron-deep),var(--saffron))">
           <span style="color:var(--dark)"><i class="fas fa-bolt"></i> Order Now</span>
         </button>
-        <button class="modal-btn-wa" id="modalBtnWa" onclick="modalOrderWa()">
+        <button class="modal-btn-wa" onclick="modalOrderWa()">
           <i class="fab fa-whatsapp"></i> Order on WhatsApp
         </button>
       </div>
       <p style="font-size:.71rem;color:#bbb;text-align:center;margin-top:.3rem">
         <i class="fas fa-lock" style="color:var(--saffron)"></i> Secure ordering via WhatsApp · Fast delivery 🚚
       </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── PAYMENT MODAL ── -->
+<div class="pay-modal" id="payModal">
+  <div class="pay-modal-inner">
+    <button class="pay-modal-close" onclick="closePayModal()"><i class="fas fa-times"></i></button>
+    <div class="pay-modal-header">
+      <h2>💳 Choose Payment</h2>
+      <p>Select your preferred payment method to complete order</p>
+    </div>
+    <div class="pay-modal-body">
+
+      <!-- Order Summary -->
+      <div class="pay-summary" id="paySummary"></div>
+
+      <!-- Payment Options -->
+      <div class="pay-options">
+        <div class="pay-option" id="payOptOnline" onclick="selectPayMethod('online')">
+          <div class="pay-option-check"><i class="fas fa-check"></i></div>
+          <span class="pay-option-icon">📱</span>
+          <div class="pay-option-title">Online Payment</div>
+          <div class="pay-option-desc">UPI · QR Code · GPay · PhonePe · Paytm</div>
+        </div>
+        <div class="pay-option" id="payOptCod" onclick="selectPayMethod('cod')">
+          <div class="pay-option-check"><i class="fas fa-check"></i></div>
+          <span class="pay-option-icon">💵</span>
+          <div class="pay-option-title">Cash on Delivery</div>
+          <div class="pay-option-desc">Pay cash when your order arrives at door</div>
+        </div>
+      </div>
+
+      <!-- QR Code Section (shows for online) -->
+      <div class="qr-section" id="qrSection">
+        <img src="./qrcode.jpeg" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9881047800@upi&pn=NoodlesMomsSon&am=0&cu=INR'">
+        <h4>Scan & Pay via UPI</h4>
+        <p>Scan the QR code using any UPI app<br>GPay · PhonePe · Paytm · BHIM</p>
+        <div class="qr-upi">📲 UPI: 9881047800@upi</div>
+        <p style="font-size:.72rem;color:#aaa;margin-top:.8rem">After payment, screenshot will be sent via WhatsApp for confirmation</p>
+      </div>
+
+      <!-- COD Info (shows for cod) -->
+      <div class="qr-section" id="codSection">
+        <span style="font-size:3rem;display:block;margin-bottom:.8rem">💵</span>
+        <h4>Cash on Delivery</h4>
+        <p>Keep exact change ready.<br>Our delivery partner will collect payment at your door.</p>
+        <div class="qr-upi" style="background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.2);color:var(--saffron-deep)">⏰ Delivery: 24–48 hours · Nagpur</div>
+      </div>
+
+      <button class="pay-confirm-btn" id="payConfirmBtn" onclick="confirmOrder()">
+        <span><i class="fab fa-whatsapp"></i> <span id="payConfirmText">Confirm & Send Order via WhatsApp</span></span>
+      </button>
+      <button class="pay-cancel-btn" onclick="closePayModal()">Cancel</button>
     </div>
   </div>
 </div>
@@ -482,11 +582,11 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
       <i class="fas fa-truck" style="color:var(--emerald-light)"></i>
       <span id="cartDeliveryNote">Add ₹499 more for free delivery!</span>
     </div>
-    <button class="cart-checkout" onclick="checkoutCart()">
+    <button class="cart-checkout" onclick="openPayModal('cart')">
       <span><i class="fas fa-bolt"></i> Checkout Now</span>
     </button>
-    <button class="cart-wa" onclick="checkoutWa()">
-      <i class="fab fa-whatsapp"></i> Order via WhatsApp
+    <button class="cart-wa" onclick="openPayModal('cart')">
+      <i class="fab fa-whatsapp"></i> Order via WhatsApp (Kirana Format)
     </button>
   </div>
 </div>
@@ -519,7 +619,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
   <div class="hero-content">
     <div class="hero-kicker">
       <span class="kicker-dot"></span>
-      100+ Fresh Authentic Products
+      200+ Fresh Kirana Products
       <span class="kicker-dot"></span>
     </div>
     <h1 class="hero-title">
@@ -541,23 +641,22 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-strip">
   <div class="marquee-track">
     <span>🌶️ Free Delivery Above ₹499 <span class="marquee-dot"></span></span>
     <span>🍜 Fresh Masala Daily <span class="marquee-dot"></span></span>
     <span>🥜 Premium Dry Fruits <span class="marquee-dot"></span></span>
     <span>🫙 Homestyle Pickles <span class="marquee-dot"></span></span>
-    <span>🔥 New: Millet Mixes <span class="marquee-dot"></span></span>
-    <span>🌿 Organic Spices <span class="marquee-dot"></span></span>
+    <span>🌾 Quality Staples <span class="marquee-dot"></span></span>
+    <span>🧴 Personal Care Essentials <span class="marquee-dot"></span></span>
     <span>🎁 Gift Hampers Available <span class="marquee-dot"></span></span>
     <span>⭐ 500+ Happy Customers <span class="marquee-dot"></span></span>
     <span>🌶️ Free Delivery Above ₹499 <span class="marquee-dot"></span></span>
     <span>🍜 Fresh Masala Daily <span class="marquee-dot"></span></span>
     <span>🥜 Premium Dry Fruits <span class="marquee-dot"></span></span>
     <span>🫙 Homestyle Pickles <span class="marquee-dot"></span></span>
-    <span>🔥 New: Millet Mixes <span class="marquee-dot"></span></span>
-    <span>🌿 Organic Spices <span class="marquee-dot"></span></span>
+    <span>🌾 Quality Staples <span class="marquee-dot"></span></span>
+    <span>🧴 Personal Care Essentials <span class="marquee-dot"></span></span>
     <span>🎁 Gift Hampers Available <span class="marquee-dot"></span></span>
     <span>⭐ 500+ Happy Customers <span class="marquee-dot"></span></span>
   </div>
@@ -572,7 +671,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
   <div class="count-bar reveal">
     <div class="count-chip">
       <span class="chip-dot"></span>
-      <span id="productCountText">14 Products</span>
+      <span id="productCountText">Loading...</span>
     </div>
     <div class="count-chip" style="background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.22);color:var(--saffron-deep)">
       <span class="chip-dot" style="background:var(--saffron)"></span>
@@ -580,27 +679,30 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
     </div>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-wrap reveal">
     <i class="fas fa-search search-icon"></i>
-    <input class="search-input" id="searchInput" type="text" placeholder="Search products… (e.g. noodles, masala, pickle)">
+    <input class="search-input" id="searchInput" type="text" placeholder="Search products… (e.g. rice, masala, soap, noodles)">
     <button class="search-clear" id="searchClear" onclick="clearSearch()"><i class="fas fa-times"></i></button>
   </div>
 
-  <!-- CATEGORY TABS -->
   <div class="category-tabs reveal" id="catTabs">
     <button class="cat-tab active" data-cat="all"><span>🛒 All</span></button>
     <button class="cat-tab" data-cat="instant"><span>🍜 Instant</span></button>
+    <button class="cat-tab" data-cat="staples"><span>🌾 Staples</span></button>
+    <button class="cat-tab" data-cat="dal"><span>🥣 Dal</span></button>
+    <button class="cat-tab" data-cat="oil"><span>🛢️ Oil</span></button>
     <button class="cat-tab" data-cat="spices"><span>🌶️ Spices</span></button>
-    <button class="cat-tab" data-cat="pickles"><span>🫙 Pickles</span></button>
-    <button class="cat-tab" data-cat="papad"><span>🥐 Papad</span></button>
-    <button class="cat-tab" data-cat="bakery"><span>🍞 Bakery</span></button>
-    <button class="cat-tab" data-cat="sweets"><span>🍬 Sweets</span></button>
+    <button class="cat-tab" data-cat="snacks"><span>🍪 Snacks</span></button>
+    <button class="cat-tab" data-cat="dairy"><span>🧊 Dairy</span></button>
     <button class="cat-tab" data-cat="beverages"><span>☕ Beverages</span></button>
-    <button class="cat-tab" data-cat="health"><span>🌿 Health</span></button>
+    <button class="cat-tab" data-cat="care"><span>🧴 Personal Care</span></button>
+    <button class="cat-tab" data-cat="home"><span>🧻 Home Care</span></button>
+    <button class="cat-tab" data-cat="pooja"><span>🙏 Pooja</span></button>
+    <button class="cat-tab" data-cat="dryfruits"><span>🥜 Dry Fruits</span></button>
+    <button class="cat-tab" data-cat="pickles"><span>🫙 Pickles</span></button>
+    <button class="cat-tab" data-cat="sweets"><span>🍬 Sweets</span></button>
   </div>
 
-  <!-- SORT BAR -->
   <div class="sort-bar reveal">
     <div class="sort-left">
       <i class="fas fa-sort" style="color:var(--emerald-light)"></i>
@@ -609,7 +711,6 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
         <option value="default">Default</option>
         <option value="price-asc">Price: Low to High</option>
         <option value="price-desc">Price: High to Low</option>
-        <option value="discount">Biggest Discount</option>
         <option value="name">Name A–Z</option>
       </select>
     </div>
@@ -624,6 +725,60 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
     <span class="no-results-emoji">🔍</span>
     <h3>No products found</h3>
     <p>Try a different search or category!</p>
+  </div>
+</section>
+
+<!-- KIRANA ENTRY SHEET -->
+<section class="entry-section" id="entrysheet">
+  <h2 class="section-title reveal" style="color:var(--saffron-glow)">Kirana <em style="color:var(--emerald-light)">Entry Sheet</em></h2>
+  <div class="title-ornament reveal"><span class="title-ornament-icon" style="color:var(--saffron)">✦</span></div>
+  <p class="section-sub reveal" style="color:rgba(255,255,255,.45)">Track stock, quantities & amounts — then send your full order via WhatsApp</p>
+
+  <div class="entry-summary-bar reveal" id="entrySummaryBar">
+    <div class="entry-summary-chip">
+      <span class="chip-label">Total Items</span>
+      <span class="chip-val" id="summaryItems">0</span>
+    </div>
+    <div class="entry-summary-chip">
+      <span class="chip-label">Total Amount</span>
+      <span class="chip-val" id="summaryAmount">₹0</span>
+    </div>
+    <div class="entry-summary-chip">
+      <span class="chip-label">Checked</span>
+      <span class="chip-val" id="summaryChecked">0</span>
+    </div>
+  </div>
+
+  <div class="entry-controls reveal">
+    <button class="entry-btn" onclick="clearEntrySheet()"><i class="fas fa-trash"></i> Clear Sheet</button>
+    <button class="entry-btn saffron" onclick="sendEntrySheetWa()"><i class="fab fa-whatsapp"></i> Send Order (WhatsApp)</button>
+    <button class="entry-btn" style="background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)" onclick="addCartToSheet()"><i class="fas fa-cart-plus"></i> Import from Cart</button>
+  </div>
+
+  <div class="entry-table-wrap reveal">
+    <table class="entry-table" id="entryTable">
+      <thead>
+        <tr>
+          <th>Sr No.</th>
+          <th>Item Name</th>
+          <th>Company/Brand</th>
+          <th>Qty (Wt/Ltr)</th>
+          <th>Packing Size</th>
+          <th>Rate (₹)</th>
+          <th>Amount (₹)</th>
+          <th>Checked By</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody id="entryTbody"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6" style="text-align:right;font-size:.8rem;color:rgba(255,255,255,.4)">TOTAL</td>
+          <td id="entryTotalCell" class="amount-cell">₹0</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </section>
 
@@ -648,19 +803,12 @@ const ring = document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
 (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
-
-// ── NAVBAR ──
 window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60));
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
-
-// ── LOADER ──
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2600));
-
-// ── REVEAL ──
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
 
-// ── TOAST ──
 function showToast(msg,color='var(--emerald-mid)'){
   const t=document.getElementById('toast');
   t.style.background=color;
@@ -669,51 +817,203 @@ function showToast(msg,color='var(--emerald-mid)'){
   setTimeout(()=>t.classList.remove('show'),2600);
 }
 
-// ── DATA ──
-const catLabels={instant:'Instant Foods',spices:'Spices & Masala',pickles:'Pickles',papad:'Papad & Fryums',bakery:'Bakery & Snacks',sweets:'Sweets',dryfruits:'Dry Fruits',beverages:'Beverages',health:'Health & Organic'};
-const catEmojis={instant:'🍜',spices:'🌶️',pickles:'🫙',papad:'🥐',bakery:'🍞',sweets:'🍬',dryfruits:'🥜',beverages:'☕',health:'🌿'};
-const productStars={"Hakka Noodles":{stars:"★★★★★",count:"4.9",reviews:"238"},"Folded Noodles":{stars:"★★★★★",count:"4.8",reviews:"184"},"Turmeric Powder":{stars:"★★★★☆",count:"4.5",reviews:"96"},"Red Chilli Powder":{stars:"★★★★★",count:"4.7",reviews:"143"},"Mango Pickle":{stars:"★★★★★",count:"4.9",reviews:"311"},"Urad Papad":{stars:"★★★★☆",count:"4.4",reviews:"72"},"Masala Papad":{stars:"★★★★★",count:"4.6",reviews:"88"},"Rusk (Toast)":{stars:"★★★★☆",count:"4.3",reviews:"55"},"Jaggery (Gud)":{stars:"★★★★★",count:"4.8",reviews:"129"},"Peanut Chikki":{stars:"★★★★★",count:"4.9",reviews:"201"},"Coffee Powder":{stars:"★★★★☆",count:"4.5",reviews:"67"},"Rose Sharbat Conc.":{stars:"★★★★☆",count:"4.4",reviews:"43"},"Organic Turmeric":{stars:"★★★★★",count:"4.9",reviews:"78"},"Gluten-Free Atta":{stars:"★★★★☆",count:"4.4",reviews:"51"}};
-const productWeights={"Hakka Noodles":"300g","Folded Noodles":"450g","Turmeric Powder":"200g","Red Chilli Powder":"200g","Mango Pickle":"500g","Urad Papad":"250g","Masala Papad":"250g","Rusk (Toast)":"300g","Jaggery (Gud)":"500g","Peanut Chikki":"200g","Coffee Powder":"200g","Rose Sharbat Conc.":"750ml","Organic Turmeric":"150g","Gluten-Free Atta":"1kg"};
-const descs={"Hakka Noodles":"Our bestselling Hakka-style noodles with a smoky, bold stir-fry flavor. Ready in 2 minutes. Perfect for the whole family.","Folded Noodles":"Thick, satisfying folded noodles with rich masala seasoning. A comfort food favorite for all ages.","Turmeric Powder":"Pure, vibrant turmeric sourced directly from farmers. Rich in curcumin for both cooking and health.","Red Chilli Powder":"Stone-ground red chilli with perfect heat balance. Adds vibrant color and spice to any dish.","Mango Pickle":"Traditional homestyle mango pickle made with raw mangoes, mustard seeds, and aromatic spices.","Urad Papad":"Crispy, thin urad dal papads. Roast or fry for a perfect crunchy accompaniment to any meal.","Masala Papad":"Flavourful spiced papads with a blend of special masalas.","Rusk (Toast)":"Golden, crispy double-baked rusk toast.","Jaggery (Gud)":"Natural, unrefined jaggery with rich caramel notes. No chemicals, no additives — pure goodness.","Peanut Chikki":"Crunchy peanut brittle made with jaggery in traditional style. A beloved Indian snack!","Coffee Powder":"Freshly ground south Indian coffee blend — robust, aromatic, deeply satisfying.","Rose Sharbat Conc.":"Sweet, floral rose sharbat concentrate. Mix with chilled water for a refreshing summer drink.","Organic Turmeric":"Certified organic turmeric with higher curcumin content. Ideal for golden milk and health use.","Gluten-Free Atta":"Stone-milled gluten-free flour blend from millets and rice. Perfect for rotis and baking."};
-const highlights={instant:['⚡ Ready in 2 min','🌶️ Bold Masala','📦 Bulk Packs Available'],spices:['🌱 Farm Fresh','🧪 Lab Tested','♻️ Eco Packaging'],pickles:['🏠 Homestyle','🚫 No Preservatives','❤️ Family Recipe'],papad:['🔥 Hand Rolled','🌾 100% Dal','🎉 Perfect Snack'],bakery:['🍞 Freshly Baked','🥛 Rich & Creamy','👨‍👩‍👧 Family Favourite'],sweets:['🌾 Natural Sugars','🚫 No Chemicals','🎁 Gift Ready'],beverages:['☕ Fresh Aroma','🍃 Natural Blend','🥤 Daily Essential'],health:['🌿 Certified Organic','💊 Curcumin Rich','🚫 No Additives']};
-const outOfStock=['Turmeric Powder','Red Chilli Powder','Mango Pickle','Urad Papad','Masala Papad','Rusk (Toast)','Gluten-Free Atta','Organic Turmeric','Coffee Powder','Rose Sharbat Conc.','Jaggery (Gud)','Peanut Chikki'];
-const products=[
-  {name:"Hakka Noodles",price:40,old:70,cat:"instant",img:"./img/3.png",badge:"Best Seller"},
-  {name:"Folded Noodles",price:70,old:90,cat:"instant",img:"./img/2.png",badge:"Popular"},
-  {name:"Turmeric Powder",price:38,old:55,cat:"spices",img:"https://hospitalityinsights.ehl.edu/hs-fs/hubfs/EHL-Passugg_Blog_Kurkuma_Titelbild_001.jpg?width=700&height=462",badge:"Pure"},
-  {name:"Red Chilli Powder",price:42,old:60,cat:"spices",img:"https://www.neonaturalindustries.com/wp-content/uploads/2022/06/red-chillies.jpg"},
-  {name:"Mango Pickle",price:80,old:110,cat:"pickles",img:"https://i0.wp.com/binjalsvegkitchen.com/wp-content/uploads/2024/04/Instant-Mango-Pickle-H1.jpg?fit=300%2C450&ssl=1",badge:"Homemade"},
-  {name:"Urad Papad",price:55,old:75,cat:"papad",img:"https://m.media-amazon.com/images/I/51uVvcUj2GL._AC_UF350,350_QL80_.jpg"},
-  {name:"Masala Papad",price:60,old:80,cat:"papad",img:"https://i0.wp.com/www.lovelaughmirch.com/wp-content/uploads/2016/03/MasalaPapad_8.jpg",badge:"Spicy"},
-  {name:"Rusk (Toast)",price:45,old:60,cat:"bakery",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrUfSqyTVgBpQirjKdVCFegX30nooIX211oA&s"},
-  {name:"Jaggery (Gud)",price:70,old:95,cat:"sweets",img:"https://m.media-amazon.com/images/I/71z0pgt5ezS._AC_UF894,1000_QL80_.jpg",badge:"Natural"},
-  {name:"Peanut Chikki",price:60,old:82,cat:"sweets",img:"https://www.cookwithmanali.com/wp-content/uploads/2018/01/Peanut-Chikki-500x500.jpg"},
-  {name:"Coffee Powder",price:110,old:150,cat:"beverages",img:"https://www.nescafe.com/in/sites/default/files/2023-11/ground-coffee-desktop.jpg"},
-  {name:"Rose Sharbat Conc.",price:85,old:115,cat:"beverages",img:"https://www.shutterstock.com/shutterstock/videos/3615019007/thumb/1.jpg?ip=x480"},
-  {name:"Organic Turmeric",price:95,old:130,cat:"health",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTLS7wBhqjhZuIl1xtZ4oFwcDYdokfQH17zQ&s",badge:"Organic"},
-  {name:"Gluten-Free Atta",price:145,old:195,cat:"health",img:"https://5.imimg.com/data5/SELLER/Default/2025/3/494976434/JM/QC/YI/59141682/organic-ragi-flour-250x250.jpg"}
+// ── CATEGORY & EMOJI MAPS ──
+const catLabels={
+  instant:'Instant Foods',staples:'Staples & Grains',dal:'Dal & Pulses',
+  oil:'Oil & Ghee',spices:'Masala & Spices',snacks:'Snacks & Breakfast',
+  dairy:'Dairy & Bakery',beverages:'Beverages',care:'Personal Care',
+  home:'Home Care',pooja:'Pooja & Misc',dryfruits:'Dry Fruits',
+  pickles:'Pickles',sweets:'Sweets',impulse:'Impulse Items'
+};
+const catEmojis={
+  instant:'🍜',staples:'🌾',dal:'🥣',oil:'🛢️',spices:'🌶️',snacks:'🍪',
+  dairy:'🧊',beverages:'☕',care:'🧴',home:'🧻',pooja:'🙏',dryfruits:'🥜',
+  pickles:'🫙',sweets:'🍬',impulse:'🍬'
+};
+const highlights={
+  instant:['⚡ Ready in 2 min','🌶️ Bold Masala','📦 Bulk Packs Available'],
+  staples:['🌾 Farm Fresh','🧪 Quality Tested','📦 Multiple Sizes'],
+  dal:['💪 High Protein','🌱 Pure & Natural','🔥 Daily Essential'],
+  oil:['🫒 Pure Extract','🍳 Cooking Grade','🏠 Kitchen Must-Have'],
+  spices:['🌱 Fresh Ground','🧪 Lab Tested','♻️ Eco Packaging'],
+  snacks:['😋 Tasty Treat','📦 Pocket Friendly','🎉 Family Favourite'],
+  dairy:['🥛 Fresh Daily','❄️ Store Cool','🍞 Freshly Baked'],
+  beverages:['☕ Fresh Aroma','🍃 Natural Blend','🥤 Daily Essential'],
+  care:['🌿 Gentle Formula','🛁 Daily Use','✨ Trusted Brand'],
+  home:['🏠 Keeps Home Clean','💧 Long Lasting','🌿 Effective Formula'],
+  pooja:['🙏 Pure & Sacred','✨ Divine Fragrance','🕯️ Auspicious'],
+  dryfruits:['🥜 Premium Quality','💊 Rich in Nutrients','🎁 Gift Ready'],
+  pickles:['🏠 Homestyle','🚫 No Preservatives','❤️ Family Recipe'],
+  sweets:['🌾 Natural Sugars','🚫 No Chemicals','🎁 Gift Ready'],
+  impulse:['😋 Instant Treat','🍬 Daily Snack','💰 Value for Money']
+};
+
+// ── PRODUCT IMAGE MAP ──
+// Assign high-quality images per product name
+const imgMap = {
+  // INSTANT
+  'Instant Noodles':       './img/3.png',
+  'Hakka Noodles':         './img/3.png',
+  'Folded Noodles':        './img/2.png',
+  // STAPLES
+  'Regular Rice':          'https://www.health.com/thmb/a8GxwWgmB5KpQW8SfW6VA7UFwaI=/722x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1734160670-0157c2daf8e841d6a783b38aedc51aa8.jpg',
+  'Basmati Rice':          'https://chefsmandala.com/wp-content/uploads/2018/02/Basmati-Rice.jpg',
+  'Wheat Atta':            'https://m.media-amazon.com/images/I/61d3GraOwxL._AC_UF894,1000_QL80_.jpg',
+  'Besan':                 'https://www.healthyorganic.in/cdn/shop/products/HealthyOrganic_Besan_grande.jpg?v=1555225486',
+  'Suji':                  'https://www.greendna.in/cdn/shop/products/soji_600x.jpg?v=1627319743',
+  'Daliya':                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmBnCr5OczaTxfxuEto3zscijlrJqyJVDGg&s',
+  'Poha':                  'https://tiimg.tistatic.com/fp/1/007/572/high-in-protein-and-no-artificial-flavour-thick-flat-rice-poha-for-cooking-730.jpg',
+  'Gluten-Free Atta':      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiApdZvkHBu1asfJW-u2wzS6uWLzwG3L3AUg&s',
+  // DAL
+  'Toor Dal':              'https://cdn.shopaccino.com/edible-smart/products/toor-dal-min-scaled-740285_l.jpg?v=704',
+  'Moong Dal':             'https://cdn.shopify.com/s/files/1/0201/1720/files/IMG-8317_600x600.jpg?v=1673738559',
+  'Chana Dal':             'https://gonefarmers.com/cdn/shop/products/image_7aa2f492-0b3b-45b6-b048-a89301c7ab80_2048x.jpg?v=1602329770',
+  'Masoor Dal':            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5cw4oE8qB6Yb7MzAhmvow0-76-qeZPTwdQ&s',
+  'Urad Dal':              'https://c.ndtvimg.com/2023-09/a9ubmmd8_urad-dal_625x300_06_September_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=886',
+  // OIL
+  'Soyabean Oil':          'https://5.imimg.com/data5/GL/BS/TK/SELLER-50434478/loose-refined-soyabean-oil-500x500.jpg',
+  'Mustard Oil':           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw5B3c_biz1beddP-NiB6NjUkFXpxFcp7v5Q&s',
+  'Groundnut Oil':         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Z1ou2b_JkWSuo_50F_cN4Dy6D_XaghEJkA&s',
+  'Desi Ghee':             'https://patnamlopalleruchulu.in/wp-content/uploads/2024/09/JERSEY-COW-GHEE-580x560.jpg',
+  // SPICES
+  'Haldi Powder':          'https://nuttyyogi.com/cdn/shop/products/Turmeric_DSC5296.jpg?v=1716977923',
+  'Red Chilli Powder':     'https://flourworks.in/wp-content/uploads/2023/07/RedChilliBoth-03_1500x.webp',
+  'Dhaniya Powder':        'https://tastedilli6.com/cdn/shop/files/18.jpg?v=1686052991',
+  'Garam Masala':          'https://silkroadrecipes.com/wp-content/uploads/2024/06/Garam-Masala-Recipe-square.jpg',
+  'Pav Bhaji Masala':      'https://m.media-amazon.com/images/I/81g9eKTeCML._AC_UF1000,1000_QL80_.jpg',
+  'Organic Turmeric':      'https://www.greendna.in/cdn/shop/files/turmeric-1-1030x687_1030x.jpg?v=1714732257',
+  // SNACKS
+  'Biscuit':               'https://static.toiimg.com/thumb/62403305.cms?imgsize=566439&width=800&height=800',
+  'Namkeen':               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUCnfTJ3JL4JR2Bg0dB8zLAzgvcPyAOC46YQ&s',
+  'Chips':                 'https://i5.walmartimages.com/seo/Lay-s-Potato-Chip-Variety-Pack-Snack-Chips-40-Count-Multipack_6c3c763a-5561-4822-8b74-2e9f97dc5191.c0e3000c3ff3f61655222155a9e6e9ea.jpeg',
+  'Oats':                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_D0VzJq25kfp4Lp3wNEQq7wQ_ZUZaRncA&s',
+  // DAIRY
+  'Milk':                  'https://nutritionsource.hsph.harvard.edu/wp-content/uploads/2024/11/AdobeStock_354060824-1024x683.jpeg',
+  'Curd':                  'https://www.yummytummyaarthi.com/wp-content/uploads/2023/10/yogurt-1.jpg',
+  'Bread':                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0rv_WYWixSRRSfTKvNgYiqfmxaeqQfFf4bg&s',
+  'Rusk (Toast)':          'https://www.quickpantry.in/cdn/shop/products/britannia-bake-rusk-toast-250-g-quick-pantry.jpg?v=1710538115',
+  // BEVERAGES
+  'Tea':                   'https://i.ytimg.com/vi/NGGSyJUTsuc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB2LhOwS-GWYQ7cqKIE4gohuiipqw',
+  'Coffee':                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReeuTIceljqgrKHEyZYHj0hnGcW-93tXd4Bg&s',
+  'Sugar':                 'https://www.gorevizon.com/wp-content/uploads/2021/06/sugar4.jpg',
+  'Jaggery (Gud)':         'https://m.media-amazon.com/images/I/71z0pgt5ezS._AC_UF894,1000_QL80_.jpg',
+  'Coffee Powder':         'https://m.media-amazon.com/images/I/51fO-PwnBLL._AC_UF1000,1000_QL80_.jpg',
+  'Rose Sharbat Conc.':    'https://m.media-amazon.com/images/I/51nWFR-22UL.jpg',
+  // PERSONAL CARE
+  'Soap':                  'https://m.media-amazon.com/images/I/71tUT9UYwWL._AC_UF1000,1000_QL80_.jpg',
+  'Shampoo':               'https://lovebeautyandplanet.in/cdn/shop/files/LoveBeauty_PlanetNaturalArganOilAndLavenderAnti-frizzSmootheningShampoo_Conditioner.jpg?v=1757130578&width=1946',
+  'Toothpaste':            'https://hips.hearstapps.com/hmg-prod/images/ghk-091625-index-toothpaste-098-68d6a67a4ed2f.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*',
+  // HOME CARE
+  'Washing Powder':        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwK-kC-W9zUx5iq5yuFwFcMn8q0J4O6IkrEA&s',
+  'Dishwash Bar':          'https://www.pitambari.com/shop/wp-content/uploads/2025/05/Dishwash-bar_600-g-150-g-X-4.jpg',
+  'Floor Cleaner':         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmgO6cfebxKkgyAnOgiFw7lgQcwrhc7Q6F6A&s',
+  // POOJA
+  'Agarbatti':             'https://www.bbassets.com/media/uploads/p/l/40224703_1-the-aroma-factory-incense-sticksagarbatti-lavender-luck-made-with-0-charcoal.jpg',
+  'Kapoor':                'https://4.imimg.com/data4/ET/EX/ANDROID-45265432/product.jpeg',
+  // DRY FRUITS
+  'Badam':                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlxLW2mFnP8Mu3w4T4YXYFuVnti23OH81ewA&s',
+  'Kaju':                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNSFJxH-ALmXYpmgoNJQxMKiprNNiqkdpcrA&s',
+  // PICKLES & SWEETS
+  'Mango Pickle':          'https://www.whiskaffair.com/wp-content/uploads/2020/07/Kerala-Style-Mango-Pickle-2-3.jpg',
+  'Urad Papad':            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh_mH4g__aJ6JTSaqWNsfq_cn9ChAva5wUAQ&s',
+  'Masala Papad':          'https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/09/Masala-Papad-03.jpg',
+  'Peanut Chikki':         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnltGkFNnfSfDwLdbE9SltG5GLTnU1UUv0WA&s',
+  'Chocolate':             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFPV5l19xmcarDJSV1hU0A5ZvDXm5nCIGX5A&s',
+  'Chewing Gum':           'https://rukmini1.flixcart.com/image/1500/1500/xif0q/chewing-gum/b/f/c/-original-imahctwkeymfm688.jpeg?q=70',
+};
+function getImg(name){ return imgMap[name] || 'https://placehold.co/400x300/0A4A3A/fff?text='+encodeURIComponent(name); }
+
+// ── ALL PRODUCTS DATA ──
+const products = [
+  // INSTANT / NOODLES
+  {sku:'001',name:'Instant Noodles',  brand:"Mom's Son",    unit:'1kg',   price:100,old:130,cat:'instant',  badge:'Special'},
+  {sku:'002',name:'Hakka Noodles',    brand:"Mom's Son",    unit:'300g',  price:40, old:70, cat:'instant',  badge:'Best Seller'},
+  {sku:'003',name:'Folded Noodles',   brand:"Mom's Son",    unit:'450g',  price:70, old:90, cat:'instant',  badge:'Popular'},
+  // STAPLES
+  {sku:'004',name:'Regular Rice',     brand:'Local',         unit:'1kg',   price:56, old:70, cat:'staples',  badge:'Special'},
+  {sku:'005',name:'Basmati Rice',     brand:'India Gate',    unit:'1kg',   price:110,old:135,cat:'staples'},
+  {sku:'006',name:'Wheat Atta',       brand:'Aashirvaad',    unit:'1kg',   price:41, old:55, cat:'staples'},
+  {sku:'007',name:'Besan',            brand:'Rajdhani',      unit:'1kg',   price:84, old:100,cat:'staples'},
+  {sku:'008',name:'Suji',             brand:'Fortune',       unit:'1kg',   price:41, old:55, cat:'staples'},
+  {sku:'009',name:'Daliya',           brand:'Local',         unit:'1kg',   price:50, old:65, cat:'staples'},
+  {sku:'010',name:'Poha',             brand:'Local',         unit:'1kg',   price:48, old:60, cat:'staples'},
+  {sku:'011',name:'Gluten-Free Atta', brand:'Local',         unit:'1kg',   price:145,old:195,cat:'staples',  badge:'Organic'},
+  // DAL & PULSES
+  {sku:'026',name:'Toor Dal',         brand:'Tata Sampann',  unit:'1kg',   price:125,old:150,cat:'dal'},
+  {sku:'027',name:'Moong Dal',        brand:'Fortune',       unit:'1kg',   price:119,old:145,cat:'dal'},
+  {sku:'028',name:'Chana Dal',        brand:'Rajdhani',      unit:'1kg',   price:96, old:115,cat:'dal'},
+  {sku:'029',name:'Masoor Dal',       brand:'24 Mantra',     unit:'1kg',   price:100,old:125,cat:'dal'},
+  {sku:'030',name:'Urad Dal',         brand:'Tata Sampann',  unit:'1kg',   price:128,old:155,cat:'dal'},
+  // OIL & GHEE
+  {sku:'051',name:'Soyabean Oil',     brand:'Fortune',       unit:'1L',    price:129,old:155,cat:'oil'},
+  {sku:'052',name:'Mustard Oil',      brand:'Dhara',         unit:'1L',    price:158,old:185,cat:'oil'},
+  {sku:'053',name:'Groundnut Oil',    brand:'Saffola',       unit:'1L',    price:171,old:200,cat:'oil'},
+  {sku:'054',name:'Desi Ghee',        brand:'Amul',          unit:'1kg',   price:565,old:640,cat:'oil',      badge:'Premium'},
+  // MASALA & SPICES
+  {sku:'066',name:'Haldi Powder',     brand:'Everest',       unit:'100g',  price:23, old:35, cat:'spices'},
+  {sku:'067',name:'Red Chilli Powder',brand:'Catch',         unit:'100g',  price:28, old:42, cat:'spices'},
+  {sku:'068',name:'Dhaniya Powder',   brand:'MDH',           unit:'100g',  price:26, old:38, cat:'spices'},
+  {sku:'069',name:'Garam Masala',     brand:'Everest',       unit:'100g',  price:60, old:80, cat:'spices'},
+  {sku:'070',name:'Pav Bhaji Masala', brand:'MDH',           unit:'100g',  price:35, old:50, cat:'spices'},
+  {sku:'071',name:'Organic Turmeric', brand:'24 Mantra',     unit:'150g',  price:95, old:130,cat:'spices',   badge:'Organic'},
+  // SNACKS & BREAKFAST
+  {sku:'102',name:'Biscuit',          brand:'Parle-G',       unit:'Pack',  price:9,  old:12, cat:'snacks'},
+  {sku:'103',name:'Namkeen',          brand:"Haldiram's",    unit:'200g',  price:44, old:60, cat:'snacks'},
+  {sku:'104',name:'Chips',            brand:'Lays',          unit:'Pack',  price:18, old:25, cat:'snacks'},
+  {sku:'105',name:'Oats',             brand:'Saffola',       unit:'500g',  price:84, old:105,cat:'snacks'},
+  // DAIRY & BAKERY
+  {sku:'131',name:'Milk',             brand:'Amul',          unit:'1L',    price:65, old:72, cat:'dairy'},
+  {sku:'132',name:'Curd',             brand:'Amul',          unit:'500g',  price:38, old:48, cat:'dairy'},
+  {sku:'133',name:'Bread',            brand:'Britannia',     unit:'Pack',  price:38, old:48, cat:'dairy'},
+  {sku:'134',name:'Rusk (Toast)',     brand:'Local',         unit:'300g',  price:45, old:60, cat:'dairy'},
+  // BEVERAGES
+  {sku:'151',name:'Tea',              brand:'Tata Tea',      unit:'250g',  price:150,old:185,cat:'beverages'},
+  {sku:'152',name:'Coffee',           brand:'Nescafe',       unit:'100g',  price:312,old:375,cat:'beverages', badge:'Premium'},
+  {sku:'153',name:'Sugar',            brand:'Local',         unit:'1kg',   price:47, old:58, cat:'beverages'},
+  {sku:'154',name:'Jaggery (Gud)',    brand:'Local',         unit:'500g',  price:70, old:95, cat:'beverages', badge:'Natural'},
+  {sku:'155',name:'Coffee Powder',    brand:'Nescafe',       unit:'200g',  price:110,old:150,cat:'beverages'},
+  {sku:'156',name:'Rose Sharbat Conc.',brand:'Local',        unit:'750ml', price:85, old:115,cat:'beverages'},
+  // PERSONAL CARE
+  {sku:'171',name:'Soap',             brand:'Lifebuoy',      unit:'Piece', price:27, old:35, cat:'care'},
+  {sku:'172',name:'Shampoo',          brand:'Clinic Plus',   unit:'200ml', price:119,old:145,cat:'care'},
+  {sku:'173',name:'Toothpaste',       brand:'Colgate',       unit:'150g',  price:106,old:130,cat:'care'},
+  // HOME CARE
+  {sku:'191',name:'Washing Powder',   brand:'Surf Excel',    unit:'1kg',   price:69, old:88, cat:'home'},
+  {sku:'192',name:'Dishwash Bar',     brand:'Vim',           unit:'Piece', price:13, old:18, cat:'home'},
+  {sku:'193',name:'Floor Cleaner',    brand:'Lizol',         unit:'500ml', price:93, old:115,cat:'home'},
+  // POOJA
+  {sku:'221',name:'Agarbatti',        brand:'Cycle',         unit:'Pack',  price:33, old:45, cat:'pooja'},
+  {sku:'222',name:'Kapoor',           brand:'Local',         unit:'Pack',  price:40, old:55, cat:'pooja'},
+  // DRY FRUITS
+  {sku:'231',name:'Badam',            brand:'Local',         unit:'1kg',   price:750,old:900,cat:'dryfruits', badge:'Premium'},
+  {sku:'232',name:'Kaju',             brand:'Local',         unit:'1kg',   price:875,old:1050,cat:'dryfruits',badge:'Premium'},
+  // PICKLES & SWEETS
+  {sku:'241',name:'Mango Pickle',     brand:"Mom's Son",     unit:'500g',  price:80, old:110,cat:'pickles',   badge:'Homemade'},
+  {sku:'242',name:'Urad Papad',       brand:'Local',         unit:'250g',  price:55, old:75, cat:'pickles'},
+  {sku:'243',name:'Masala Papad',     brand:'Local',         unit:'250g',  price:60, old:80, cat:'pickles',   badge:'Spicy'},
+  {sku:'244',name:'Peanut Chikki',    brand:'Local',         unit:'200g',  price:60, old:82, cat:'sweets'},
+  // IMPULSE
+  {sku:'251',name:'Chocolate',        brand:'Cadbury',       unit:'Pack',  price:25, old:35, cat:'sweets'},
+  {sku:'252',name:'Chewing Gum',      brand:'Center Fresh',  unit:'Pack',  price:7,  old:10, cat:'sweets'},
 ];
 
 // ── CART ──
-let cart=[];
-let wishlist=new Set();
-function discount(p,o){return Math.round((o-p)/o*100)}
-function isOOS(name){return outOfStock.includes(name)}
+let cart=[], wishlist=new Set(), currentProduct=null;
+function discount(p,o){if(!o||o<=p)return 0;return Math.round((o-p)/o*100)}
 
 function addToCart(idx){
   const p=products[idx];
-  if(isOOS(p.name)){showToast('Sorry, this product is out of stock!','var(--crimson)');return}
-  const existing=cart.find(c=>c.name===p.name);
+  const existing=cart.find(c=>c.sku===p.sku);
   if(existing){existing.qty++;showToast(`${p.name} quantity updated! 🛒`)}
-  else{cart.push({...p,qty:1});showToast(`${p.name} added to cart! 🎉`)}
+  else{cart.push({...p,img:getImg(p.name),qty:1});showToast(`${p.name} added to cart! 🎉`)}
   updateCartUI();
 }
-function removeFromCart(name){cart=cart.filter(c=>c.name!==name);updateCartUI();renderCartBody()}
-function updateQty(name,delta){
-  const item=cart.find(c=>c.name===name);
+function removeFromCart(sku){cart=cart.filter(c=>c.sku!==sku);updateCartUI();renderCartBody()}
+function updateQty(sku,delta){
+  const item=cart.find(c=>c.sku===sku);
   if(!item)return;
   item.qty+=delta;
-  if(item.qty<=0){removeFromCart(name);return}
+  if(item.qty<=0){removeFromCart(sku);return}
   updateCartUI();renderCartBody();
 }
 function updateCartUI(){
@@ -727,63 +1027,216 @@ function updateCartUI(){
 }
 function renderCartBody(){
   const body=document.getElementById('cartBody');
-  if(cart.length===0){
-    body.innerHTML=`<div class="cart-empty"><span class="cart-empty-emoji">🛒</span><h3>Your cart is empty</h3><p>Add some delicious products!</p></div>`;
-    return;
-  }
+  if(cart.length===0){body.innerHTML=`<div class="cart-empty"><span class="cart-empty-emoji">🛒</span><h3>Your cart is empty</h3><p>Add some delicious products!</p></div>`;return}
   body.innerHTML=cart.map(item=>`
     <div class="cart-item">
-      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}"></div>
+      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/72x72/0A4A3A/fff?text=Item'"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-brand">${item.brand} · ${item.unit}</div>
         <div class="cart-item-price">₹${item.price} × ${item.qty} = <strong>₹${item.price*item.qty}</strong></div>
         <div class="cart-item-qty">
-          <button class="qty-btn" onclick="updateQty('${item.name}',-1)"><i class="fas fa-minus"></i></button>
+          <button class="qty-btn" onclick="updateQty('${item.sku}',-1)"><i class="fas fa-minus"></i></button>
           <span class="qty-num">${item.qty}</span>
-          <button class="qty-btn" onclick="updateQty('${item.name}',1)"><i class="fas fa-plus"></i></button>
+          <button class="qty-btn" onclick="updateQty('${item.sku}',1)"><i class="fas fa-plus"></i></button>
         </div>
       </div>
-      <button class="cart-item-remove" onclick="removeFromCart('${item.name}')"><i class="fas fa-trash"></i></button>
-    </div>
-  `).join('');
+      <button class="cart-item-remove" onclick="removeFromCart('${item.sku}')"><i class="fas fa-trash"></i></button>
+    </div>`).join('');
 }
-function openCart(){
-  renderCartBody();
-  document.getElementById('cartOverlay').classList.add('open');
-  document.getElementById('cartSidebar').classList.add('open');
+function openCart(){renderCartBody();document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartSidebar').classList.add('open');document.body.style.overflow='hidden'}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartSidebar').classList.remove('open');document.body.style.overflow=''}
+
+// ── FREE NOODLES SLAB ──
+function getFreeNoodlesSlab(total){
+  if(total>=10000) return {free:'1 kg Noodles FREE 🎉',gm:1000};
+  if(total>=9000)  return {free:'900 gm Noodles FREE 🎉',gm:900};
+  if(total>=8000)  return {free:'800 gm Noodles FREE 🎉',gm:800};
+  if(total>=7000)  return {free:'700 gm Noodles FREE 🎉',gm:700};
+  if(total>=6000)  return {free:'600 gm Noodles FREE 🎉',gm:600};
+  if(total>=5000)  return {free:'500 gm Noodles FREE 🎉',gm:500};
+  if(total>=3000)  return {free:'450 gm Noodles FREE 🎉',gm:450};
+  if(total>=2000)  return {free:'350 gm Noodles FREE 🎉',gm:350};
+  if(total>=1000)  return {free:'250 gm Noodles FREE 🎉',gm:250};
+  return null;
+}
+function buildKiranaMessage(items, payMethod){
+  const date = new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const time = new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+
+  let msg = '';
+
+  // Header
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += ` *NOODLES MOM'S SON*\n`;
+  msg += ` *Best Prices | Quality Assured*\n`;
+  msg += ` Nagpur | 📞 +91 98810 47800\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  // Order Info
+  msg += ` *Date:* ${date}\n`;
+  msg += ` *Time:* ${time}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  msg += ` *ORDER SUMMARY*\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+
+  let total = 0, sr = 1;
+
+  items.forEach(item => {
+    const qty = item.qty || 1;
+    const amt = item.price * qty;
+    total += amt;
+
+    msg += `\n${sr}. *${item.name}*\n`;
+    msg += `   ▸ Brand : ${item.brand || '-'}\n`;
+    msg += `   ▸ Unit  : ${item.unit || '-'}\n`;
+    msg += `   ▸ Qty   : ${qty} × ₹${item.price}\n`;
+    msg += `   ▸ Amount: *₹${amt}*\n`;
+
+    sr++;
+  });
+
+  msg += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += ` *Subtotal:* ₹${total}\n`;
+
+  // Offer Section
+  const slab = getFreeNoodlesSlab(total);
+  if(slab){
+    msg += ` *Free Bonus:* ${slab.free}\n`;
+  } else {
+    const slabs = [1000,2000,3000,5000,6000,7000,8000,9000,10000];
+    const nextSlab = slabs.find(s => total < s) || 10000;
+    msg += ` Add ₹${nextSlab - total} more & get FREE noodles\n`;
+  }
+
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += ` *Delivery:* FREE (Nagpur)\n`;
+  msg += ` *Handling Charges:* ₹25\n`;
+  msg += ` *Delivery Time:* 24–48 Hours\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+
+  // Payment
+  if(payMethod === 'online'){
+    msg += ` *Payment Mode: Online (UPI / QR)*\n`;
+    msg += ` *UPI ID:* 9881047800@upi\n`;
+    msg += ` *Scan QR & share payment screenshot*\n`;
+  } else {
+    msg += ` *Payment Mode: Cash on Delivery*\n`;
+    msg += ` *Please keep exact change ready*\n`;
+  }
+
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += ` *TOTAL PAYABLE:* ₹${total + 25}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  msg += ` Kindly confirm availability & delivery schedule.\n`;
+  msg += ` Thank you for choosing us!\n\n`;
+
+  msg += `— *Team Noodles Mom's Son*\n`;
+  msg += ` *SIR Research Consultancy, Nagpur*\n`;
+  msg += ` *Designed & Developed by HP3 Tech*\n`;
+  return msg;
+}
+
+// ── PAYMENT MODAL ──
+let pendingOrderItems = [];
+let selectedPayMethod = null;
+
+function openPayModal(source){
+  let items=[];
+  if(source==='cart'){
+    if(cart.length===0){showToast('Your cart is empty!','var(--crimson)');return}
+    items=cart;
+  } else if(source==='single'&&currentProduct){
+    items=[{...currentProduct,img:getImg(currentProduct.name),qty:1}];
+  }
+  pendingOrderItems=items;
+  selectedPayMethod=null;
+
+  // Reset UI
+  document.getElementById('payOptOnline').classList.remove('selected');
+  document.getElementById('payOptCod').classList.remove('selected');
+  document.getElementById('qrSection').classList.remove('show');
+  document.getElementById('codSection').classList.remove('show');
+
+  // Build summary
+  const total=items.reduce((a,c)=>a+c.price*(c.qty||1),0);
+  const slab=getFreeNoodlesSlab(total);
+  let sumHtml=`
+    ${items.map(it=>`<div class="pay-summary-row"><span>${it.name} (${it.unit}) ×${it.qty||1}</span><span>₹${it.price*(it.qty||1)}</span></div>`).join('')}
+    <div class="pay-summary-row"><span>Handling Charges</span><span>₹25</span></div>
+    ${slab?`<div class="pay-summary-row" style="color:var(--emerald-mid)"><span>🎁 ${slab.free}</span><span>FREE</span></div>`:''}
+    <div class="pay-summary-row total"><span>Total Payable</span><span>₹${total+25}</span></div>`;
+  document.getElementById('paySummary').innerHTML=sumHtml;
+
+  document.getElementById('payModal').classList.add('open');
   document.body.style.overflow='hidden';
+  closeCart();
 }
-function closeCart(){
-  document.getElementById('cartOverlay').classList.remove('open');
-  document.getElementById('cartSidebar').classList.remove('open');
+
+function closePayModal(){
+  document.getElementById('payModal').classList.remove('open');
   document.body.style.overflow='';
 }
-function checkoutCart(){
-  if(cart.length===0){showToast('Your cart is empty!','var(--crimson)');return}
-  checkoutWa();
+
+function selectPayMethod(method){
+  selectedPayMethod=method;
+  document.getElementById('payOptOnline').classList.toggle('selected',method==='online');
+  document.getElementById('payOptCod').classList.toggle('selected',method==='cod');
+  document.getElementById('qrSection').classList.toggle('show',method==='online');
+  document.getElementById('codSection').classList.toggle('show',method==='cod');
+  const txt=method==='online'
+    ? '📲 Confirm & Send Order (Online Pay)'
+    : '💵 Confirm & Send Order (COD)';
+  document.getElementById('payConfirmText').textContent=txt;
 }
-function checkoutWa(){
-  if(cart.length===0){showToast('Your cart is empty!','var(--crimson)');return}
-  const total=cart.reduce((a,c)=>a+c.price*c.qty,0);
-  const lines=cart.map(c=>`• ${c.name} × ${c.qty} = ₹${c.price*c.qty}`).join('\n');
-  const msg=`Hello! I want to place an order:\n\n${lines}\n\n*Total: ₹${total}*\n\nPlease confirm availability 🙏`;
+
+function confirmOrder(){
+  if(!selectedPayMethod){showToast('Please select a payment method!','var(--saffron-deep)');return}
+  if(pendingOrderItems.length===0){showToast('No items to order!','var(--crimson)');return}
+  const msg=buildKiranaMessage(pendingOrderItems,selectedPayMethod);
   window.open(`https://wa.me/919881047800?text=${encodeURIComponent(msg)}`,'_blank');
+  closePayModal();
+  showToast('Order sent via WhatsApp! 🎉');
 }
+
 function toggleWishlist(name,btn){
   if(wishlist.has(name)){wishlist.delete(name);btn.classList.remove('liked');showToast('Removed from wishlist')}
   else{wishlist.add(name);btn.classList.add('liked');showToast('Added to wishlist ❤️','var(--crimson)')}
 }
 
-// ── RENDER ──
-let currentCat='all', currentSort='default', searchQuery='', currentView='grid';
-let currentProduct=null;
+function quickWa(name,brand,price,unit,sku){
+  const p=products.find(x=>x.sku===sku);
+  openPayModal_single({name,brand,price,unit,sku,img:getImg(name),qty:1});
+}
+function openPayModal_single(item){
+  pendingOrderItems=[item];
+  selectedPayMethod=null;
+  document.getElementById('payOptOnline').classList.remove('selected');
+  document.getElementById('payOptCod').classList.remove('selected');
+  document.getElementById('qrSection').classList.remove('show');
+  document.getElementById('codSection').classList.remove('show');
+  const total=item.price*(item.qty||1);
+  const slab=getFreeNoodlesSlab(total);
+  document.getElementById('paySummary').innerHTML=`
+    <div class="pay-summary-row"><span>${item.name} (${item.unit})</span><span>₹${total}</span></div>
+    <div class="pay-summary-row"><span>Handling Charges</span><span>₹25</span></div>
+    ${slab?`<div class="pay-summary-row" style="color:var(--emerald-mid)"><span>🎁 ${slab.free}</span><span>FREE</span></div>`:''}
+    <div class="pay-summary-row total"><span>Total Payable</span><span>₹${total+25}</span></div>`;
+  document.getElementById('payConfirmText').textContent='Confirm & Send Order via WhatsApp';
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+// ── RENDER PRODUCTS ──
+let currentCat='all',currentSort='default',searchQuery='',currentView='grid';
 
 function getFiltered(){
   let list=currentCat==='all'?[...products]:products.filter(p=>p.cat===currentCat);
-  if(searchQuery){const q=searchQuery.toLowerCase();list=list.filter(p=>p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q))}
+  if(searchQuery){const q=searchQuery.toLowerCase();list=list.filter(p=>p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)||p.sku.includes(q))}
   if(currentSort==='price-asc')list.sort((a,b)=>a.price-b.price);
   else if(currentSort==='price-desc')list.sort((a,b)=>b.price-a.price);
-  else if(currentSort==='discount')list.sort((a,b)=>discount(b.price,b.old)-discount(a.price,a.old));
   else if(currentSort==='name')list.sort((a,b)=>a.name.localeCompare(b.name));
   return list;
 }
@@ -796,50 +1249,46 @@ function renderProducts(){
   if(filtered.length===0){grid.innerHTML='';noRes.classList.add('show');return}
   noRes.classList.remove('show');
   grid.innerHTML=filtered.map((p,i)=>{
-    const oos=isOOS(p.name);
     const idx=products.indexOf(p);
-    const sr=productStars[p.name]||{stars:'★★★★☆',count:'4.5',reviews:'50'};
-    const weight=productWeights[p.name]||'';
     const emoji=catEmojis[p.cat]||'🛒';
+    const disc=discount(p.price,p.old);
+    const imgSrc=getImg(p.name);
     return `
-    <div class="product-card ${oos?'out-of-stock':''}" style="animation:cardReveal .55s ${i*.07}s cubic-bezier(.34,1.56,.64,1) both" onclick="openProductModal(${idx},event)">
+    <div class="product-card" style="animation:cardReveal .55s ${i*.05}s cubic-bezier(.34,1.56,.64,1) both" onclick="openProductModal(${idx},event)">
       <div class="product-card-glow"></div>
       <div class="product-img-wrap">
         ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
+        <div class="product-sku">SKU ${p.sku}</div>
         <button class="product-wishlist ${wishlist.has(p.name)?'liked':''}" onclick="toggleWishlist('${p.name}',this);event.stopPropagation()" title="Wishlist">
           <i class="fa${wishlist.has(p.name)?'s':'r'} fa-heart"></i>
         </button>
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        ${oos?`<div class="oos-overlay"><div class="oos-badge">🚫 Out of Stock</div><div class="oos-sub">Restocking soon</div></div>`:`
-          <div class="product-action-btns">
-            <button class="product-action-btn" onclick="openZoom('${p.img}');event.stopPropagation()"><i class="fas fa-search-plus"></i> Zoom</button>
-            <button class="product-action-btn" onclick="quickWa('${p.name}',${p.price});event.stopPropagation()"><i class="fab fa-whatsapp" style="color:#25D366"></i> Order</button>
-          </div>
-          <div class="product-cat-tag">${emoji} ${catLabels[p.cat]||p.cat}</div>
-        `}
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x300/0A4A3A/fff?text=${encodeURIComponent(p.name)}'">
+        <div class="product-action-btns">
+          <button class="product-action-btn" onclick="openZoom('${imgSrc}');event.stopPropagation()"><i class="fas fa-search-plus"></i> Zoom</button>
+          <button class="product-action-btn" onclick="quickWa('${p.name}','${p.brand}',${p.price},'${p.unit}','${p.sku}');event.stopPropagation()"><i class="fab fa-whatsapp" style="color:#25D366"></i> Order</button>
+        </div>
+        <div class="product-cat-tag">${emoji} ${catLabels[p.cat]||p.cat}</div>
       </div>
       <div class="product-info">
-        <div class="product-stars">${sr.stars} <span class="review-count">${sr.count} (${sr.reviews})</span></div>
+        <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
-        ${weight?`<div class="product-meta-row"><span>${weight}</span><span class="product-meta-dot"></span><span>Per Pack</span></div>`:''}
+        <div class="product-meta-row"><span>${p.unit}</span><span class="product-meta-dot"></span><span>Per Pack</span></div>
         <div class="product-price-row">
           <span class="product-price">₹${p.price}</span>
-          <span class="product-old">₹${p.old}</span>
-          <span class="product-discount">↓ ${discount(p.price,p.old)}% off</span>
+          ${p.old&&p.old>p.price?`<span class="product-old">₹${p.old}</span><span class="product-discount">↓ ${disc}% off</span>`:''}
         </div>
         <div class="product-divider"></div>
         <div class="product-btns">
-          <button class="btn-buy" ${oos?'disabled':''} onclick="addToCart(${idx});event.stopPropagation()">
-            ${oos?`<i class="fas fa-ban"></i><span class="btn-text">Out of Stock</span>`:`<i class="fas fa-shopping-bag"></i><span class="btn-text">Add to Cart</span>`}
+          <button class="btn-buy" onclick="addToCart(${idx});event.stopPropagation()">
+            <i class="fas fa-shopping-bag"></i><span class="btn-text">Add to Cart</span>
           </button>
-          ${!oos?`<button class="btn-wa-quick" title="Order on WhatsApp" onclick="quickWa('${p.name}',${p.price});event.stopPropagation()"><i class="fab fa-whatsapp"></i></button>`:''}
+          <button class="btn-wa-quick" title="Order on WhatsApp" onclick="quickWa('${p.name}','${p.brand}',${p.price},'${p.unit}','${p.sku}');event.stopPropagation()"><i class="fab fa-whatsapp"></i></button>
         </div>
       </div>
     </div>`;
   }).join('');
 }
 
-// ── SEARCH ──
 document.getElementById('searchInput').addEventListener('input',function(){
   searchQuery=this.value.trim();
   document.getElementById('searchClear').classList.toggle('show',searchQuery.length>0);
@@ -851,8 +1300,6 @@ function clearSearch(){
   document.getElementById('searchClear').classList.remove('show');
   renderProducts();
 }
-
-// ── CATEGORY TABS ──
 document.querySelectorAll('.cat-tab').forEach(tab=>{
   tab.addEventListener('click',function(){
     document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
@@ -861,11 +1308,7 @@ document.querySelectorAll('.cat-tab').forEach(tab=>{
     renderProducts();
   });
 });
-
-// ── SORT ──
 function applySort(){currentSort=document.getElementById('sortSelect').value;renderProducts()}
-
-// ── VIEW TOGGLE ──
 function setView(mode){
   currentView=mode;
   const grid=document.getElementById('productsGrid');
@@ -879,74 +1322,136 @@ function setView(mode){
 function openProductModal(idx,e){
   if(e)e.stopPropagation();
   const p=products[idx];currentProduct=p;
-  const oos=isOOS(p.name);
-  document.getElementById('modalImg').src=p.img;
+  const imgSrc=getImg(p.name);
+  document.getElementById('modalImg').src=imgSrc;
+  document.getElementById('modalImg').onerror=function(){this.src='https://placehold.co/460x500/0A4A3A/fff?text='+encodeURIComponent(p.name)};
   document.getElementById('modalName').textContent=p.name;
   document.getElementById('modalPrice').textContent=`₹${p.price}`;
-  document.getElementById('modalOld').textContent=`₹${p.old}`;
-  document.getElementById('modalSave').textContent=`Save ${discount(p.price,p.old)}%`;
-  document.getElementById('modalDesc').textContent=descs[p.name]||'Premium quality product from Noodles Mom\'s Son.';
+  const disc=discount(p.price,p.old);
+  document.getElementById('modalOld').textContent=p.old&&p.old>p.price?`₹${p.old}`:'';
+  const saveEl=document.getElementById('modalSave');
+  saveEl.textContent=disc>0?`Save ${disc}%`:'';
+  saveEl.style.display=disc>0?'inline':'none';
   document.getElementById('modalCatTag').textContent=`${catEmojis[p.cat]||'🛒'} ${catLabels[p.cat]||p.cat}`;
-  const sr=productStars[p.name]||{stars:'★★★★☆',count:'4.5',reviews:'50'};
-  document.getElementById('modalStars').innerHTML=`${sr.stars} <span>${sr.count} (${sr.reviews} reviews)</span>`;
-  const w=productWeights[p.name]||'';
-  document.getElementById('modalWeight').textContent=w||'Standard';
+  document.getElementById('modalStars').innerHTML=`★★★★☆ <span>4.5 (Reviews)</span>`;
+  document.getElementById('modalWeight').textContent=p.unit||'Standard';
+  document.getElementById('modalBrand').textContent=p.brand||'Local';
+  document.getElementById('modalSkuRow').innerHTML=`<span class="modal-sku-badge">SKU: ${p.sku}</span><span class="modal-sku-badge">Category: ${catLabels[p.cat]||p.cat}</span>`;
   const badgeEl=document.getElementById('modalImgBadge');
   if(p.badge){badgeEl.textContent=p.badge;badgeEl.style.display='block'}else badgeEl.style.display='none';
-  document.getElementById('modalOosOverlay').style.display=oos?'flex':'none';
   const hlList=highlights[p.cat]||['✅ Quality Assured','📦 Freshly Packed','🚚 Fast Delivery'];
   document.getElementById('modalHighlights').innerHTML=hlList.map(h=>`<div class="modal-highlight-chip">${h}</div>`).join('');
-  const btnCart=document.getElementById('modalBtnCart');
-  const btnOrder=document.getElementById('modalBtnOrder');
-  const btnWa=document.getElementById('modalBtnWa');
-  if(oos){btnCart.disabled=true;btnOrder.disabled=true;btnWa.disabled=true;btnCart.querySelector('span').innerHTML='<i class="fas fa-ban"></i> Out of Stock'}
-  else{btnCart.disabled=false;btnOrder.disabled=false;btnWa.disabled=false;btnCart.querySelector('span').innerHTML='<i class="fas fa-shopping-bag"></i> Add to Cart'}
   document.getElementById('productModal').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeProductModal(e){if(e.target===document.getElementById('productModal'))closeProductModalDirect()}
 function closeProductModalDirect(){document.getElementById('productModal').classList.remove('open');document.body.style.overflow=''}
 function modalAddToCart(){
-  if(!currentProduct||isOOS(currentProduct.name))return;
+  if(!currentProduct)return;
   const idx=products.indexOf(currentProduct);
   addToCart(idx);
   closeProductModalDirect();
 }
 function modalBuyNow(){
-  if(!currentProduct||isOOS(currentProduct.name))return;
-  window.open(`https://wa.me/919881047800?text=${encodeURIComponent(`Hello! I want to order: *${currentProduct.name}* (₹${currentProduct.price})\nPlease confirm availability! 🙏`)}`,'_blank');
+  if(!currentProduct)return;
+  closeProductModalDirect();
+  openPayModal_single({...currentProduct,img:getImg(currentProduct.name),qty:1});
 }
 function modalOrderWa(){
-  if(!currentProduct||isOOS(currentProduct.name))return;
-  window.open(`https://wa.me/919881047800?text=${encodeURIComponent(`Hi! I'm interested in: *${currentProduct.name}*\nPrice: ₹${currentProduct.price}\nPlease confirm! 🙏`)}`,'_blank');
+  if(!currentProduct)return;
+  closeProductModalDirect();
+  openPayModal_single({...currentProduct,img:getImg(currentProduct.name),qty:1});
 }
 
-// ── QUICK WA ──
-function quickWa(name,price){
-  window.open(`https://wa.me/919881047800?text=${encodeURIComponent(`Hi! I want to order: *${name}* at ₹${price}. Please confirm! 🙏`)}`,'_blank');
-}
-
-// ── ZOOM ──
 function openZoom(src){document.getElementById('zoomImg').src=src;document.getElementById('zoomModal').classList.add('open')}
 function closeZoom(){document.getElementById('zoomModal').classList.remove('open')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeZoom();closeProductModalDirect();closeCart()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeZoom();closeProductModalDirect();closeCart();closePayModal()}});
 
-// ── RIPPLE ──
+// RIPPLE
 document.addEventListener('click',function(e){
-  const btn=e.target.closest('.btn-buy,.modal-btn-order,.modal-btn-wa,.btn-wa-quick,.cart-checkout,.cart-wa');
+  const btn=e.target.closest('.btn-buy,.modal-btn-order,.modal-btn-wa,.btn-wa-quick,.cart-checkout,.cart-wa,.entry-btn,.pay-confirm-btn,.pay-option');
   if(!btn||btn.disabled)return;
-  const r=document.createElement('div');
-  r.className='ripple-circle';
+  const r=document.createElement('div');r.className='ripple-circle';
   const rect=btn.getBoundingClientRect();
-  r.style.left=(e.clientX-rect.left)+'px';
-  r.style.top=(e.clientY-rect.top)+'px';
+  r.style.left=(e.clientX-rect.left)+'px';r.style.top=(e.clientY-rect.top)+'px';
   btn.style.position='relative';btn.style.overflow='hidden';
   btn.appendChild(r);setTimeout(()=>r.remove(),700);
 });
 
+// ── KIRANA ENTRY SHEET ──
+let entryRows=[];
+function initEntrySheet(){
+  entryRows=products.map((p,i)=>({sr:i+1,name:p.name,brand:p.brand,unit:p.unit,cat:catLabels[p.cat]||p.cat,price:p.price,qty:'',checkedBy:'',remarks:'',checked:false}));
+  renderEntrySheet();
+}
+function renderEntrySheet(){
+  const tbody=document.getElementById('entryTbody');
+  tbody.innerHTML=entryRows.map((row,i)=>`
+    <tr class="${row.checked?'checked-row':''}" id="erow-${i}">
+      <td>${String(i+1).padStart(2,'0')}</td>
+      <td><div class="item-name-cell">${row.name}</div><span class="cat-badge">${row.cat}</span></td>
+      <td class="brand-cell">${row.brand}</td>
+      <td><input type="number" min="0" step="0.5" placeholder="qty" value="${row.qty}" oninput="entryUpdate(${i},'qty',this.value)" style="width:70px"></td>
+      <td>${row.unit}</td>
+      <td style="color:var(--saffron-glow);font-weight:700">₹${row.price}</td>
+      <td class="amount-cell" id="eamt-${i}">${row.qty?'₹'+(row.qty*row.price).toFixed(0):'—'}</td>
+      <td><input type="text" placeholder="name" value="${row.checkedBy}" oninput="entryUpdate(${i},'checkedBy',this.value)" style="width:80px"></td>
+      <td><div style="display:flex;align-items:center;gap:.5rem">
+        <input type="text" placeholder="remarks" value="${row.remarks}" oninput="entryUpdate(${i},'remarks',this.value)" style="width:90px">
+        <div class="check-cell"><input type="checkbox" ${row.checked?'checked':''} onchange="entryUpdate(${i},'checked',this.checked)"></div>
+      </div></td>
+    </tr>`).join('');
+  updateEntrySummary();
+}
+function entryUpdate(i,field,val){
+  if(field==='qty')val=parseFloat(val)||'';
+  if(field==='checked')val=!!val;
+  entryRows[i][field]=val;
+  if(field==='qty'){const amt=val?'₹'+(val*entryRows[i].price).toFixed(0):'—';const el=document.getElementById('eamt-'+i);if(el)el.textContent=amt}
+  if(field==='checked'){const tr=document.getElementById('erow-'+i);if(tr)tr.className=val?'checked-row':''}
+  updateEntrySummary();
+}
+function updateEntrySummary(){
+  const itemsWithQty=entryRows.filter(r=>r.qty>0);
+  const total=itemsWithQty.reduce((a,r)=>a+(r.qty*r.price),0);
+  const checked=entryRows.filter(r=>r.checked).length;
+  document.getElementById('summaryItems').textContent=itemsWithQty.length;
+  document.getElementById('summaryAmount').textContent='₹'+total.toFixed(0);
+  document.getElementById('summaryChecked').textContent=checked;
+  document.getElementById('entryTotalCell').textContent='₹'+total.toFixed(0);
+}
+function clearEntrySheet(){entryRows.forEach(r=>{r.qty='';r.checkedBy='';r.remarks='';r.checked=false});renderEntrySheet();showToast('Entry sheet cleared!','var(--crimson)')}
+function sendEntrySheetWa(){
+  const items=entryRows.filter(r=>r.qty>0).map(r=>({name:r.name,brand:r.brand,price:r.price,unit:r.unit,sku:'—',qty:r.qty}));
+  if(items.length===0){showToast('Add quantities first!','var(--crimson)');return}
+  pendingOrderItems=items;
+  selectedPayMethod=null;
+  document.getElementById('payOptOnline').classList.remove('selected');
+  document.getElementById('payOptCod').classList.remove('selected');
+  document.getElementById('qrSection').classList.remove('show');
+  document.getElementById('codSection').classList.remove('show');
+  const total=items.reduce((a,c)=>a+c.price*(c.qty||1),0);
+  const slab=getFreeNoodlesSlab(total);
+  document.getElementById('paySummary').innerHTML=`
+    ${items.map(it=>`<div class="pay-summary-row"><span>${it.name} ×${it.qty}</span><span>₹${(it.price*it.qty).toFixed(0)}</span></div>`).join('')}
+    <div class="pay-summary-row"><span>Handling</span><span>₹25</span></div>
+    ${slab?`<div class="pay-summary-row" style="color:var(--emerald-mid)"><span>🎁 ${slab.free}</span><span>FREE</span></div>`:''}
+    <div class="pay-summary-row total"><span>Total Payable</span><span>₹${total+25}</span></div>`;
+  document.getElementById('payConfirmText').textContent='Confirm & Send Order via WhatsApp';
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function addCartToSheet(){
+  if(cart.length===0){showToast('Your cart is empty!','var(--crimson)');return}
+  cart.forEach(ci=>{const row=entryRows.find(r=>r.name===ci.name);if(row)row.qty=(parseFloat(row.qty)||0)+ci.qty});
+  renderEntrySheet();
+  showToast(`${cart.length} cart items imported to sheet! 📋`,'var(--emerald-mid)');
+}
+
 // INIT
 renderProducts();
 renderCartBody();
+initEntrySheet();
 </script>
 </body>
 </html>
