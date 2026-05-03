@@ -345,14 +345,164 @@ nav.scrolled{background:rgba(6,15,12,.96);backdrop-filter:blur(24px);padding:.75
 .modal-sku-row{display:flex;gap:1rem;flex-wrap:wrap;font-size:.75rem;color:#9ab;font-weight:600}
 .modal-sku-badge{background:rgba(10,74,58,.07);padding:.2rem .7rem;border-radius:8px;border:1px solid rgba(10,74,58,.12)}
 
-/* PAYMENT MODAL */
-.pay-modal{display:none;position:fixed;inset:0;z-index:1300;background:rgba(6,15,12,.96);backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:1.5rem}
-.pay-modal.open{display:flex;animation:fadeIn .3s}
-.pay-modal-inner{background:var(--warm-white);border-radius:28px;max-width:520px;width:100%;padding:0;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7);animation:modalSlideUp .45s cubic-bezier(.34,1.56,.64,1);border:1px solid rgba(245,166,35,.2);position:relative}
-.pay-modal-header{background:linear-gradient(135deg,var(--emerald),var(--emerald-mid));padding:2rem 2rem 1.5rem;text-align:center}
-.pay-modal-header h2{font-family:'Fraunces',serif;color:#fff;font-size:1.8rem;font-weight:900;margin-bottom:.4rem}
-.pay-modal-header p{color:rgba(255,255,255,.7);font-size:.88rem}
-.pay-modal-body{padding:2rem}
+/* PAYMENT MODAL BACKGROUND */
+.pay-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:1300;
+  background:rgba(6,15,12,.96);
+  backdrop-filter:blur(16px);
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+}
+
+/* SHOW MODAL */
+.pay-modal.open{
+  display:flex;
+  animation:fadeIn .3s;
+}
+
+/* MODAL BOX */
+.pay-modal-inner{
+  background:var(--warm-white);
+  border-radius:22px;
+  width:100%;
+  max-width:520px;
+
+  /* 🔥 IMPORTANT FIX */
+  max-height:90vh;
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,.5);
+  border:1px solid rgba(245,166,35,.2);
+}
+
+/* HEADER */
+.pay-modal-header{
+  background:linear-gradient(135deg,var(--emerald),var(--emerald-mid));
+  padding:1.4rem;
+  text-align:center;
+}
+
+.pay-modal-header h2{
+  color:#fff;
+  font-size:1.5rem;
+  font-weight:800;
+}
+
+/* BODY (SCROLL ENABLED) */
+.pay-modal-body{
+  padding:1.5rem;
+
+  /* 🔥 SCROLL ENABLE */
+  overflow-y:auto;
+  flex:1;
+}
+
+/* SCROLLBAR (optional stylish) */
+.pay-modal-body::-webkit-scrollbar{
+  width:6px;
+}
+.pay-modal-body::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.2);
+  border-radius:10px;
+}
+
+/* PAYMENT OPTIONS */
+.pay-options{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.pay-option{
+  border:2px solid #eee;
+  border-radius:16px;
+  padding:1.2rem;
+  text-align:center;
+  cursor:pointer;
+  transition:.25s;
+  background:#fafafa;
+}
+
+.pay-option:hover{
+  border-color:var(--emerald);
+  transform:scale(1.02);
+}
+
+/* SELECTED */
+.pay-option.active{
+  border-color:var(--emerald);
+  background:#f0fff6;
+}
+
+/* QR SECTION */
+.qr-section{
+  margin-top:1.5rem;
+  text-align:center;
+}
+
+.qr-section img{
+  width:200px;
+  max-width:100%;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* BUTTON */
+.pay-confirm-btn{
+  margin-top:1.5rem;
+  width:100%;
+  padding:1rem;
+  border:none;
+  border-radius:14px;
+  background:var(--emerald);
+  color:#fff;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* CANCEL BUTTON */
+.pay-cancel-btn{
+  margin-top:.7rem;
+  width:100%;
+  padding:.9rem;
+  border-radius:14px;
+  border:1px solid #ddd;
+  background:#fff;
+}
+
+/* CLOSE BUTTON */
+.pay-modal-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  border:none;
+  background:none;
+  font-size:1.2rem;
+  cursor:pointer;
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width:480px){
+  .pay-modal-inner{
+    max-width:100%;
+    border-radius:18px;
+  }
+
+  .pay-modal-body{
+    padding:1rem;
+  }
+
+  .pay-option{
+    padding:1rem;
+  }
+}
 .pay-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
 .pay-option{background:#fff;border:2px solid rgba(10,74,58,.12);border-radius:20px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
 .pay-option:hover{border-color:var(--emerald-light);transform:translateY(-6px);box-shadow:0 20px 50px rgba(10,74,58,.15)}
@@ -613,7 +763,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:4rem 2rem 2rem;bor
   .steps-row{grid-template-columns:1fr 1fr}
   .pledge-inner{grid-template-columns:1fr;gap:3rem}
   .footer-top{grid-template-columns:1fr 1fr}
-  .pay-options{grid-template-columns:1fr}
+  .pay-options{grid-template-columns:4fr}
   .hero-stat-item{padding:1rem 1.5rem;flex:1 0 40%}
 }
 @media(max-width:640px){
@@ -628,6 +778,8 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:4rem 2rem 2rem;bor
   .footer-top{grid-template-columns:1fr}
   .offers-highlights{grid-template-columns:repeat(2,1fr)}
 }
+
+
 </style>
 </head>
 <body>
@@ -648,7 +800,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:4rem 2rem 2rem;bor
   <ul class="nav-links" id="navLinks">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#offers">Offers</a></li>
-    <li><a href="product.html">Products</a></li>
+    <li><a href="#products">Products</a></li>
     <li><a href="#why-us">Why Us</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#order">How to Order</a></li>
@@ -723,7 +875,6 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:4rem 2rem 2rem;bor
     <button class="pay-modal-close" onclick="closePayModal()"><i class="fas fa-times"></i></button>
     <div class="pay-modal-header">
       <h2>💳 Choose Payment</h2>
-      <p>Select your preferred payment method to complete order</p>
     </div>
     <div class="pay-modal-body">
       <div class="pay-summary" id="paySummary"></div>
@@ -732,26 +883,24 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:4rem 2rem 2rem;bor
           <div class="pay-option-check"><i class="fas fa-check"></i></div>
           <span class="pay-option-icon">📱</span>
           <div class="pay-option-title">Online Payment</div>
-          <div class="pay-option-desc">UPI · QR Code · GPay · PhonePe · Paytm</div>
+          
         </div>
         <div class="pay-option" id="payOptCod" onclick="selectPayMethod('cod')">
           <div class="pay-option-check"><i class="fas fa-check"></i></div>
           <span class="pay-option-icon">💵</span>
           <div class="pay-option-title">Cash on Delivery</div>
-          <div class="pay-option-desc">Pay cash when your order arrives at door</div>
+      
         </div>
       </div>
       <div class="qr-section" id="qrSection">
         <img src="./qrcode.jpeg" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9881047800@upi&pn=NoodlesMomsSon&am=0&cu=INR'">
-        <h4>Scan & Pay via UPI</h4>
-        <p>Scan the QR code using any UPI app<br>GPay · PhonePe · Paytm · BHIM</p>
-        <div class="qr-upi">📲 UPI: 9881047800@upi</div>
-        <p style="font-size:.72rem;color:#aaa;margin-top:.8rem">After payment, screenshot will be sent via WhatsApp for confirmation</p>
+       
+    <p style="font-size:.72rem;color:#aaa;margin-top:.8rem">After payment, screenshot will be sent via WhatsApp for confirmation</p>
       </div>
       <div class="qr-section" id="codSection">
         <span style="font-size:3rem;display:block;margin-bottom:.8rem">💵</span>
         <h4>Cash on Delivery</h4>
-        <p>Keep exact change ready.<br>Our delivery partner will collect payment at your door.</p>
+       
         <div class="qr-upi" style="background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.2);color:var(--saffron-deep)">⏰ Delivery: 24–48 hours · Nagpur</div>
       </div>
       <button class="pay-confirm-btn" id="payConfirmBtn" onclick="confirmOrder()">
@@ -1455,7 +1604,7 @@ function buildKiranaMessage(items,payMethod){
   msg+=`━━━━━━━━━━━━━━━━━━━━\n*Delivery:* FREE (Nagpur)\n*Handling Charges:* ₹25\n*Delivery Time:* 24–48 hrs\n━━━━━━━━━━━━━━━━━━━━\n`;
   if(payMethod==='online'){msg+=`*PAYMENT: Online (UPI / QR)*\n*UPI ID:* 9881047800@upi\nPlease scan the QR & share screenshot\n`}
   else{msg+=`*PAYMENT: Cash on Delivery (COD)*\nPlease keep exact change ready\n`}
- msg+=`━━━━━━━━━━━━━━━━━━━━\n*TOTAL PAYABLE:* ₹${total+25}\n━━━━━━━━━━━━━━━━━━━━\n\nThank you for your order!\n*Team Noodles Mom's Son*\nn*SIR Research Consultancy, Nagpur*\nn*Designed & Developed by HP3 Tech*\n`;
+  msg+=`━━━━━━━━━━━━━━━━━━━━\n*TOTAL PAYABLE:* ₹${total+25}\n━━━━━━━━━━━━━━━━━━━━\n\nThank you for your order!\n*Team Noodles Mom's Son*\nn*SIR Research Consultancy, Nagpur*\nn*Designed & Developed by HP3 Tech*\n`;
   return msg;
 }
 
@@ -1582,8 +1731,7 @@ function renderProducts(){
           <button class="btn-buy" onclick="addToCart(${idx});event.stopPropagation()">
             <i class="fas fa-shopping-bag"></i><span class="btn-text">Add to Cart</span>
           </button>
-          <button class="btn-wa-quick" title="Order on WhatsApp" onclick="quickWa('${p.name}','${p.brand}',${p.price},'${p.unit}','${p.sku}');event.stopPropagation()"><i class="fab fa-whatsapp"></i></button>
-        </div>
+            </div>
       </div>
     </div>`;
   }).join('');
