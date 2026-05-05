@@ -1459,7 +1459,18 @@ const imgMap={
   'Masala Papad':'https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/09/Masala-Papad-03.jpg',
   'Peanut Chikki':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnltGkFNnfSfDwLdbE9SltG5GLTnU1UUv0WA&s',
   'Chocolate':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFPV5l19xmcarDJSV1hU0A5ZvDXm5nCIGX5A&s',
-  'Chewing Gum':'https://rukmini1.flixcart.com/image/1500/1500/xif0q/chewing-gum/b/f/c/-original-imahctwkeymfm688.jpeg?q=70'
+  'Chewing Gum':'https://rukmini1.flixcart.com/image/1500/1500/xif0q/chewing-gum/b/f/c/-original-imahctwkeymfm688.jpeg?q=70',
+  // NEW DRY FRUITS & MORE
+  'Kismiss':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB5yy3_3NWKMf-0mw0dx5ReUsRO5GS1Z5WsQ&s',
+  'Manuka':'https://m.media-amazon.com/images/I/71n61+oh1DS._AC_UF350,350_QL80_.jpg',
+  'Kala Manuka':'https://5.imimg.com/data5/ECOM/Default/2022/6/TI/ED/BX/13510045/copy-of-1200px-x-1200px-untitled-design-5.jpg',
+  'Pista (Salted)':'https://m.media-amazon.com/images/I/71K5URko0BL._AC_UF894,1000_QL80_.jpg',
+  'Green Pista':'https://5.imimg.com/data5/SELLER/Default/2025/1/483371703/YS/RA/VU/2046935/green-pista.jpg',
+  'Anjeer':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcxmKbi5xigCF5ENVXrBXif3yBUTRH1Bww-g&s',
+  'Gadi Sakkar':'https://dms.mydukaan.io/original/jpeg/354666/ef417fcc-ab5e-4516-9a35-43bf8ea0ac99.png',
+  'Camcami Sakkar':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93Z6_qIJM0juPuiAg3wu81V1YjMhTVJFh7w&s',
+  'Makhana':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzI9pr5xx6ufCK03Q9DwSYeotOV1V1Scyrqg&s',
+  'Charodi':'https://m.media-amazon.com/images/I/51OfKf7wYSL._AC_UF894,1000_QL80_.jpg'
 };
 function getImg(name){return imgMap[name]||'https://placehold.co/400x300/0A4A3A/fff?text='+encodeURIComponent(name)}
 
@@ -1513,8 +1524,22 @@ const products=[
   {sku:'193',name:'Floor Cleaner',brand:'Lizol',unit:'500ml',price:93,old:115,cat:'home'},
   {sku:'221',name:'Agarbatti',brand:'Cycle',unit:'Pack',price:33,old:45,cat:'pooja'},
   {sku:'222',name:'Kapoor',brand:'Local',unit:'Pack',price:40,old:55,cat:'pooja'},
-  {sku:'231',name:'Badam',brand:'Local',unit:'1kg',price:750,old:900,cat:'dryfruits',badge:'Premium'},
-  {sku:'232',name:'Kaju',brand:'Local',unit:'1kg',price:875,old:1050,cat:'dryfruits',badge:'Premium'},
+  // EXISTING DRY FRUITS (updated to 250g)
+  {sku:'231',name:'Badam',brand:'Local',unit:'250g',price:250,old:320,cat:'dryfruits',badge:'Premium'},
+  {sku:'232',name:'Kaju',brand:'Local',unit:'250g',price:260,old:330,cat:'dryfruits',badge:'Premium'},
+  // NEW DRY FRUITS
+  {sku:'233',name:'Kismiss',brand:'Local',unit:'250g',price:140,old:175,cat:'dryfruits'},
+  {sku:'234',name:'Manuka',brand:'Local',unit:'250g',price:180,old:220,cat:'dryfruits'},
+  {sku:'235',name:'Kala Manuka',brand:'Local',unit:'250g',price:150,old:190,cat:'dryfruits'},
+  {sku:'236',name:'Pista (Salted)',brand:'Local',unit:'250g',price:350,old:430,cat:'dryfruits',badge:'Premium'},
+  {sku:'237',name:'Green Pista',brand:'Local',unit:'250g',price:600,old:720,cat:'dryfruits',badge:'Premium'},
+  {sku:'238',name:'Anjeer',brand:'Local',unit:'250g',price:300,old:375,cat:'dryfruits',badge:'Premium'},
+  {sku:'239',name:'Makhana',brand:'Local',unit:'250g',price:350,old:430,cat:'dryfruits'},
+  {sku:'240',name:'Charodi',brand:'Local',unit:'50g',price:120,old:150,cat:'dryfruits'},
+  // EXISTING SWEETS CATEGORY - NEW ITEMS
+  {sku:'245',name:'Gadi Sakkar',brand:'Local',unit:'1kg',price:120,old:150,cat:'sweets'},
+  {sku:'246',name:'Camcami Sakkar',brand:'Local',unit:'1kg',price:120,old:150,cat:'sweets'},
+  // EXISTING
   {sku:'241',name:'Mango Pickle',brand:"Mom's Son",unit:'500g',price:80,old:110,cat:'pickles',badge:'Homemade'},
   {sku:'242',name:'Urad Papad',brand:'Local',unit:'250g',price:55,old:75,cat:'pickles'},
   {sku:'243',name:'Masala Papad',brand:'Local',unit:'250g',price:60,old:80,cat:'pickles',badge:'Spicy'},
@@ -1522,7 +1547,6 @@ const products=[
   {sku:'251',name:'Chocolate',brand:'Cadbury',unit:'Pack',price:25,old:35,cat:'sweets'},
   {sku:'252',name:'Chewing Gum',brand:'Center Fresh',unit:'Pack',price:7,old:10,cat:'sweets'}
 ];
-
 // CART
 let cart=[],wishlist=new Set(),currentProduct=null;
 function discount(p,o){if(!o||o<=p)return 0;return Math.round((o-p)/o*100)}
