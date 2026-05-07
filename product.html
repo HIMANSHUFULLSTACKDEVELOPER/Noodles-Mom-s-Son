@@ -701,6 +701,7 @@ footer{background:#030907;color:rgba(255,255,255,.45);padding:2.5rem 2rem;text-a
     <button class="cat-tab" data-cat="dryfruits"><span>🥜 Dry Fruits</span></button>
     <button class="cat-tab" data-cat="pickles"><span>🫙 Pickles</span></button>
     <button class="cat-tab" data-cat="sweets"><span>🍬 Sweets</span></button>
+    <button class="cat-tab" data-cat="soap"><span>🧼 Bathing Soap</span></button>
   </div>
 
   <div class="sort-bar reveal">
@@ -848,8 +849,7 @@ const highlights={
   impulse:['😋 Instant Treat','🍬 Daily Snack','💰 Value for Money']
 };
 
-// ── PRODUCT IMAGE MAP ──
-// Assign high-quality images per product name
+
 const imgMap={
   'Instant Noodles':'./img/3.png','Hakka Noodles':'./img/3.png','Folded Noodles':'./img/2.png',
   'Regular Rice':'https://www.health.com/thmb/a8GxwWgmB5KpQW8SfW6VA7UFwaI=/722x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1734160670-0157c2daf8e841d6a783b38aedc51aa8.jpg',
@@ -915,15 +915,44 @@ const imgMap={
   'Gadi Sakkar':'https://dms.mydukaan.io/original/jpeg/354666/ef417fcc-ab5e-4516-9a35-43bf8ea0ac99.png',
   'Camcami Sakkar':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93Z6_qIJM0juPuiAg3wu81V1YjMhTVJFh7w&s',
   'Makhana':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzI9pr5xx6ufCK03Q9DwSYeotOV1V1Scyrqg&s',
+  // BATHING SOAPS
+'Pears':'https://images.apollo247.in/pub/media/catalog/product/P/E/PEA0023_1-AUG23_1.jpg',
+'Pears Blue':'https://m.media-amazon.com/images/I/61PVolPfATL._AC_UF1000,1000_QL80_.jpg',
+'Pears Green':'https://rukminim2.flixcart.com/image/480/480/jyg5lzk0/soap/q/g/9/5-375-oil-clear-glow-soap-bar-75-gms-pack-of-5-pears-original-imafhmwfhus6hnzf.jpeg?q=90',
+'Dove':'https://5.imimg.com/data5/SELLER/Default/2021/6/NN/EF/GK/33812545/u5ee6b8ef708644f69ee8eedd6afda5d2w.jpg',
+'Acnil Pimple Care':'https://m.media-amazon.com/images/I/61BJdDvelRL._AC_UF894,1000_QL80_.jpg',
+'Assure Soap':'https://www.vestbuy.in/image/cache/catalog/personalcare/bodycare/assuresoap-600x548.png',
+'Mysore Sandal Gold':'https://m.media-amazon.com/images/I/51f2hGNQVXL.jpg',
+'Mysore Sandal 75g':'https://m.media-amazon.com/images/I/61mj6WBaDuL.jpg',
+'Mysore Sandal 150g':'https://m.media-amazon.com/images/I/41h+eb76RzL._AC_UF1000,1000_QL80_.jpg',
+'Mysore Sandal Wave':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_YPK333Abso2wUO-6xaiA9U1s1oLZGWPKvA&s',
+'Lifebuoy Bar':'https://m.media-amazon.com/images/I/61TzCC94qhL._AC_UF894,1000_QL80_.jpg',
+'Lifebuoy Lime':'https://aapkabazar.co/_next/image?url=https%3A%2F%2Fimage.aapkabazar.co%2Fproduct%2F9430%2F1769264258495.png%3Ftype%3Dwebp%26width%3D600&w=1080&q=75',
+'Rexona 100g':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh7oUxwC2gUKcqCZNZruVmJEUtA-7WFgKERw&s',
+'Godrej Shikakai':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSir3msstsdTLyleEFB1PJzwaTUE-D53CdlDw&s',
+'Lux Pink':'https://m.media-amazon.com/images/I/5178qTOrtTL._AC_UF1000,1000_QL80_.jpg',
+'Lux White':'https://m.media-amazon.com/images/I/41rkil8CkHL._AC_UF1000,1000_QL80_.jpg',
+'Fiama':'https://m.media-amazon.com/images/I/715dHKAiaEL.jpg',
+'Moti Sandal 75g':'https://m.media-amazon.com/images/I/31T2N2BecoL.jpg',
+'Moti Sandal 150g':'https://www.bbassets.com/media/uploads/p/xl/30001735_6-moti-luxury-bath-soap-sandal.jpg',
+'Santoor':'https://www.bbassets.com/media/uploads/p/l/100005805_12-santoor-bathing-soap-sandal-turmeric.jpg',
+'Vivel':'https://rukminim2.flixcart.com/image/480/640/xif0q/soap/u/p/t/-original-imahamtzbhkjtkyf.jpeg?q=90',
+'Margo':'https://m.media-amazon.com/images/I/71NuLzDYwKL._AC_UF1000,1000_QL80_.jpg',
+'Cinthol Lime':'https://m.media-amazon.com/images/I/51FDCPRU6mL._SL1200_.jpg',
+'Venus':'https://m.media-amazon.com/images/I/21OoNfNDRxL._AC_UF1000,1000_QL80_.jpg',
+'Medimix 3 Pack':'https://assets.truemeds.in/Images/ProductImage/TM-SOAP1-001014/medimix-ayurvedic-18-herbs-125gm-pack-of-3-soap_medimix-ayurvedic-18-herbs-125gm-pack-of-3-soap--TM-SOAP1-001014_1.png?width=320',
+'Medimix 7 Pack':'https://cdn01.pharmeasy.in/dam/products_otc/I08011/medimix-ayurvedic-classic-18-herbs-soap-75-gm-pack-of-6-7-1669655089.jpg',
+'Godrej Sandal':'https://groceryatdoor-com-2.myshopify.com/cdn/shop/products/godrej_no_1_sndl_soap_90gx4_pk3_351dd170-53dc-46a9-af66-2c27cb784f46_grande.jpeg?v=1407880319',
+'Godrej Lime':'https://budgetbazaar.online/wp-content/uploads/2023/01/BBP2332.jpg',
   'Charodi':'https://m.media-amazon.com/images/I/51OfKf7wYSL._AC_UF894,1000_QL80_.jpg'
 };
 function getImg(name){return imgMap[name]||'https://placehold.co/400x300/0A4A3A/fff?text='+encodeURIComponent(name)}
 
 // PRODUCTS DATA
 const products=[
-  {sku:'001',name:'Instant Noodles',brand:"Ghar Bhandar",unit:'1kg',price:100,old:130,cat:'instant',badge:'Special'},
-  {sku:'002',name:'Hakka Noodles',brand:"Ghar Bhandar",unit:'300g',price:40,old:70,cat:'instant',badge:'Best Seller'},
-  {sku:'003',name:'Folded Noodles',brand:"Ghar Bhandar",unit:'450g',price:70,old:90,cat:'instant',badge:'Popular'},
+  {sku:'001',name:'Instant Noodles',brand:"Mom's Son",unit:'1kg',price:100,old:130,cat:'instant',badge:'Special'},
+  {sku:'002',name:'Hakka Noodles',brand:"Mom's Son",unit:'300g',price:40,old:70,cat:'instant',badge:'Best Seller'},
+  {sku:'003',name:'Folded Noodles',brand:"Mom's Son",unit:'450g',price:70,old:90,cat:'instant',badge:'Popular'},
   {sku:'004',name:'Regular Rice',brand:'Local',unit:'1kg',price:56,old:70,cat:'staples',badge:'Special'},
   {sku:'005',name:'Basmati Rice',brand:'India Gate',unit:'1kg',price:110,old:135,cat:'staples'},
   {sku:'006',name:'Wheat Atta',brand:'Aashirvaad',unit:'1kg',price:41,old:55,cat:'staples'},
@@ -985,14 +1014,51 @@ const products=[
   {sku:'245',name:'Gadi Sakkar',brand:'Local',unit:'1kg',price:120,old:150,cat:'sweets'},
   {sku:'246',name:'Camcami Sakkar',brand:'Local',unit:'1kg',price:120,old:150,cat:'sweets'},
   // EXISTING
-  {sku:'241',name:'Mango Pickle',brand:"Ghar Bhandar",unit:'500g',price:80,old:110,cat:'pickles',badge:'Homemade'},
+  {sku:'241',name:'Mango Pickle',brand:"Mom's Son",unit:'500g',price:80,old:110,cat:'pickles',badge:'Homemade'},
   {sku:'242',name:'Urad Papad',brand:'Local',unit:'250g',price:55,old:75,cat:'pickles'},
   {sku:'243',name:'Masala Papad',brand:'Local',unit:'250g',price:60,old:80,cat:'pickles',badge:'Spicy'},
   {sku:'244',name:'Peanut Chikki',brand:'Local',unit:'200g',price:60,old:82,cat:'sweets'},
   {sku:'251',name:'Chocolate',brand:'Cadbury',unit:'Pack',price:25,old:35,cat:'sweets'},
+  // BATHING SOAPS
+{sku:'301',name:'Pears',brand:'HUL',unit:'75g',price:20,old:25,cat:'soap'},
+{sku:'302',name:'Pears',brand:'HUL',unit:'125g',price:50,old:60,cat:'soap'},
+{sku:'303',name:'Pears',brand:'HUL',unit:'3×75g',price:156,old:180,cat:'soap'},
+{sku:'304',name:'Pears',brand:'HUL',unit:'6×75g',price:211,old:240,cat:'soap'},
+{sku:'305',name:'Pears',brand:'HUL',unit:'12×75g',price:363,old:420,cat:'soap'},
+{sku:'306',name:'Pears',brand:'HUL',unit:'Jumbo',price:528,old:600,cat:'soap'},
+{sku:'307',name:'Pears Blue',brand:'HUL',unit:'75g',price:52,old:65,cat:'soap'},
+{sku:'308',name:'Pears Blue',brand:'HUL',unit:'125g',price:90,old:110,cat:'soap'},
+{sku:'309',name:'Pears Blue',brand:'HUL',unit:'Pack',price:380,old:440,cat:'soap'},
+{sku:'310',name:'Pears Green',brand:'HUL',unit:'75g',price:55,old:68,cat:'soap'},
+{sku:'311',name:'Dove',brand:'HUL',unit:'55g',price:23,old:30,cat:'soap'},
+{sku:'312',name:'Dove',brand:'HUL',unit:'100g',price:60,old:75,cat:'soap'},
+{sku:'313',name:'Dove',brand:'HUL',unit:'3×100g',price:149,old:175,cat:'soap'},
+{sku:'314',name:'Acnil Pimple Care',brand:'Pears',unit:'75g',price:105,old:125,cat:'soap',badge:'Special'},
+{sku:'315',name:'Assure Soap',brand:'Vestige',unit:'Piece',price:63,old:80,cat:'soap'},
+{sku:'316',name:'Mysore Sandal Gold',brand:'KSDL',unit:'75g',price:82,old:100,cat:'soap',badge:'Premium'},
+{sku:'317',name:'Mysore Sandal 75g',brand:'KSDL',unit:'75g',price:38,old:50,cat:'soap'},
+{sku:'318',name:'Mysore Sandal 150g',brand:'KSDL',unit:'150g',price:75,old:90,cat:'soap'},
+{sku:'319',name:'Mysore Sandal Wave',brand:'KSDL',unit:'100g',price:95,old:105,cat:'soap'},
+{sku:'320',name:'Lifebuoy Bar',brand:'HUL',unit:'Pack',price:150,old:185,cat:'soap'},
+{sku:'321',name:'Lifebuoy Lime',brand:'HUL',unit:'Pack',price:120,old:150,cat:'soap'},
+{sku:'322',name:'Rexona 100g',brand:'HUL',unit:'100g',price:42,old:55,cat:'soap'},
+{sku:'323',name:'Godrej Shikakai',brand:'Godrej',unit:'100g',price:34,old:45,cat:'soap'},
+{sku:'324',name:'Lux Pink',brand:'HUL',unit:'Pack',price:140,old:170,cat:'soap'},
+{sku:'325',name:'Lux White',brand:'HUL',unit:'Pack',price:125,old:155,cat:'soap'},
+{sku:'326',name:'Fiama',brand:'ITC',unit:'Pack',price:137,old:144,cat:'soap'},
+{sku:'327',name:'Moti Sandal 75g',brand:'Moti',unit:'75g',price:40,old:55,cat:'soap'},
+{sku:'328',name:'Moti Sandal 150g',brand:'Moti',unit:'150g',price:80,old:100,cat:'soap'},
+{sku:'329',name:'Santoor',brand:'Wipro',unit:'Pack',price:146,old:168,cat:'soap'},
+{sku:'330',name:'Vivel',brand:'ITC',unit:'Pack',price:115,old:140,cat:'soap'},
+{sku:'331',name:'Margo',brand:'Margo',unit:'Pack',price:180,old:225,cat:'soap'},
+{sku:'332',name:'Cinthol Lime',brand:'Godrej',unit:'Pack',price:165,old:205,cat:'soap'},
+{sku:'333',name:'Venus',brand:'Venus',unit:'Pack',price:114,old:140,cat:'soap'},
+{sku:'334',name:'Medimix 3 Pack',brand:'CavinKare',unit:'3×125g',price:137,old:165,cat:'soap'},
+{sku:'335',name:'Medimix 7 Pack',brand:'CavinKare',unit:'7 Pack',price:185,old:220,cat:'soap'},
+{sku:'336',name:'Godrej Sandal',brand:'Godrej',unit:'Pack',price:120,old:150,cat:'soap'},
+{sku:'337',name:'Godrej Lime',brand:'Godrej',unit:'Pack',price:120,old:150,cat:'soap'},
   {sku:'252',name:'Chewing Gum',brand:'Center Fresh',unit:'Pack',price:7,old:10,cat:'sweets'}
 ];
-
 
 
 // ── CART ──
